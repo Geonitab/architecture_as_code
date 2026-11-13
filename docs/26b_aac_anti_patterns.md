@@ -12,7 +12,7 @@ Before exploring anti-patterns, ensure your organisation has assessed its readin
 
 ### Treating AaC as a tool purchase
 
-Executives sometimes assume that acquiring a single modelling or provisioning platform unlocks Architecture as Code. The anti-pattern manifests when budgets focus on licences and consultants whilst neglecting change management, governance design, and internal capability building. Teams inherit sophisticated tooling without a shared architectural vocabulary or decision-making forum. Models remain stale, infrastructure definitions diverge from reality, and senior leaders declare the experiment a failure.
+Executives sometimes assume that acquiring a single modelling or provisioning platform unlocks Architecture as Code. The anti-pattern manifests when budgets focus on licences and consultants while neglecting change management, governance design, and internal capability building. Teams inherit sophisticated tooling without a shared architectural vocabulary or decision-making forum. Models remain stale, infrastructure definitions diverge from reality, and senior leaders declare the experiment a failure.
 
 **How to recover:** treat AaC as a product with its own roadmap, budget for coaching, and a guild that curates shared models in Git (see [Chapter 17](17_organisational_change.md) and [Chapter 19](19_management_as_code.md)).
 

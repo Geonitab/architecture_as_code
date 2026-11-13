@@ -16,7 +16,7 @@ In the Architecture as Code ecosystem, Structurizr serves as a practical impleme
 - Automate architecture documentation in CI/CD pipelines
 - Maintain consistency across different architectural views
 
-The FINOS Common Architecture Language Model (CALM), an open JSON-based specification with its own validation and visualisation tooling [Source [1]](33_references.md#source-1), offers a complementary example and is described in [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md). CALM demonstrates how DSL-driven approaches like Structurizr stay adaptable—teams can add validators, generators, or documentation exporters around the same architecture source of truth whilst tailoring outputs to their needs.
+The FINOS Common Architecture Language Model (CALM), an open JSON-based specification with its own validation and visualisation tooling [Source [1]](33_references.md#source-1), offers a complementary example and is described in [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md). CALM demonstrates how DSL-driven approaches like Structurizr stay adaptable—teams can add validators, generators, or documentation exporters around the same architecture source of truth while tailoring outputs to their needs.
 
 This chapter explores how to use Structurizr for creating, developing, and handling architecture models, integrating them into modern development workflows, and establishing architecture as a living, evolving artefact.
 
@@ -384,7 +384,7 @@ Sustaining expansive workspaces demands routine guardrails so that dozens of con
 4. **Document relationship expectations** – Maintain a `docs/STRUCTURIZR_GUIDELINES.md` (or similar) that states how to phrase relationship descriptions (“uses”, “publishes events to”, “reads from”). Link the document from pull request templates so contributors confirm adherence before review.
 5. **Leverage `local` for validation** – Encourage contributors to load the workspace with [`structurizr local`](https://docs.structurizr.com/local) during development, so that convention breaches become visible before they reach code review.
 
-These steps modularise the workspace whilst making naming policies transparent, preventing accidental duplication of actors or services when multiple programmes collaborate.
+These steps modularise the workspace while making naming policies transparent, preventing accidental duplication of actors or services when multiple programmes collaborate.
 
 ### Automated layout templates, quality gates, and versioning
 
@@ -522,7 +522,7 @@ jobs:
         run: python3 scripts/check_structurizr_manifest.py
 ```
 
-The workflow mirrors the local helper by exporting Structurizr JSON and PlantUML files whilst skipping the manifest update to avoid masking drift. The final `check_structurizr_manifest.py` invocation compares the committed digest with the current DSL and fails the build when contributors forget to refresh the manifest. Reviewers still receive fresh diagrams via the uploaded artefact, satisfying the pipeline requirements without sacrificing fast feedback.
+The workflow mirrors the local helper by exporting Structurizr JSON and PlantUML files while skipping the manifest update to avoid masking drift. The final `check_structurizr_manifest.py` invocation compares the committed digest with the current DSL and fails the build when contributors forget to refresh the manifest. Reviewers still receive fresh diagrams via the uploaded artefact, satisfying the pipeline requirements without sacrificing fast feedback.
 
 ### GitHub Actions example
 
@@ -577,7 +577,7 @@ jobs:
           git push
 ```
 
-> **Security and workflow warning:** The default `GITHUB_TOKEN` cannot push to protected branches without explicit write permissions granted in the workflow permissions block. Auto-committing directly to `main` also risks recursive workflow triggers — whilst `[skip ci]` in the commit message suppresses re-runs, it may bypass mandatory status checks required by branch protection rules and should be used with caution. The preferred, safer approach is to use the `actions/upload-artifact` pattern (shown later in this chapter), which publishes generated diagrams as workflow artefacts without modifying the repository during CI. Reserve auto-commit patterns for unprotected branches or use a dedicated bot token with appropriately scoped permissions.
+> **Security and workflow warning:** The default `GITHUB_TOKEN` cannot push to protected branches without explicit write permissions granted in the workflow permissions block. Auto-committing directly to `main` also risks recursive workflow triggers — while `[skip ci]` in the commit message suppresses re-runs, it may bypass mandatory status checks required by branch protection rules and should be used with caution. The preferred, safer approach is to use the `actions/upload-artifact` pattern (shown later in this chapter), which publishes generated diagrams as workflow artefacts without modifying the repository during CI. Reserve auto-commit patterns for unprotected branches or use a dedicated bot token with appropriately scoped permissions.
 
 ### GitLab CI example
 

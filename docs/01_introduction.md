@@ -82,7 +82,7 @@ This book follows a deliberate progression that mirrors the typical Architecture
 
 The appendices (Part H) supply a glossary, the code examples referenced throughout the chapters, the technical architecture of the book's own production pipeline, the FINOS project blueprint, templates and tools, and the complete bibliography.
 
-Each part builds upon previous foundations whilst setting the stage for what follows, creating a cohesive narrative that guides readers from first principles through to advanced practice.
+Each part builds upon previous foundations while setting the stage for what follows, creating a cohesive narrative that guides readers from first principles through to advanced practice.
 
 ## Companion workbook and course alignment
 

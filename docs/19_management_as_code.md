@@ -77,17 +77,17 @@ Transparency is a cornerstone principle of Architecture as Code and Management a
 
 *Figure: Transparency workflow illustrating how problems flow through discussions, issues, reviews, and decisions into searchable archives.*
 
-The transparency workflow diagram demonstrates the complete lifecycle from problem identification through strategic discussion, structured issue tracking, collaborative review, and final implementation. Each stage creates permanent records that build institutional knowledge whilst maintaining accountability and enabling asynchronous participation across distributed teams.
+The transparency workflow diagram demonstrates the complete lifecycle from problem identification through strategic discussion, structured issue tracking, collaborative review, and final implementation. Each stage creates permanent records that build institutional knowledge while maintaining accountability and enabling asynchronous participation across distributed teams.
 
 ### Issues as transparent decision records
 
-GitHub Issues provide a structured interface for capturing management work whilst establishing a permanent, searchable record of how decisions evolved. Custom templates ensure that leadership topics include expected data—financial impact, staffing needs, compliance considerations, risk assessments, and dependencies on other initiatives. This structured approach prevents critical context from being lost and ensures that future team members can understand not just what was decided, but why.
+GitHub Issues provide a structured interface for capturing management work while establishing a permanent, searchable record of how decisions evolved. Custom templates ensure that leadership topics include expected data—financial impact, staffing needs, compliance considerations, risk assessments, and dependencies on other initiatives. This structured approach prevents critical context from being lost and ensures that future team members can understand not just what was decided, but why.
 
 Transparency through Issues manifests in several ways:
 
 **Visibility and Accessibility**: Every stakeholder with repository access can view ongoing discussions, understand current priorities, and contribute perspectives. This democratises decision-making and prevents siloed thinking that emerges when only select individuals participate in critical conversations.
 
-**Traceability**: Issues create an immutable audit trail linking strategic intent to tactical implementation. When an architecture decision record references an Issue, reviewers can trace the entire conversation chain—from initial problem statement through stakeholder debate to final resolution. This traceability satisfies compliance requirements whilst enabling teams to learn from past decisions.
+**Traceability**: Issues create an immutable audit trail linking strategic intent to tactical implementation. When an architecture decision record references an Issue, reviewers can trace the entire conversation chain—from initial problem statement through stakeholder debate to final resolution. This traceability satisfies compliance requirements while enabling teams to learn from past decisions.
 
 **Accountability**: Assigning Issues to specific owners, setting milestones, and tracking progress creates clear accountability. Teams know who is responsible for each initiative, reducing ambiguity and preventing work from falling through organisational cracks. Labels reflect strategic pillars, enabling filtering and reporting across different dimensions of the architecture portfolio.
 
@@ -108,7 +108,7 @@ This transparent approach ensures that three years later, when reviewing the dec
 
 **Example 2: Architecture Decision Record Integration**
 
-When introducing a new microservices communication pattern, teams create both an Issue and an ADR. The Issue captures stakeholder discussions, concerns about latency, and debate over event-driven versus request-response patterns. Once consensus emerges, an ADR formalises the decision whilst referencing the Issue for complete context. Future developers reviewing the ADR can follow the link to understand the full deliberation, including rejected alternatives and edge cases that influenced the final choice.
+When introducing a new microservices communication pattern, teams create both an Issue and an ADR. The Issue captures stakeholder discussions, concerns about latency, and debate over event-driven versus request-response patterns. Once consensus emerges, an ADR formalises the decision while referencing the Issue for complete context. Future developers reviewing the ADR can follow the link to understand the full deliberation, including rejected alternatives and edge cases that influenced the final choice.
 
 **Example 3: Security Vulnerability Response**
 
@@ -123,11 +123,11 @@ Even though the work remains confidential until the patch is released, the trans
 
 ### Discussions for strategic deliberation
 
-Whilst Issues track concrete work items and decisions, Discussions provide the forum for exploratory thinking, strategy formulation, and community building. Leadership teams can host strategic retrospectives, policy design workshops, or budget prioritisation debates within GitHub Discussions. These asynchronous forums enable thoughtful deliberation without the time-boxing constraints of synchronous meetings.
+While Issues track concrete work items and decisions, Discussions provide the forum for exploratory thinking, strategy formulation, and community building. Leadership teams can host strategic retrospectives, policy design workshops, or budget prioritisation debates within GitHub Discussions. These asynchronous forums enable thoughtful deliberation without the time-boxing constraints of synchronous meetings.
 
 Discussions enhance transparency through:
 
-**Open Ideation**: Teams can propose ideas, gather feedback, and iterate on concepts before formalising them into Issues or code changes. This openness encourages innovation whilst building consensus around strategic direction. Junior team members who might hesitate to speak in meetings can contribute thoughtful written perspectives.
+**Open Ideation**: Teams can propose ideas, gather feedback, and iterate on concepts before formalising them into Issues or code changes. This openness encourages innovation while building consensus around strategic direction. Junior team members who might hesitate to speak in meetings can contribute thoughtful written perspectives.
 
 **Documented Context**: Threads stay searchable and the resulting consensus links directly to the code change that implements it, providing institutional memory that normalises management participation in developer-centric tools. When new team members join, they can review Discussion history to understand organisational values, decision-making patterns, and the rationale behind current architectures.
 
@@ -167,7 +167,7 @@ When evaluating whether to adopt a new architecture pattern (such as event sourc
 - Concerns about operational complexity and team skills gaps
 - Gradual emergence of consensus around where the pattern adds value versus where simpler approaches suffice
 
-This exploratory phase prevents premature standardisation whilst building shared understanding. When teams eventually create Issues to implement the pattern in specific services, the Discussion provides the “why” context that justifies the “what”.
+This exploratory phase prevents premature standardisation while building shared understanding. When teams eventually create Issues to implement the pattern in specific services, the Discussion provides the “why” context that justifies the “what”.
 
 ### Linking transparency to architecture evolution
 
@@ -190,7 +190,7 @@ Create templates that prompt for essential context:
 - **Stakeholder Input**: Which teams or individuals should contribute perspectives?
 - **Success Criteria**: How will we know when this Issue is successfully resolved?
 
-Templates ensure consistency whilst preventing critical information from being omitted.
+Templates ensure consistency while preventing critical information from being omitted.
 
 **2. Define Labelling Taxonomy**
 
@@ -220,7 +220,7 @@ Prevent Discussions from becoming stale archives:
 - Automation flags Discussions with no activity for 90 days, prompting closure or renewal
 - Quarterly retrospectives assess whether Discussion outcomes materialised into code changes
 
-Active curation keeps Discussions valuable whilst respecting participants' time.
+Active curation keeps Discussions valuable while respecting participants' time.
 
 **5. Measure and Communicate Impact**
 
@@ -240,7 +240,7 @@ Transparent workflows also require discipline. Teams must resist the temptation 
 
 ### Security and access considerations
 
-Whilst transparency is valuable, it must be balanced with appropriate confidentiality. Organisations can create private repositories for sensitive management topics whilst maintaining public or team-accessible repositories for architecture decisions. Fine-grained access controls ensure that commercially sensitive information, personal data, or security vulnerabilities are appropriately restricted whilst maximising visibility for routine architectural work.
+While transparency is valuable, it must be balanced with appropriate confidentiality. Organisations can create private repositories for sensitive management topics while maintaining public or team-accessible repositories for architecture decisions. Fine-grained access controls ensure that commercially sensitive information, personal data, or security vulnerabilities are appropriately restricted while maximising visibility for routine architectural work.
 
 The goal is not absolute transparency in all matters, but rather deliberate and appropriate transparency that balances openness with legitimate confidentiality requirements. Architecture as Code teams should regularly review their repository access policies to ensure they enable collaboration without exposing inappropriate information.
 

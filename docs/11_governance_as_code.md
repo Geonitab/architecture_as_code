@@ -238,7 +238,7 @@ Governance as Code modernises policy management by placing guardrails alongside 
 
 ## Governance and security Controls as Code backlog
 
-Delivery teams can now translate the guidance across [Security Fundamentals](09_security_fundamentals.md), [Security Patterns](09b_security_patterns.md), and [Soft “as code” Interplay](23_soft_as_code_interplay.md) into concrete backlog items. The sequence below aligns policy-as-code automation with secure Terraform state backends for AWS, Azure, and Google Cloud whilst capturing the evidence expected by governance forums.
+Delivery teams can now translate the guidance across [Security Fundamentals](09_security_fundamentals.md), [Security Patterns](09b_security_patterns.md), and [Soft “as code” Interplay](23_soft_as_code_interplay.md) into concrete backlog items. The sequence below aligns policy-as-code automation with secure Terraform state backends for AWS, Azure, and Google Cloud while capturing the evidence expected by governance forums.
 
 | Sequence | Work Item | Description | Acceptance Tests | Documentation Tasks | Definition of Done Notes |
 |----------|-----------|-------------|------------------|---------------------|---------------------------|

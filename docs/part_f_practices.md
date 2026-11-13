@@ -21,8 +21,8 @@ The practices explored here draw on all previous parts—from the [foundational 
 - Code organisation and modularity patterns that scale across teams
 - Security and compliance patterns that balance protection with velocity
 - Performance management in globally distributed architectures
-- Governance models that empower teams whilst maintaining control
+- Governance models that empower teams while maintaining control
 - Vendor and tool management strategies that reduce lock-in
 - Continuous improvement practices that sustain long-term success
 
-These experiences and patterns prepare organisations to anticipate future developments whilst maintaining effective practices today, setting the stage for the forward-looking perspectives in Part G.
+These experiences and patterns prepare organisations to anticipate future developments while maintaining effective practices today, setting the stage for the forward-looking perspectives in Part G.

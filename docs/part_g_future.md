@@ -25,4 +25,4 @@ The [conclusion](27_conclusion.md) ties together threads from across this book�
 - A consolidated view of how all elements of Architecture as Code work together
 - Practical next steps for continued learning and implementation
 
-This final part provides both a conclusion and a new beginning—synthesising what has been learned whilst pointing toward future possibilities. It acknowledges that Architecture as Code is a journey of continuous improvement rather than a destination to be reached.
+This final part provides both a conclusion and a new beginning—synthesising what has been learned while pointing toward future possibilities. It acknowledges that Architecture as Code is a journey of continuous improvement rather than a destination to be reached.

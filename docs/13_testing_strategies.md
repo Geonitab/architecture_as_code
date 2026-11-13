@@ -8,13 +8,13 @@ A comprehensive testing strategy for Architecture as Code requires multiple test
 
 ## Overview
 
-Testing codified infrastructure differs fundamentally from traditional software testing by focusing on architectural configuration, resource compatibility and environmental consistency rather than business logic. Effective Architecture as Code testing ensures configurations produce expected results consistently across different environments whilst maintaining security, compliance and cost efficiency.
+Testing codified infrastructure differs fundamentally from traditional software testing by focusing on architectural configuration, resource compatibility and environmental consistency rather than business logic. Effective Architecture as Code testing ensures configurations produce expected results consistently across different environments while maintaining security, compliance and cost efficiency.
 
 Modern codified infrastructure testing encompasses multiple dimensions: syntactic validation of code, policy compliance checking, cost forecasting, security vulnerability analysis and functional testing of deployed infrastructure. This multilayered approach identifies problems early in the development cycle when they are cheaper and simpler to fix, preventing costly production incidents.
 
 Organisations with strict compliance requirements must implement comprehensive testing that validates both technical functionality and regulatory conformance. This includes GDPR data protection controls, financial services regulations and government security standards such as the NIST SP 800-53 control catalogue ([Source [11]](33_references.md#source-11)) that must be verified automatically through policy-as-code frameworks.
 
-Test automation for codified infrastructure enables continuous integration and continuous deployment patterns that accelerate delivery whilst reducing the risk of production disruptions. These testing pipelines can run in parallel with application testing to ensure end-to-end quality assurance across the entire technology stack. The AWS Well-Architected Framework expresses the same expectation in its operational excellence principle of safely automating where possible: the entire workload and its operations are defined as code and updated through automation ([Source [91]](33_references.md#source-91)).
+Test automation for codified infrastructure enables continuous integration and continuous deployment patterns that accelerate delivery while reducing the risk of production disruptions. These testing pipelines can run in parallel with application testing to ensure end-to-end quality assurance across the entire technology stack. The AWS Well-Architected Framework expresses the same expectation in its operational excellence principle of safely automating where possible: the entire workload and its operations are defined as code and updated through automation ([Source [91]](33_references.md#source-91)).
 
 ## Unit testing for codified infrastructure
 
@@ -99,7 +99,7 @@ jobs:
 
 The Terraform job passes its backend settings with `-backend-config` flags, because backend blocks cannot reference variables, and it enables Terraform's S3-native state locking with `use_lockfile=true`, so the job requires Terraform 1.11 or later ([Source [17]](33_references.md#source-17)); the state management pattern in [Chapter 9B: Advanced Security Patterns and Implementation](09b_security_patterns.md) explains why this replaces DynamoDB-based locking.
 
-Integrating the pipeline with observability platforms completes the resilience loop. Terraform plan uploads and Pulumi previews should be annotated in chat channels alongside drift-detection alerts, whilst Terratest and Pulumi host-language test results are forwarded to reporting dashboards. This instrumentation ensures that failure trends are visible, high-risk infrastructure changes are stopped before they reach production, and recovery rehearsals remain auditable.
+Integrating the pipeline with observability platforms completes the resilience loop. Terraform plan uploads and Pulumi previews should be annotated in chat channels alongside drift-detection alerts, while Terratest and Pulumi host-language test results are forwarded to reporting dashboards. This instrumentation ensures that failure trends are visible, high-risk infrastructure changes are stopped before they reach production, and recovery rehearsals remain auditable.
 
 ## Test management with Vitest for Architecture as Code
 
@@ -131,7 +131,7 @@ The configuration should include:
 
 *Figure 13.2: Architecture as Code Testing Strategy Quadrant*
 
-The testing quadrant above illustrates the balance between implementation complexity and testing coverage. Different testing strategies occupy distinct positions, with security scanning and policy testing offering high coverage with moderate complexity, whilst end-to-end tests provide comprehensive coverage at the cost of higher implementation complexity.
+The testing quadrant above illustrates the balance between implementation complexity and testing coverage. Different testing strategies occupy distinct positions, with security scanning and policy testing offering high coverage with moderate complexity, while end-to-end tests provide comprehensive coverage at the cost of higher implementation complexity.
 
 #### Example 1: Testing Terraform configuration generators
 
@@ -276,7 +276,7 @@ Load testing strategies must validate auto-scaling configurations, resource limi
 
 Scalability testing verifies that infrastructure can handle projected growth efficiently through automated scaling mechanisms. This includes testing horizontal scaling for stateless services and validation of data partitioning strategies for stateful systems.
 
-Capacity planning validation through performance testing helps optimise resource configurations for cost-effectiveness whilst performance requirements are met. This is particularly important for organisations that balance cost optimisation with service level requirements.
+Capacity planning validation through performance testing helps optimise resource configurations for cost-effectiveness while performance requirements are met. This is particularly important for organisations that balance cost optimisation with service level requirements.
 
 ## Requirements as Code and testability
 
@@ -393,7 +393,7 @@ A complete infrastructure testing pipeline should include:
 - Cost analysis and budget validation
 - Resource utilisation verification
 
-Each stage should provide clear feedback and block deployment on critical failures whilst allowing warnings to proceed with appropriate notifications.
+Each stage should provide clear feedback and block deployment on critical failures while allowing warnings to proceed with appropriate notifications.
 
 ## Summary
 

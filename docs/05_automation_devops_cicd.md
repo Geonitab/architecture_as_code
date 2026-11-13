@@ -26,7 +26,7 @@ The CI/CD flow depicted earlier runs from code commit through validation, testin
 > | Pipeline checkpoints | Defines pre-deployment validation stages (design reviews, policy scans, segregation-of-duties checks) | Executes deployment stages (plan, apply, smoke tests) and returns evidence to the architectural layer |
 > | Evolution feedback | Adjusts standards as organisational needs, regulations, and risk appetites evolve | Provides operational insight (plan/apply results, monitoring) that informs AaC refinements |
 
-The division of responsibilities keeps automation pipelines coherent: AaC establishes the binding constraints and desired outcomes, and IaC tooling operationalises them without diluting governance signals. Teams that treat the two disciplines as complementary layers can scale delivery velocity whilst preserving compliance, auditability, and architectural consistency. Pipeline telemetry then flows upwards—IaC execution data is version controlled and fed back into AaC repositories—so architecture standards evolve with evidence rather than assumption.
+The division of responsibilities keeps automation pipelines coherent: AaC establishes the binding constraints and desired outcomes, and IaC tooling operationalises them without diluting governance signals. Teams that treat the two disciplines as complementary layers can scale delivery velocity while preserving compliance, auditability, and architectural consistency. Pipeline telemetry then flows upwards—IaC execution data is version controlled and fed back into AaC repositories—so architecture standards evolve with evidence rather than assumption.
 
 ## The theoretical foundation for CI/CD automation
 

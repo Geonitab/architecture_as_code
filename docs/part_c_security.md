@@ -22,4 +22,4 @@ Governance as Code extends these principles to organisational processes, approva
 - Compliance automation for GDPR, financial regulations, and sector-specific requirements
 - Continuous compliance monitoring and evidence generation
 
-The practices in this part build upon the [fundamental principles](02_fundamental_principles.md) of immutability and testability whilst leveraging the [automation capabilities](05_automation_devops_cicd.md) established earlier. The testing and operational practices that follow depend on these security and governance foundations to ensure safe, compliant delivery.
+The practices in this part build upon the [fundamental principles](02_fundamental_principles.md) of immutability and testability while leveraging the [automation capabilities](05_automation_devops_cicd.md) established earlier. The testing and operational practices that follow depend on these security and governance foundations to ensure safe, compliant delivery.

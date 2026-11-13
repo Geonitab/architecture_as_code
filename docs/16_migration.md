@@ -8,11 +8,11 @@
 
 Migration from traditional, manually configured infrastructure to Architecture as Code represents one of the most critical transformations for modern IT organisations. This process requires not only technical restructuring but also organisational change and cultural adaptation to code-based ways of working.
 
-European organisations face unique migration challenges through legacy systems that have developed over decades, regulatory requirements that constrain the pace of change, and the need to balance innovation with operational stability. Successful migration requires comprehensive planning that minimises risks whilst enabling rapid value realisation.
+European organisations face unique migration challenges through legacy systems that have developed over decades, regulatory requirements that constrain the pace of change, and the need to balance innovation with operational stability. Successful migration requires comprehensive planning that minimises risks while enabling rapid value realisation.
 
-Modern migration strategies must accommodate hybrid scenarios where legacy infrastructure coexists with Architecture as Code-managed resources during extended transition periods. This hybrid approach enables gradual migration that reduces business risk whilst enabling immediate benefits from Architecture as Code adoption.
+Modern migration strategies must accommodate hybrid scenarios where legacy infrastructure coexists with Architecture as Code-managed resources during extended transition periods. This hybrid approach enables gradual migration that reduces business risk while enabling immediate benefits from Architecture as Code adoption.
 
-Cloud-native migration pathways offer opportunities to modernise architecture whilst infrastructure management is codified. European companies can leverage this transformation to implement sustainability initiatives, improve cost efficiency and enhance security posture through systematic Architecture as Code adoption.
+Cloud-native migration pathways offer opportunities to modernise architecture while infrastructure management is codified. European companies can leverage this transformation to implement sustainability initiatives, improve cost efficiency and enhance security posture through systematic Architecture as Code adoption.
 
 ## Assessment and planning phases
 
@@ -37,9 +37,9 @@ Migration wave planning balances technical dependencies with business priorities
 
 Infrastructure inventory automation through tools such as Terraform `import` blocks, the CloudFormation IaC generator and resource import ([Source [96]](33_references.md#source-96)), and Azure Resource Manager template export enables systematic conversion of existing resources to Architecture as Code management. Automated discovery can generate initial Architecture as Code configurations that require refinement but accelerate the codification process.
 
-Template standardisation through reusable modules and organisational patterns ensures consistency across migrated infrastructure whilst reducing future maintenance overhead. Public-sector organisations, where many departments provision similar workloads under the same regulatory regime, are natural candidates for standardised Architecture as Code templates covering common infrastructure patterns.
+Template standardisation through reusable modules and organisational patterns ensures consistency across migrated infrastructure while reducing future maintenance overhead. Public-sector organisations, where many departments provision similar workloads under the same regulatory regime, are natural candidates for standardised Architecture as Code templates covering common infrastructure patterns.
 
-Configuration drift elimination through Architecture as Code adoption requires systematic reconciliation between existing resource configurations and desired Architecture as Code state. Gradual enforcement of Architecture as Code-managed configuration ensures infrastructure stability whilst eliminating manual configuration inconsistencies.
+Configuration drift elimination through Architecture as Code adoption requires systematic reconciliation between existing resource configurations and desired Architecture as Code state. Gradual enforcement of Architecture as Code-managed configuration ensures infrastructure stability while eliminating manual configuration inconsistencies.
 
 Version control integration for infrastructure changes enables systematic tracking of migration progress and provides rollback capabilities for problematic changes. Git-based workflows for infrastructure management establish the foundation for collaborative infrastructure development and operational transparency.
 
@@ -469,7 +469,7 @@ echo "5. Document lessons learned"
 
 Migration is rarely a single project; it is a sequence of small, reversible steps, each of which shrinks the part of the estate that is still managed by hand. Migration from traditional infrastructure to Architecture as Code requires systematic planning, gradual implementation, and comprehensive testing. Organisations that successfully execute this migration position themselves for increased agility, improved security, and significant cost benefits.
 
-Success factors include comprehensive assessment, realistic timeline planning, extensive team training, and thorough test automation. Hybrid migration strategies enable risk minimisation whilst delivering immediate value from Architecture as Code adoption.
+Success factors include comprehensive assessment, realistic timeline planning, extensive team training, and thorough test automation. Hybrid migration strategies enable risk minimisation while delivering immediate value from Architecture as Code adoption.
 
 Investment in proper migration planning and execution results in long-term benefits through improved operational efficiency, enhanced security posture, and reduced technical debt. Organisations that follow systematic migration approaches can expect successful transformation to modern, Architecture as Code-based infrastructure management.
 

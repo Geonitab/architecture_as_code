@@ -220,7 +220,7 @@ Two categories of tooling deserve specific mention. **Feature flags** allow team
 
 ## Summary
 
-Microservices amplify organisational agility when paired with disciplined automation. Architecture as Code gives leaders a shared source of truth for service contracts, platform guardrails, and operational posture. Investing in reusable templates, policy automation, and comprehensive observability enables teams to innovate quickly whilst preserving the resilience, compliance, and sustainability that modern enterprises demand.
+Microservices amplify organisational agility when paired with disciplined automation. Architecture as Code gives leaders a shared source of truth for service contracts, platform guardrails, and operational posture. Investing in reusable templates, policy automation, and comprehensive observability enables teams to innovate quickly while preserving the resilience, compliance, and sustainability that modern enterprises demand.
 
 ## Sources
 

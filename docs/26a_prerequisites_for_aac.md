@@ -111,7 +111,7 @@ Organisations that struggle with AaC usually repeat familiar mistakes:
 - **Heroic ownership** – Concentrating responsibility in a few experts defies the distributed leadership model in [Chapter 18](18_team_structure.md).
 - **Budget whiplash** – Treating AaC as a one-off project contradicts the continuous optimisation message from [Chapter 15](15_cost_optimization.md).
 - **Governance bypass** – Sidestepping compliance partners undermines the trust built through [Chapter 11](11_governance_as_code.md).
-- **Metrics myopia** – Tracking deployment speed whilst ignoring culture repeats the caution from [Chapter 17](17_organisational_change.md).
+- **Metrics myopia** – Tracking deployment speed while ignoring culture repeats the caution from [Chapter 17](17_organisational_change.md).
 
 Recognising these anti-patterns early enables corrective action before momentum is lost.
 

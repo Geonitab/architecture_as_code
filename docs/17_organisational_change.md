@@ -2,7 +2,7 @@
 
 Architecture as Code changes far more than tooling. It demands new habits, shared language, and organisational structures that keep pace with automated delivery. Sustainable transformation happens when leadership connects strategy, culture, and day-to-day practices so teams can deliver infrastructure with the same confidence and cadence as software.
 
-Organisations rarely adopt Architecture as Code principles overnight. Instead, they move through progressive stages, each building on earlier capabilities whilst introducing new collaboration patterns and decision-making structures. Understanding this evolution helps leadership anticipate challenges, allocate resources, and maintain momentum through periods of rapid change.
+Organisations rarely adopt Architecture as Code principles overnight. Instead, they move through progressive stages, each building on earlier capabilities while introducing new collaboration patterns and decision-making structures. Understanding this evolution helps leadership anticipate challenges, allocate resources, and maintain momentum through periods of rapid change.
 
 ## Learning objectives
 
@@ -69,21 +69,21 @@ Architecture as Code blurs traditional boundaries between development, operation
 
 Site reliability engineers, platform product owners, and security partners work from shared roadmaps and adopt servant leadership behaviours to unlock their colleagues' potential. These roles require both deep technical expertise and the interpersonal skills to influence without direct authority, a combination that few training programmes explicitly develop.
 
-Career development frameworks must recognise deep expertise and cross-disciplinary breadth so people can advance without leaving technical tracks. Dual-ladder career structures, technical leadership programmes, and rotation opportunities prevent the common pattern where the best engineers are promoted into management roles they neither want nor excel in, depleting technical capability whilst creating unhappy managers.
+Career development frameworks must recognise deep expertise and cross-disciplinary breadth so people can advance without leaving technical tracks. Dual-ladder career structures, technical leadership programmes, and rotation opportunities prevent the common pattern where the best engineers are promoted into management roles they neither want nor excel in, depleting technical capability while creating unhappy managers.
 
 ## Change management in practice
 
-Transformation initiatives that focus solely on technology adoption whilst ignoring human factors consistently underdeliver. Successful change programmes treat stakeholders as partners rather than passive recipients of mandates from above. Early engagement with finance, security, procurement, and operations ensures that policy and compliance guardrails evolve alongside automation.
+Transformation initiatives that focus solely on technology adoption while ignoring human factors consistently underdeliver. Successful change programmes treat stakeholders as partners rather than passive recipients of mandates from above. Early engagement with finance, security, procurement, and operations ensures that policy and compliance guardrails evolve alongside automation.
 
 Resistance to change often signals legitimate concerns about job security, skill gaps, or process disruption rather than simple obstinacy. Leaders who take time to understand these concerns and address them directly build trust that accelerates adoption. Structured communications plans, lightweight pilot initiatives, and visible sponsorship help teams internalise why the organisation is changing, not only what is changing.
 
-Pilot projects serve dual purposes: they prove technical feasibility whilst creating reference stories that persuade sceptical stakeholders. Starting with low-risk, high-visibility use cases generates early wins that build momentum without risking business-critical systems. These successes create advocates who speak from experience rather than theory, a far more persuasive force than executive mandates.
+Pilot projects serve dual purposes: they prove technical feasibility while creating reference stories that persuade sceptical stakeholders. Starting with low-risk, high-visibility use cases generates early wins that build momentum without risking business-critical systems. These successes create advocates who speak from experience rather than theory, a far more persuasive force than executive mandates.
 
 ## Measuring sustainable progress
 
 Transformation programmes that lack clear success criteria drift aimlessly or claim victory prematurely based on activity metrics rather than outcomes. Insightful metrics keep transformation honest by connecting technical improvements to business value. Leading indicators such as deployment frequency, recovery time, developer satisfaction, and onboarding effort demonstrate whether cultural shifts translate into measurable delivery improvements.
 
-The most effective measurement frameworks balance technical, business, and cultural dimensions rather than focusing narrowly on infrastructure metrics. The DORA software delivery metrics introduced in [Chapter 5](05_automation_devops_cicd.md) [Source [49]](33_references.md#source-49) provide baseline technical health indicators, whilst developer satisfaction surveys and onboarding time reveal whether the organisation is building sustainable capabilities or burning out its people.
+The most effective measurement frameworks balance technical, business, and cultural dimensions rather than focusing narrowly on infrastructure metrics. The DORA software delivery metrics introduced in [Chapter 5](05_automation_devops_cicd.md) [Source [49]](33_references.md#source-49) provide baseline technical health indicators, while developer satisfaction surveys and onboarding time reveal whether the organisation is building sustainable capabilities or burning out its people.
 
 Appendix A, [listing 17-C](30_appendix_code_examples.md#17_code_3), presents a neutral, globally relevant performance measurement framework that can be automated through standard DevOps toolchains. The framework emphasises leading indicators that teams can influence directly rather than lagging indicators that only confirm success or failure after opportunities for course correction have passed.
 

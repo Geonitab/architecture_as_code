@@ -8,7 +8,7 @@ With the foundational principles established, we now turn to the technical build
 
 The journey from [foundational principles](02_fundamental_principles.md) to operational systems requires repeatable automation and deployment pipelines. Modern organisations must combine DevOps practices with CI/CD workflows that treat infrastructure and architecture with the same rigour as application code. This integration creates the feedback loops and quality gates essential for reliable, repeatable delivery.
 
-Containerisation and orchestration represent a natural evolution in Architecture as Code, where application packaging, deployment patterns, and runtime environments are all defined declaratively. Between the automation pipelines and containerisation, architecture modelling with tools like Structurizr provides the crucial bridge—enabling teams to visualise, document, and communicate their architectural decisions as code. By codifying these concerns, teams achieve consistency across development, testing, and production whilst maintaining the flexibility to adapt to changing requirements.
+Containerisation and orchestration represent a natural evolution in Architecture as Code, where application packaging, deployment patterns, and runtime environments are all defined declaratively. Between the automation pipelines and containerisation, architecture modelling with tools like Structurizr provides the crucial bridge—enabling teams to visualise, document, and communicate their architectural decisions as code. By codifying these concerns, teams achieve consistency across development, testing, and production while maintaining the flexibility to adapt to changing requirements.
 
 **What you will learn in this part:**
 
@@ -18,6 +18,6 @@ Containerisation and orchestration represent a natural evolution in Architecture
 - Container-based architecture patterns using Docker, Kubernetes, and orchestration tools
 - Microservices Architecture as Code: expressing service boundaries, contracts, and platform guardrails as version-controlled definitions
 - Integration strategies that connect automation pipelines with version control and testing
-- Platform thinking that empowers teams whilst maintaining governance and compliance
+- Platform thinking that empowers teams while maintaining governance and compliance
 
 This part builds directly on the [version control practices](03_version_control.md) and [Architecture Decision Records](04_adr.md) covered earlier, showing how those foundations enable sophisticated automation. The security and governance practices explored in subsequent parts will depend on the platform capabilities established here.

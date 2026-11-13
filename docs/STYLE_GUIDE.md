@@ -30,6 +30,7 @@ The following table lists common conversions that must be applied during reviews
 - Apply the serial (Oxford) comma in lists for clarity.
 - Use single quotation marks (`‘ ’`) for quotations within quotations; otherwise prefer double quotation marks.
 - Write dates in ISO format (`2025-10-15`) or in long-form style (`15 October 2025`).
+- Write “while” for temporal and contrastive uses; do not use “whilst”.
 - Hyphenate compound adjectives where it improves readability (e.g., “code-first mindset”).
 
 ## Terminology and Tone

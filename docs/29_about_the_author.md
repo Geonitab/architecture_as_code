@@ -124,7 +124,7 @@ This licence permits:
 - **Free Distribution** for educational purposes
 - **Adaptation** for organisation-specific needs
 - **Commercial Use** with proper attribution
-- **Translation** to other languages whilst maintaining quality
+- **Translation** to other languages while maintaining quality
 
 All reuse should acknowledge the original author and contributors according to established academic and technical standards.
 

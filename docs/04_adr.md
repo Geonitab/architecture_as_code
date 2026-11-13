@@ -216,7 +216,7 @@ Treating ADRs as code artefacts keeps the decision log maintainable and auditabl
 
 **Discovery**: Automation hooks can raise draft ADRs whenever a change request touches regulated components. A lightweight bot monitors backlog labels such as `architecture-impact` and scaffolds a new ADR file with templated metadata, prompting authors to capture context early. This ensures design gaps are surfaced before implementation begins and eliminates the scramble to document decisions retrospectively.
 
-**Review**: Pull request templates should require reviewers to confirm that the ADR references associated code changes, test evidence, and governance controls. Continuous integration jobs lint front matter fields (`status`, `last_reviewed`, `next_review_due`, `linked_components`) and fail the build if required metadata is missing. Mandatory reviewers defined in `CODEOWNERS` provide cross-functional oversight whilst keeping the workflow fully traceable in Git.
+**Review**: Pull request templates should require reviewers to confirm that the ADR references associated code changes, test evidence, and governance controls. Continuous integration jobs lint front matter fields (`status`, `last_reviewed`, `next_review_due`, `linked_components`) and fail the build if required metadata is missing. Mandatory reviewers defined in `CODEOWNERS` provide cross-functional oversight while keeping the workflow fully traceable in Git.
 
 **Supersession**: When a decision evolves, a CLI task generates a successor ADR that automatically references the prior record and updates the status of the deprecated entry. A scheduled pipeline then posts reminders when the `next_review_due` date passes so teams cannot forget to revisit ageing decisions. The resulting Git history links proposals, discussion threads, approvals, and supersessions without manual spreadsheet tracking.
 
@@ -285,7 +285,7 @@ Organisations that adopt ADR methodology position themselves for successful Arch
 
 ## Looking ahead
 
-With foundational principles, version control practices, and decision documentation frameworks in place, we are now ready to explore the technical platform that brings Architecture as Code to life. The next part examines how automation, DevOps practices, and CI/CD pipelines transform the concepts explored in these opening chapters into operational reality. [Chapter 5 on Automation, DevOps and CI/CD](05_automation_devops_cicd.md) demonstrates how the decisions we document through ADRs become executable infrastructure, whilst [Chapter 7 on Containerisation](07_containerisation.md) shows how these principles extend to application deployment and orchestration.
+With foundational principles, version control practices, and decision documentation frameworks in place, we are now ready to explore the technical platform that brings Architecture as Code to life. The next part examines how automation, DevOps practices, and CI/CD pipelines transform the concepts explored in these opening chapters into operational reality. [Chapter 5 on Automation, DevOps and CI/CD](05_automation_devops_cicd.md) demonstrates how the decisions we document through ADRs become executable infrastructure, while [Chapter 7 on Containerisation](07_containerisation.md) shows how these principles extend to application deployment and orchestration.
 
 ## Sources
 

@@ -79,7 +79,7 @@ The FINOS Architecture as Code project describes its aim as devising and managin
 
 ### Plugin-driven extensibility
 
-A different open-source project with a similar name, Architecture-as-Code (AaC) from the DevOps-MBSE community, takes a model-based systems engineering approach: systems are defined in YAML, a Python command-line tool checks each model against AaC's self-describing core definitions, and every additional capability is delivered through plugins so that generators or schema extensions can be added without altering the core runtime [Source [132]](33_references.md#source-132). The book publishing stack applies the same principle—diagram renderers, validation routines, and export scripts are modular components that can be composed or replaced as requirements change—ensuring the base workflow remains stable whilst allowing teams to layer in domain-specific automation.
+A different open-source project with a similar name, Architecture-as-Code (AaC) from the DevOps-MBSE community, takes a model-based systems engineering approach: systems are defined in YAML, a Python command-line tool checks each model against AaC's self-describing core definitions, and every additional capability is delivered through plugins so that generators or schema extensions can be added without altering the core runtime [Source [132]](33_references.md#source-132). The book publishing stack applies the same principle—diagram renderers, validation routines, and export scripts are modular components that can be composed or replaced as requirements change—ensuring the base workflow remains stable while allowing teams to layer in domain-specific automation.
 
 ## Pandoc: Conversion and formatting
 

@@ -31,7 +31,7 @@ By the end of this chapter, you will be able to:
 
 ## Overview
 
-Digital transformation represents more than the introduction of new technology—it embodies a fundamental shift in how organisations deliver value to customers and stakeholders. Architecture as Code plays a central role in this transformation by enabling agile, cloud-based solutions that adapt to evolving business needs whilst maintaining robust governance, security, and compliance frameworks.
+Digital transformation represents more than the introduction of new technology—it embodies a fundamental shift in how organisations deliver value to customers and stakeholders. Architecture as Code plays a central role in this transformation by enabling agile, cloud-based solutions that adapt to evolving business needs while maintaining robust governance, security, and compliance frameworks.
 
 ### Digital transformation challenges and opportunities
 
@@ -39,25 +39,25 @@ Public and private sector organisations worldwide face significant digital trans
 
 Architecture as Code-based solutions offer opportunities to break these limitations through automation, standardisation, and scalability that specifically address common transformation challenges:
 
-**Regulatory Compliance**: Organisations must navigate complex EU-wide legislation including the GDPR (Regulation (EU) 2016/679, [Source [43]](33_references.md#source-43)) under guidance from the European Data Protection Board (EDPB), the NIS2 Directive (Directive (EU) 2022/2555) on cybersecurity obligations for essential and important entities ([Source [114]](33_references.md#source-114)), sector-specific regulations, and data sovereignty requirements across member states. Architecture as Code enables automated compliance checking and audit trails that ensure continuous regulatory adherence across distributed European environments whilst meeting the expectations of European regulatory authorities.
+**Regulatory Compliance**: Organisations must navigate complex EU-wide legislation including the GDPR (Regulation (EU) 2016/679, [Source [43]](33_references.md#source-43)) under guidance from the European Data Protection Board (EDPB), the NIS2 Directive (Directive (EU) 2022/2555) on cybersecurity obligations for essential and important entities ([Source [114]](33_references.md#source-114)), sector-specific regulations, and data sovereignty requirements across member states. Architecture as Code enables automated compliance checking and audit trails that ensure continuous regulatory adherence across distributed European environments while meeting the expectations of European regulatory authorities.
 
-**Cost Efficiency**: With rising operational costs and competitive pressure, Architecture as Code automation becomes critical for maintaining competitiveness. Infrastructure as Code removes much of the manual effort of provisioning and configuration, enabling organisations to reallocate skilled personnel to higher-value activities whilst reducing operational expenses.
+**Cost Efficiency**: With rising operational costs and competitive pressure, Architecture as Code automation becomes critical for maintaining competitiveness. Infrastructure as Code removes much of the manual effort of provisioning and configuration, enabling organisations to reallocate skilled personnel to higher-value activities while reducing operational expenses.
 
 **Skills Challenges**: The IT industry experiences persistent shortages of specialist talent, making it critical to standardise and automate infrastructure management. Architecture as Code enables smaller, specialised teams to manage complex environments through reusable templates, proven patterns, and community best practices.
 
 **Security and Data Governance**: Organisations across the EU prioritise security and data control in an increasingly regulated landscape, guided by EDPB guidelines, enforced by national supervisory authorities under the GDPR, and bound by the NIS2 Directive's obligations for essential and important entities. Architecture as Code enables consistent security configurations, encryption-at-rest as standard, and policy-as-code enforcement aligned with EDPB guidelines that builds trust with customers, regulators, and stakeholders throughout the European Union.
 
-Code-based infrastructure enables DevOps methodologies that unite development and operations, resulting in faster delivery cycles and higher quality. This proves particularly vital for organisations competing in global markets whilst maintaining compliance with diverse EU member state regulations and harmonised European security requirements.
+Code-based infrastructure enables DevOps methodologies that unite development and operations, resulting in faster delivery cycles and higher quality. This proves particularly vital for organisations competing in global markets while maintaining compliance with diverse EU member state regulations and harmonised European security requirements.
 
 ### Digital transformation dimensions
 
 The digital transformation process through Architecture as Code encompasses multiple dimensions that organisations must address holistically:
 
-**Technical Transformation**: Migration from on-premise data centres to hybrid and multi-cloud architectures that respect EU data residency requirements. This includes implementing microservices, containerisation, and API-first architectures that enable rapid innovation whilst maintaining operational resilience across member states.
+**Technical Transformation**: Migration from on-premise data centres to hybrid and multi-cloud architectures that respect EU data residency requirements. This includes implementing microservices, containerisation, and API-first architectures that enable rapid innovation while maintaining operational resilience across member states.
 
-**Organisational Change**: Introduction of cross-functional teams aligned with agile principles, balancing autonomous delivery with necessary oversight. Organisations must adapt hierarchical structures whilst preserving essential governance, risk management, and compliance frameworks.
+**Organisational Change**: Introduction of cross-functional teams aligned with agile principles, balancing autonomous delivery with necessary oversight. Organisations must adapt hierarchical structures while preserving essential governance, risk management, and compliance frameworks.
 
-**Cultural Evolution**: Shift towards data-driven decision-making and experimental learning whilst maintaining appropriate risk awareness and long-term strategic thinking. This requires careful change management that respects organisational values around stability, transparency, and stakeholder engagement.
+**Cultural Evolution**: Shift towards data-driven decision-making and experimental learning while maintaining appropriate risk awareness and long-term strategic thinking. This requires careful change management that respects organisational values around stability, transparency, and stakeholder engagement.
 
 **Competence Development**: Systematic upskilling of existing personnel in Architecture as Code technologies, combining theoretical knowledge with practical application through hands-on training, mentorship programmes, and community collaboration.
 
@@ -90,7 +90,7 @@ Modern digital strategies across the EU emphasise cloud technology's role in ach
 - Develop common platforms for user services based on open-source technologies
 - Ensure cybersecurity and resilience through Infrastructure as Code-based controls aligned with EDPB guidance and NIS2 directive requirements
 
-This creates demand for Architecture as Code solutions that handle sensitive data according to GDPR and sector-specific EU regulations whilst enabling innovation and efficiency. Practically, this means:
+This creates demand for Architecture as Code solutions that handle sensitive data according to GDPR and sector-specific EU regulations while enabling innovation and efficiency. Practically, this means:
 
 
 ```hcl
@@ -201,7 +201,7 @@ Two details matter for compliance reviews. First, the backend uses S3-native loc
 
 ### Enterprise cloud-first success stories
 
-Global enterprises such as Spotify, Netflix, and Capital One have demonstrated leadership by rebuilding their technical platforms on cloud infrastructure while continuing to operate at scale—Netflix completed its AWS migration in 2016, Spotify retired its last data centres in 2018, and Capital One closed its own data centres in 2020. Their success demonstrates how Architecture as Code enables rapid scaling and global expansion whilst minimising technical debt and maintaining organisational values around sustainability and innovation.
+Global enterprises such as Spotify, Netflix, and Capital One have demonstrated leadership by rebuilding their technical platforms on cloud infrastructure while continuing to operate at scale—Netflix completed its AWS migration in 2016, Spotify retired its last data centres in 2018, and Capital One closed its own data centres in 2020. Their success demonstrates how Architecture as Code enables rapid scaling and global expansion while minimising technical debt and maintaining organisational values around sustainability and innovation.
 
 **Spotify's Developer Platform for Global Scaling:**
 Spotify created its internal developer portal, Backstage, in 2016, open-sourced it in March 2020, donated it to the CNCF Sandbox in September 2020, and saw it accepted as a CNCF incubating project in March 2022 ([Source [118]](33_references.md#source-118)). Backstage provides a framework for building internal developer portals—a software catalogue, templates and documentation in one place—rather than an Infrastructure as Code platform per se, and it addresses developer experience and service ownership at scale rather than user growth as such. The pattern it represents includes:
@@ -212,7 +212,7 @@ Spotify created its internal developer portal, Backstage, in 2016, open-sourced 
 - Developer self-service that reduces onboarding and provisioning time
 
 **Capital One's Regulated Financial Infrastructure as Code:**
-As a licensed financial institution, Capital One must follow strict regulatory requirements whilst innovating rapidly. Their Infrastructure as Code strategy includes:
+As a licensed financial institution, Capital One must follow strict regulatory requirements while innovating rapidly. Their Infrastructure as Code strategy includes:
 
 - Automated audit trails for all infrastructure changes
 - Real-time compliance monitoring according to PCI DSS and financial regulatory guidelines
@@ -221,7 +221,7 @@ As a licensed financial institution, Capital One must follow strict regulatory r
 
 ### Cloud provider ecosystem
 
-Cloud-first implementation requires careful planning of hybrid and multi-cloud strategies. Organisations must navigate between different cloud providers whilst ensuring data sovereignty and regulatory compliance across EU member states.
+Cloud-first implementation requires careful planning of hybrid and multi-cloud strategies. Organisations must navigate between different cloud providers while ensuring data sovereignty and regulatory compliance across EU member states.
 
 Sovereignty guardrails described in [Chapter 15B on cost optimisation](15_cost_optimization.md) and [Chapter 25 on future trends](25_future_trends.md) demand explicit provider selection policies. Platform teams should codify which services qualify as “EU-trusted”—covering both EU-headquartered providers and EU-specific offerings from global hyperscalers—and enforce those decisions through policy-as-code. This keeps residency, lawful access controls, and the Gaia-X or EU Cloud Code of Conduct commitments consistent across delivery teams.
 
@@ -272,7 +272,7 @@ Challenges within digital transformation include skills shortages, cultural resi
 ## Practical examples
 
 Practical examples in this chapter illustrate how a European enterprise can orchestrate cross-provider infrastructure and governance without sacrificing compliance.
-The full multi-cloud landing zone blueprint now lives in Appendix A as listing [21_CODE_1](30_appendix_code_examples.md#21_code_1), ensuring the chapter focuses on strategy whilst readers still have access to the execution-ready Terraform module.
+The full multi-cloud landing zone blueprint now lives in Appendix A as listing [21_CODE_1](30_appendix_code_examples.md#21_code_1), ensuring the chapter focuses on strategy while readers still have access to the execution-ready Terraform module.
 
 ### Automated compliance pipeline
 ```yaml
@@ -387,7 +387,7 @@ def validate_team_structure(team_name):
 
 ## Summary
 
-Digital transformation through code-based infrastructure represents a fundamental shift in how organisations deliver IT services and create business value. Architecture as Code enables the flexibility, scalability, and security required for successful digital transformation whilst maintaining robust governance frameworks.
+Digital transformation through code-based infrastructure represents a fundamental shift in how organisations deliver IT services and create business value. Architecture as Code enables the flexibility, scalability, and security required for successful digital transformation while maintaining robust governance frameworks.
 
 Success factors include strategic planning of cloud-first initiatives, comprehensive automation of delivery processes, and continuous competence development within organisations. Organisations that embrace these principles position themselves strongly for sustainable growth and competitive advantage.
 

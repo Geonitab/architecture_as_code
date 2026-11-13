@@ -26,15 +26,15 @@ Successful cost optimisation requires a combination of technical tools, organisa
 
 FinOps represents a growing discipline that combines financial management with cloud operations to maximise business value from cloud investments; the FinOps Foundation's framework structures the practice into the Inform, Optimize and Operate phases ([Source [93]](33_references.md#source-93)). Within the Architecture as Code context, this means integrating cost considerations directly into infrastructure definitions and deployment processes.
 
-Governance frameworks for cost management must encompass automated policies for resource configuration, budget alerts, and regular cost analysis. HCP Terraform and Terraform Enterprise provide cost estimation as a run phase between plan and apply, which policy checks can evaluate before a change is applied, whilst AWS Cost Management and Microsoft Cost Management expose budgets, alerts, and cost data through APIs that Architecture as Code workflows can consume ([Source [94]](33_references.md#source-94)).
+Governance frameworks for cost management must encompass automated policies for resource configuration, budget alerts, and regular cost analysis. HCP Terraform and Terraform Enterprise provide cost estimation as a run phase between plan and apply, which policy checks can evaluate before a change is applied, while AWS Cost Management and Microsoft Cost Management expose budgets, alerts, and cost data through APIs that Architecture as Code workflows can consume ([Source [94]](33_references.md#source-94)).
 
-EU organisations must also handle compliance requirements that affect cost optimisation, such as GDPR-related data storage requirements that may restrict opportunities to use certain geographical regions with lower pricing. For example, organisations may need to maintain data within EU boundaries (eu-west-1 in Ireland, eu-central-1 in Frankfurt, eu-south-1 in Milan, or eu-west-3 in Paris) rather than using potentially lower-cost non-EU regions. Architecture as Code-based compliance policies can automate these constraints whilst optimising costs within permitted parameters.
+EU organisations must also handle compliance requirements that affect cost optimisation, such as GDPR-related data storage requirements that may restrict opportunities to use certain geographical regions with lower pricing. For example, organisations may need to maintain data within EU boundaries (eu-west-1 in Ireland, eu-central-1 in Frankfurt, eu-south-1 in Milan, or eu-west-3 in Paris) rather than using potentially lower-cost non-EU regions. Architecture as Code-based compliance policies can automate these constraints while optimising costs within permitted parameters.
 
 Implementation of cost allocation tags and chargeback models through Architecture as Code enables transparent cost distribution between different teams, projects, and business units. This creates incentives for developers to make cost-optimal design decisions.
 
 ## Automatic resource scaling and rightsizing
 
-Automatic resource scaling forms the core of cost-effective Architecture as Code. By defining scaling rules based on actual usage patterns, organisations can avoid over-provisioning whilst ensuring adequate performance.
+Automatic resource scaling forms the core of cost-effective Architecture as Code. By defining scaling rules based on actual usage patterns, organisations can avoid over-provisioning while ensuring adequate performance.
 
 Kubernetes Horizontal Pod Autoscaler (HPA) and Vertical Pod Autoscaler (VPA) can be configured through Architecture as Code to automatically adjust resource allocation based on CPU, memory, and custom metrics. This is particularly valuable for EU organisations with varying working patterns across different time zones and member states, enabling predictable scaling that accounts for business hours in Dublin, Frankfurt, Paris, and other major centres.
 
@@ -48,7 +48,7 @@ Machine learning-based predictive scaling models can be incorporated into Archit
 
 *Figure 15.4: This diagram shows the cost monitoring architecture with integration of CloudWatch/Azure Monitor, customised dashboards, and alert systems. Data flows from metrics collection through reporting and anomaly detection to cost analysis, ultimately resulting in concrete optimisation actions.*
 
-Comprehensive cost monitoring requires integration of monitoring tools directly into Architecture as Code configurations. Granular cost data comes from AWS Cost Explorer and the Cost and Usage Report, Microsoft Cost Management, and Cloud Billing export to BigQuery, whilst CloudWatch billing alarms, Azure Monitor, and Google Cloud budgets can be configured as code to trigger alerts when threshold values are exceeded.
+Comprehensive cost monitoring requires integration of monitoring tools directly into Architecture as Code configurations. Granular cost data comes from AWS Cost Explorer and the Cost and Usage Report, Microsoft Cost Management, and Cloud Billing export to BigQuery, while CloudWatch billing alarms, Azure Monitor, and Google Cloud budgets can be configured as code to trigger alerts when threshold values are exceeded.
 
 Real-time cost tracking enables proactive cost management instead of reactive measures after budgets are already exceeded. Architecture as Code-based monitoring solutions can automatically implement cost controls such as resource termination or approval workflows for cost-critical operations.
 
@@ -62,11 +62,11 @@ Multi-cloud strategies complicate cost optimisation but also offer opportunities
 
 Cross-cloud cost comparison requires normalisation of pricing models and service offerings between providers. Open source tools such as Cloud Custodian (policy enforcement, a CNCF incubating project) and OpenCost (Kubernetes cost allocation, the CNCF incubating project from which the commercial IBM Kubecost product originates) can be integrated into Architecture as Code pipelines to automate cost attribution and reporting ([Source [92]](33_references.md#source-92)); the cross-provider comparison itself remains an analytical exercise that these tools inform rather than perform.
 
-Data transfer costs between cloud providers often form an invisible cost source that can be optimised through strategic architecture design. Architecture as Code-based network topology can minimise inter-cloud traffic whilst maximising intra-cloud efficiency. For EU organisations, this is particularly relevant when balancing data sovereignty requirements with cost optimisation—for example, maintaining workloads in eu-west-1 (Ireland) and eu-central-1 (Frankfurt) to ensure GDPR compliance whilst minimising inter-region data transfer costs.
+Data transfer costs between cloud providers often form an invisible cost source that can be optimised through strategic architecture design. Architecture as Code-based network topology can minimise inter-cloud traffic while maximising intra-cloud efficiency. For EU organisations, this is particularly relevant when balancing data sovereignty requirements with cost optimisation—for example, maintaining workloads in eu-west-1 (Ireland) and eu-central-1 (Frankfurt) to ensure GDPR compliance while minimising inter-region data transfer costs.
 
 Cloud sovereignty frameworks, such as the Gaia-X data space model referenced in Chapter 25, provide a shared vocabulary for describing residency, portability, and supply-chain expectations. Encoding those guardrails alongside FinOps policies ensures that cost models account for the approved jurisdictions, egress thresholds, and encryption standards required for European compliance. Architecture as Code modules should therefore expose parameters for sovereign zones, permitted providers, and classification-driven controls so that cost optimisation never undermines the regulatory guardrails discussed in the broader cloud sovereignty narrative.
 
-Hybrid cloud strategies can optimise costs by retaining certain workloads on-premises whilst cloud-native workloads are moved to the cloud. Architecture as Code enables coordinated management of both environments with unified cost tracking and optimisation. This is especially relevant for EU financial services organisations that must balance regulatory requirements with cost efficiency.
+Hybrid cloud strategies can optimise costs by retaining certain workloads on-premises while cloud-native workloads are moved to the cloud. Architecture as Code enables coordinated management of both environments with unified cost tracking and optimisation. This is especially relevant for EU financial services organisations that must balance regulatory requirements with cost efficiency.
 
 ### Market outlook and economic rationale
 
@@ -139,11 +139,11 @@ Key considerations when adopting commitment-based pricing:
 
 ## Summary
 
-Cost becomes manageable once it is treated like any other property of the architecture: declared in code, estimated in the pipeline and reviewed alongside the change that causes it. Cost optimisation within Architecture as Code requires a systematic approach that combines technical tools, automated processes, and organisational awareness. Successful implementation results in significant cost savings whilst performance and security are maintained.
+Cost becomes manageable once it is treated like any other property of the architecture: declared in code, estimated in the pipeline and reviewed alongside the change that causes it. Cost optimisation within Architecture as Code requires a systematic approach that combines technical tools, automated processes, and organisational awareness. Successful implementation results in significant cost savings while performance and security are maintained.
 
 Key success factors include proactive monitoring, automated rightsizing, intelligent use of spot instances and reserved capacity, and continuous optimisation based on actual usage patterns. FinOps practices ensure cost considerations are naturally integrated into the development process.
 
-In the author's experience, EU organisations that implement these strategies typically reduce their cloud operating costs by 20–40 per cent, although actual savings vary with workload profile and baseline optimisation maturity, whilst ensuring regulatory compliance (particularly GDPR data residency requirements) and performance requirements. Multi-region strategies across EU zones (such as eu-west-1 in Ireland and eu-central-1 in Frankfurt) enable both compliance and cost optimisation through intelligent workload placement.
+In the author's experience, EU organisations that implement these strategies typically reduce their cloud operating costs by 20–40 per cent, although actual savings vary with workload profile and baseline optimisation maturity, while ensuring regulatory compliance (particularly GDPR data residency requirements) and performance requirements. Multi-region strategies across EU zones (such as eu-west-1 in Ireland and eu-central-1 in Frankfurt) enable both compliance and cost optimisation through intelligent workload placement.
 
 ## Sources
 
