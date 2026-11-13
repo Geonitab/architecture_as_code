@@ -78,7 +78,7 @@ The `opa test` step gates the job on the policy's own unit tests, whereas the `o
 
 ## Software Bill of Materials as Evidence
 
-A Software Bill of Materials (SBOM) is a machine-readable inventory of every component, library, and dependency in a software artefact [Source [89]](33_references.md#source-89). Regulatory frameworks such as US Executive Order 14028 on Improving the Nation's Cybersecurity and the EU Cyber Resilience Act (Regulation (EU) 2024/2847) increasingly require software producers to generate SBOMs and to provide them to purchasers or, on request, to authorities. Generating SBOMs as part of the build pipeline transforms them from a one-off compliance exercise into continuous evidence.
+A Software Bill of Materials (SBOM) is a formal record containing the details and supply chain relationships of the components used in building software, ideally in a machine-readable format [Source [89]](33_references.md#source-89). Regulatory frameworks increasingly address SBOMs. US Executive Order 14028 on Improving the Nation's Cybersecurity directed NIST to issue guidance on providing purchasers with an SBOM for each product (Section 4(e)(vii)), and the EU Cyber Resilience Act (Regulation (EU) 2024/2847) requires manufacturers to draw up an SBOM covering at the very least the top-level dependencies of their products (Annex I, Part II, point 1) and to provide it to market surveillance authorities on a reasoned request (Annex VII, point 8); the Act applies generally from 11 December 2027. Generating SBOMs as part of the build pipeline transforms them from a one-off compliance exercise into continuous evidence.
 
 ### Generating SBOMs with Syft
 
@@ -140,7 +140,7 @@ syft dir:. -o spdx-json > artefacts/sbom-spdx.json
 
 ### Vulnerability tracking as continuous evidence
 
-The vulnerability report produced by the scan step becomes an evidence artefact in its own right. Storing it alongside the SBOM creates a time-stamped record that demonstrates the organisation actively monitors its software supply chain—a requirement under frameworks such as NIST SP 800-53 SI-2 (Flaw Remediation) [Source [11]](33_references.md#source-11). The manifest's SSDF mapping points to practice PS.3.2, which expects provenance data such as SBOMs to be collected, safeguarded, and shared for every release, and to PS.3.1 for the secure archiving of release files [Source [86]](33_references.md#source-86); the ISO/IEC 27001:2022 controls are 5.21 (information security in the ICT supply chain) and 8.8 (management of technical vulnerabilities) [Source [14]](33_references.md#source-14).
+The vulnerability report produced by the scan step becomes an evidence artefact in its own right. Storing it alongside the SBOM creates a time-stamped record that demonstrates the organisation identifies, reports, and corrects flaws in its software—the core of NIST SP 800-53 SI-2 (Flaw Remediation) [Source [11]](33_references.md#source-11). The manifest's SSDF mapping points to practice PS.3.2, which expects provenance data such as SBOMs to be collected, safeguarded, and shared for every release, and to PS.3.1 for the secure archiving of release files [Source [86]](33_references.md#source-86); the ISO/IEC 27001:2022 controls are 5.21 (information security in the ICT supply chain) and 8.8 (management of technical vulnerabilities) [Source [14]](33_references.md#source-14).
 
 ## Attestation Frameworks and Tamper-Evident Artefacts
 
