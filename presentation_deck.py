@@ -769,7 +769,7 @@ class Deck:
         self.background(slide)
         self.accent_bar(slide)
         self.kicker(slide, f"{chapter.get('label') or 'Chapter ' + chapter['identifier']}  ·  {chapter['part']}")
-        self.title_placeholder(title, 0.8, 0.85, 11.7, 0.95, headline, 28 if len(headline) <= 70 else 24, t["dark"])
+        self.title_placeholder(title, 0.8, 0.85, 11.7, 0.95, headline, 28 if len(headline) <= 70 else 26, t["dark"])
 
         from PIL import Image
 
