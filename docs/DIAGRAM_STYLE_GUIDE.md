@@ -231,7 +231,7 @@ Examples:
 
 Do not encode a chapter number in the description (for example `diagram_05_chapterN.mmd`): the description must say what the diagram shows. Two diagrams of similar concepts in different chapters need disambiguated descriptions (for example `diagram_11_governance_pipeline.mmd` for policy authoring and `diagram_19_governance_pipeline.mmd` for management).
 
-PNGs without a Mermaid source are allowed only for photographs and non-Mermaid assets (`book-cover.png`, `release_information_page.png`); list any new exception here.
+PNGs without a Mermaid source are allowed only for photographs and non-Mermaid assets (`book-cover.png`, `book-cover-web.png`, `release_information_page.png`); list any new exception here.
 
 ## Figure Numbering, Captions and Alt Text
 
