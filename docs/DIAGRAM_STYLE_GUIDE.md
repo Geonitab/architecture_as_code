@@ -28,6 +28,7 @@ All diagrams use the Kvadrat blue colour palette defined in `docs/mermaid-kvadra
 | `:::kv-highlight` | Light Blue | #3B82F6 | Emphasis elements, callouts |
 | `:::kv-muted` | Ice Blue | #E0F2FE | Background, deprecated elements |
 | `:::kv-pattern` | Lighter Blue | #93C5FD | Pattern elements, tertiary items |
+| `:::kv-decision` | Kvadrat Blue (Dark), heavy outline | #1E3A8A | Decision points (diamonds) |
 | `:::kv-outline` | White with Border | White + border | Hollow boxes, outline elements |
 
 ### Example Usage
@@ -202,7 +203,8 @@ requirementDiagram
 
 ### DON'T
 
-❌ Use inline theme configurations or style overrides  
+❌ Use inline theme configurations or style overrides (single exception: Gantt diagrams may carry an `%%{init}%%` block for Gantt-only variables such as bar height and task colours, which the central theme does not define; `STYLE_GUIDE.md` lists the approved values)  
+❌ Declare `classDef` colour classes in a diagram: every `kv-*` class, including `kv-decision`, lives in `docs/mermaid-kvadrat-theme.json`  
 ❌ Include emojis in titles, labels, or annotations  
 ❌ Use American English spellings (organization, optimization, behavior, center)  
 ❌ Override theme colours manually with hex codes  
