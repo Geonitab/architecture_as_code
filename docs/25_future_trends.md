@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Architecture as Code stands at the threshold of comprehensive transformation driven by advances in artificial intelligence, quantum research, distributed infrastructure, and sustainability. The discipline has matured from foundational automation towards a strategic capability that binds technology, governance, and organisational design into a single codified practice. Looking ahead, Architecture as Code will be shaped by systems that learn continuously, platforms that provide seamless developer experiences, and governance models that express policies as executable artefacts.
+Architecture as Code stands at the threshold of comprehensive transformation driven by advances in artificial intelligence, quantum research, distributed infrastructure, and sustainability. The discipline has matured from foundational automation towards a strategic capability that binds technology, governance, and organisational design into a single codified practice. Looking ahead, Architecture as Code will be shaped by systems that learn continuously, platforms that give developers a consistent experience, and governance models that express policies as executable artefacts.
 
 The future will be characterised by intelligent automation capable of making complex decisions based on historical data, real-time metrics, and predictive analysis. Machine learning models will optimise resource allocation, anticipate system failures, and implement security improvements without the need for constant human intervention. Organisations therefore need flexible architectures, clear strategic intent, and teams that are prepared to iterate as new technologies mature.
 
@@ -40,7 +40,7 @@ Security and cryptography guidance aligns with recommendations from **ENISA** (E
 
 The shift from centralised data centres to distributed edge resources changes how infrastructure is designed and governed. Edge platforms bring processing closer to data sources and users, reducing latency for real-time applications such as industrial automation, immersive media, and critical communications. Architecture as Code must therefore manage fleets of heterogeneous devices, dynamic network conditions, and context-aware policies.
 
-Fifth-generation (5G) networks reinforce this trend by enabling near-real-time orchestration. Autonomous edge nodes interpret declarative policies, adapt to local conditions, and synchronise with central systems when connectivity allows. Declarative blueprints, robust secret management, and consistent observability pipelines are essential to maintain reliability across diverse geographies.
+Fifth-generation (5G) networks reinforce this trend by enabling near-real-time orchestration. Autonomous edge nodes interpret declarative policies, adapt to local conditions, and synchronise with central systems when connectivity allows. Declarative blueprints, managed secret handling, and consistent observability pipelines are essential to maintain reliability across diverse geographies.
 
 ### Environmental sustainability and green computing
 

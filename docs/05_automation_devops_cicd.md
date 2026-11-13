@@ -2,7 +2,7 @@
 
 ![Automation and CI/CD pipelines](images/diagram_07_chapter5.png)
 
-Continuous integration and continuous deployment (CI/CD) combined with a mature DevOps culture form the backbone of modern software delivery. When Architecture as Code principles are applied, these processes become even more critical. This chapter explores how organisations can establish robust, secure, and effective CI/CD pipelines that transform infrastructure management from manual, error-prone activities into automated, reliable, and auditable operations while treating the entire system architecture as executable code.
+Continuous integration and continuous deployment (CI/CD) combined with a mature DevOps culture form the backbone of modern software delivery. When Architecture as Code principles are applied, these processes become even more critical. This chapter explores how organisations can establish secure, repeatable, and effective CI/CD pipelines that transform infrastructure management from manual, error-prone activities into automated, reliable, and auditable operations while treating the entire system architecture as executable code.
 
 ![Architecture as Code implementation timeline](images/diagram_05_gantt_timeline.png)
 
@@ -103,7 +103,7 @@ The regulatory landscape influences CI/CD design fundamentally. GDPR’s require
 
 Guidance from data-protection regulators on technical security measures demands systematic implementation of encryption, access controls, and logging. Manual processes are ineffective and error-prone when applied to modern dynamic infrastructure. CI/CD automation offers the opportunity to enforce these requirements consistently through policies as code and automated compliance validation.
 
-National emergency and civil-protection agencies often issue regulations for socially critical operations that require robust incident management, continuity planning, and systematic risk assessment. Organisations in energy, transport, finance, and other critical sectors must incorporate specialised validations for operational resilience and disaster recovery capabilities into their CI/CD flows.
+National emergency and civil-protection agencies often issue regulations for socially critical operations that require well-tested incident management, continuity planning, and systematic risk assessment. Organisations in energy, transport, finance, and other critical sectors must incorporate specialised validations for operational resilience and disaster recovery capabilities into their CI/CD flows.
 
 ### Economic considerations for regulated organisations
 
@@ -335,7 +335,7 @@ Progressive deployment minimises risk through gradual rollout of infrastructure 
 
 ### Automated recovery and disaster readiness
 
-Robust recovery capabilities are essential to maintain system reliability and meet continuity requirements.
+Tested recovery capabilities are essential to maintain system reliability and meet continuity requirements.
 
 **State management:** Infrastructure state must be managed in a way that enables reliable rollbacks to previously known working configurations. This includes automated backups of Terraform state files and database snapshots.
 
@@ -567,7 +567,7 @@ Architecture as Code requires a mature DevOps culture capable of managing holist
 
 ## Summary
 
-Pipelines are where Architecture as Code stops being a description of intent and becomes something that is checked on every change. Automation, DevOps, and CI/CD pipelines tailored for Architecture as Code form a critical component for organisations striving for digital excellence and regulatory compliance. By implementing robust, automated pipelines, teams accelerate architectural delivery while maintaining high standards for security, quality, and compliance.
+Pipelines are where Architecture as Code stops being a description of intent and becomes something that is checked on every change. Automation, DevOps, and CI/CD pipelines tailored for Architecture as Code form a critical component for organisations striving for digital excellence and regulatory compliance. By implementing automated, repeatable pipelines, teams accelerate architectural delivery while maintaining high standards for security, quality, and compliance.
 
 Architecture as Code is the next evolutionary step where DevOps culture and CI/CD processes cover the entire system architecture as a cohesive unit. This holistic approach requires sophisticated pipelines that orchestrate applications, data, infrastructure, and policies as an integrated whole while satisfying compliance requirements.
 

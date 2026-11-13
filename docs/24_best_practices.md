@@ -33,7 +33,7 @@ The table below introduces the seven practice clusters explored throughout this 
 | Code organisation | Disciplined code organisation | Repository structure, module design, versioning, release management | Clear codebase structure, shortened feedback loops, accelerated onboarding |
 | Secure foundations | Security and compliance patterns | Security-by-design, compliance automation, secret management, continuous assurance | Automated security enforcement, regulatory evidence generation |
 | Performance management | Responsive performance management | Adaptive infrastructure, global deployment, observability, feedback loops | Balanced performance with sustainability, latency budgets met |
-| Governance | Robust governance | Policy-as-code, financial management, change management, approval workflows | Empowered delivery teams, automated policy enforcement, fiscal control |
+| Governance | Auditable governance | Policy-as-code, financial management, change management, approval workflows | Empowered delivery teams, automated policy enforcement, fiscal control |
 | People enablement | Talent development and skills | Competency frameworks, immersive learning, mentoring, communities of practice | Multidisciplinary teams, cross-functional collaboration, career development |
 | Collaborative ecosystems | Vendor and tool management | Tool evaluation, multi-vendor approaches, supplier relationship management | Strategic vendor partnerships, reduced lock-in, informed decisions |
 | Continuous improvement | Feedback and iteration | Integrated risk assessment, retrospectives, continuous learning | Data-driven improvements, blameless culture, sustainable pace |

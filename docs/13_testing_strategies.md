@@ -409,7 +409,7 @@ Modern codified infrastructure testing encompasses multiple layers:
 
 Organisations must particularly focus on compliance testing that validates GDPR requirements, financial regulations and government security standards. Automated policy testing with tools such as OPA enables continuous compliance verification without manual overhead.
 
-Investment in robust Infrastructure as Code testing frameworks pays off through reduced production incidents, faster development cycles and improved regulatory compliance. Modern testing tools and cloud-native testing strategies enable comprehensive validation without prohibitive costs or complexity.
+Investment in Infrastructure as Code testing frameworks pays off through reduced production incidents, faster development cycles and improved regulatory compliance. Modern testing tools and cloud-native testing strategies enable comprehensive validation without prohibitive costs or complexity.
 
 Figure 13.2 suggests the order of investment: start with security scanning and policy testing, and add end-to-end tests where the risk justifies their cost.
 

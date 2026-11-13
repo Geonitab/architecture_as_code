@@ -469,7 +469,7 @@ echo "5. Document lessons learned"
 
 Migration is rarely a single project; it is a sequence of small, reversible steps, each of which shrinks the part of the estate that is still managed by hand. Migration from traditional infrastructure to Architecture as Code requires systematic planning, gradual implementation, and comprehensive testing. Organisations that successfully execute this migration position themselves for increased agility, improved security, and significant cost benefits.
 
-Success factors include comprehensive assessment, realistic timeline planning, extensive team training, and robust testing frameworks. Hybrid migration strategies enable risk minimisation whilst delivering immediate value from Architecture as Code adoption.
+Success factors include comprehensive assessment, realistic timeline planning, extensive team training, and thorough test automation. Hybrid migration strategies enable risk minimisation whilst delivering immediate value from Architecture as Code adoption.
 
 Investment in proper migration planning and execution results in long-term benefits through improved operational efficiency, enhanced security posture, and reduced technical debt. Organisations that follow systematic migration approaches can expect successful transformation to modern, Architecture as Code-based infrastructure management.
 

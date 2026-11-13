@@ -281,7 +281,7 @@ An ADR takes minutes to write while a decision is fresh; reconstructing the same
 
 Effective ADR implementation requires organisational support, standardised processes, and integration with existing development workflows. For Architecture as Code projects, ADRs create the link between design intentions and code implementation that improves maintainability and compliance.
 
-Organisations that adopt ADR methodology position themselves for successful Architecture as Code transformation with robust governance processes and transparent decision documentation that supports both internal requirements and external compliance expectations.
+Organisations that adopt ADR methodology position themselves for successful Architecture as Code transformation with auditable governance processes and transparent decision documentation that supports both internal requirements and external compliance expectations.
 
 ## Looking ahead
 

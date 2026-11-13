@@ -2,7 +2,7 @@
 
 ![Security as code workflow](images/diagram_11_chapter9.png)
 
-*Security is the backbone of a successful Architecture as Code implementation. This chapter explains how security principles are embedded from the first design sprint through automated policy enforcement, proactive threat management, and continuous compliance monitoring. Treating security as code enables organisations to deliver robust, scalable, and auditable protections without slowing delivery teams.*
+*Security is the backbone of a successful Architecture as Code implementation. This chapter explains how security principles are embedded from the first design sprint through automated policy enforcement, proactive threat management, and continuous compliance monitoring. Treating security as code enables organisations to deliver scalable and auditable protections without slowing delivery teams.*
 
 ## Dimensions of security architecture
 
@@ -101,7 +101,7 @@ Successful policy-as-code programmes require deep integration with software deli
 
 CI/CD integration extends policy checks across multiple stages. Static analysis of infrastructure code during build stages can detect obvious violations. Dynamic evaluations in staging environments catch configuration problems before production release. Production monitoring ensures policies remain effective throughout the operational life cycle.
 
-Policy testing becomes a core element of the development process once policies are treated as code. Logic must be tested for positive and negative scenarios to validate correct behaviour under different conditions. Test-driven policy development yields robust implementations that behave predictably in edge cases. Gradual rollout strategies—including blue/green policy deployments, policy versioning, and structured rollback procedures—reduce disruption from policy changes.
+Policy testing becomes a core element of the development process once policies are treated as code. Logic must be tested for positive and negative scenarios to validate correct behaviour under different conditions. Test-driven policy development yields implementations that behave predictably in edge cases. Gradual rollout strategies—including blue/green policy deployments, policy versioning, and structured rollback procedures—reduce disruption from policy changes.
 
 ### Control objectives that prove compliance repeatedly
 

@@ -6,7 +6,7 @@
 
 With the foundational principles established, we now turn to the technical building blocks that enable Architecture as Code in practice. This part explores the automation, tooling, and platform capabilities that transform architectural intent into executable reality.
 
-The journey from [foundational principles](02_fundamental_principles.md) to operational systems requires robust automation and deployment pipelines. Modern organisations must combine DevOps practices with CI/CD workflows that treat infrastructure and architecture with the same rigour as application code. This integration creates the feedback loops and quality gates essential for reliable, repeatable delivery.
+The journey from [foundational principles](02_fundamental_principles.md) to operational systems requires repeatable automation and deployment pipelines. Modern organisations must combine DevOps practices with CI/CD workflows that treat infrastructure and architecture with the same rigour as application code. This integration creates the feedback loops and quality gates essential for reliable, repeatable delivery.
 
 Containerisation and orchestration represent a natural evolution in Architecture as Code, where application packaging, deployment patterns, and runtime environments are all defined declaratively. Between the automation pipelines and containerisation, architecture modelling with tools like Structurizr provides the crucial bridge—enabling teams to visualise, document, and communicate their architectural decisions as code. By codifying these concerns, teams achieve consistency across development, testing, and production whilst maintaining the flexibility to adapt to changing requirements.
 

@@ -100,7 +100,7 @@ Observability pipelines close the loop by publishing validation metrics, failed 
 
 ## Persistent storage and data management
 
-Stateful workloads still rely on robust storage. Kubernetes addresses this with persistent volumes, storage classes, and dynamic provisioners, all of which are defined declaratively. Performance, redundancy, and backup requirements can be embedded into these definitions so that new workloads inherit compliant defaults automatically.
+Stateful workloads still rely on resilient storage. Kubernetes addresses this with persistent volumes, storage classes, and dynamic provisioners, all of which are defined declaratively. Performance, redundancy, and backup requirements can be embedded into these definitions so that new workloads inherit compliant defaults automatically.
 
 Database operators—for PostgreSQL, MongoDB, MySQL, and many others—take the concept further by managing clustering, backups, failover, and version upgrades. These controllers watch for configuration changes and adjust the database fleet accordingly, providing database-as-code capabilities without extensive manual intervention.
 
