@@ -2,7 +2,7 @@
 
 Date: 2026-11-13
 Files: docs/part_a_foundations.md, part_b_platform.md, part_c_security.md, part_d_delivery.md, part_e_leadership.md, part_f_practices.md, part_g_future.md, part_h_appendices.md, index.md, book_structure.md, documentation_workflow.md, appendix_d_control_mapping_matrix_template.md, adr/adr_catalogue.md, adr/migration_plan.md, prezi/index.html, prezi/slides.json
-Counts: 44 claims; 29 VERIFIED; 6 CORRECTED; 9 REVIEW. Bibliography metadata issues: 3.
+Counts: 49 claims; 34 VERIFIED; 7 CORRECTED; 8 REVIEW. Bibliography metadata issues: 3.
 prezi/index.html and prezi/slides.json contain no factual claims about the world (page shell; maturity-radar question titles that are the book's own framework). adr/adr_catalogue.md is generated from /adr/ADR-*.md (checked: dates, reviewers, backlog IDs and links match the ADR files); its decisions, people, councils and backlog IDs belong to the fictional organisation and are not claims.
 "Repo" in the Source column means the statement was checked against the repository (docs/book_index.json is the canonical chapter ordering).
 
@@ -58,7 +58,7 @@ prezi/index.html and prezi/slides.json contain no factual claims about the world
 | 44d | control mapping template | SOC 2 has Trust Services Criteria | none in bibliography | https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2 (candidate) | REVIEW | No bibliography entry. Candidate page read refers to "SOC 2 Trust Services Criteria and Description Criteria" |
 | 45 | control mapping template | "assure once, comply many" approach; control ID example SEC-ID-001 | Repo | docs/15a_evidence_as_code.md | VERIFIED | same terminology and example ID used in Chapter 15A (book's own concept; illustrative ID) |
 
-Note on counts: rows 44 and 44a-44d are one claim set; the header counts treat 44a-44d individually (VERIFIED: 44a, 44b; REVIEW: 44c, 44d). Row 43 counted once as VERIFIED (Terraform) plus once REVIEW (Kafka).
+Note on counts: row 44 is the umbrella for rows 44a-44d and is not counted; row 43 is counted twice (Terraform VERIFIED, Kafka REVIEW).
 
 ## Bibliography metadata issues
 - Source 14 (ISO/IEC 27001:2022): URL https://www.iso.org/standard/27001 returns 403 to automated clients; could not confirm page content in this session.
