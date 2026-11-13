@@ -152,7 +152,7 @@ The book's seven-part structure follows a logical progression:
 1. **Part 1: Foundations** – Establishes core concepts and principles that underpin Architecture as Code work
 2. **Part 2: Architecture Platform** – Builds the technical capabilities required for codified architecture
 3. **Part 3: Security & Governance** – Ensures safety, control, and regulatory alignment
-4. **Part 4: Delivery & Operations** – Provides the practices needed to deliver and operate architecture as code
+4. **Part 4: Delivery & Operations** – Provides the practices needed to deliver and operate Architecture as Code
 5. **Part 5: Organisation & Leadership** – Aligns teams, leadership, and collaboration models with the new operating model
 6. **Part 6: Experience & Best Practices** – Shares cross-disciplinary experiences and lessons learned
 7. **Part 7: Future & Wrap-up** – Explores the future direction and concludes the narrative, supported by appendices

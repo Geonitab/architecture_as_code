@@ -1,8 +1,8 @@
 # Architecture as Code Maturity Model {#architecture-as-code-maturity-model}
 
-## Maturity model for implementing architecture as code
+## Maturity model for implementing Architecture as Code
 
-Modern organisations are increasingly turning to **architecture as code (AaC)** to keep systems design, security and governance aligned with rapid delivery.  
+Modern organisations are increasingly turning to **Architecture as Code (AaC)** to keep systems design, security and governance aligned with rapid delivery.  
 The *Architecture as Code* book describes how codified representations of architecture, policy, governance and even cultural knowledge share common traits:  
 they use machine-readable formats, live in version control and are automatically validated.  
 

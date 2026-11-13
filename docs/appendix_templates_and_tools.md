@@ -34,7 +34,7 @@ from typing import Dict, List
 
 class InfrastructureMigrationAssessment:
     """
-    Automated assessment of existing infrastructure for architecture as code migration
+    Automated assessment of existing infrastructure for Architecture as Code migration
     """
 
     # Tag keys that indicate a resource is already managed as code. Only the
@@ -53,7 +53,7 @@ class InfrastructureMigrationAssessment:
         self.cloudformation = boto3.client('cloudformation', region_name=region)
 
     def discover_unmanaged_resources(self) -> Dict:
-        """Discover resources that are not managed by architecture as code"""
+        """Discover resources that are not managed by Architecture as Code"""
 
         unmanaged_resources = {
             'ec2_instances': self._find_unmanaged_ec2(),
@@ -84,7 +84,7 @@ class InfrastructureMigrationAssessment:
         for reservation in response['Reservations']:
             for instance in reservation['Instances']:
                 if instance['State']['Name'] != 'terminated':
-                    # Check if the instance is managed by architecture as code
+                    # Check if the instance is managed by Architecture as Code
                     is_managed = self._is_resource_managed(instance.get('Tags', []))
 
                     if not is_managed:
@@ -160,7 +160,7 @@ class InfrastructureMigrationAssessment:
         return unmanaged_groups
 
     def _is_resource_managed(self, tags: List[Dict]) -> bool:
-        """Check if resource is managed by architecture as code"""
+        """Check if resource is managed by Architecture as Code"""
 
         tag_keys = {tag.get('Key', '') for tag in tags}
         return any(indicator in tag_keys for indicator in self.IAC_TAG_KEYS)
@@ -302,7 +302,7 @@ resource "aws_instance" "migrated_instance_{idx}" {{
                 'resources': low_complexity,
                 'estimated_duration': f"{len(low_complexity) * 2} days",
                 'start_date': 'Week 1-2',
-                'prerequisites': ['architecture as code training completion', 'Tool setup', 'Backup verification']
+                'prerequisites': ['Architecture as Code training completion', 'Tool setup', 'Backup verification']
             },
             'wave_2_medium_risk': {
                 'resources': medium_complexity,
@@ -325,7 +325,7 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
     """Generate comprehensive migration playbook for European organisations"""
 
     playbook = f"""
-# architecture as code Migration Playbook for {assessment_results.get('organization_name', 'Organization')}
+# Architecture as Code Migration Playbook for {assessment_results.get('organization_name', 'Organization')}
 
 ## Executive Summary
 - **Total number of resources to migrate:** {assessment_results['summary']['total_unmanaged_resources']}
@@ -336,7 +336,7 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 ## Phase 1: Preparation (Week 1-2)
 
 ### Team Training
-- [ ] architecture as code foundation training for all team members
+- [ ] Architecture as Code foundation training for all team members
 - [ ] Terraform/CloudFormation hands-on workshops
 - [ ] Git workflows for infrastructure management
 - [ ] EU compliance requirements (GDPR, data sovereignty)
@@ -357,7 +357,7 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 
 ### Low-Risk Resources Migration
 - [ ] Migrate development/test environments first
-- [ ] Validate architecture as code templates and processes
+- [ ] Validate Architecture as Code templates and processes
 - [ ] Document lessons learned
 - [ ] Refine migration procedures
 
@@ -387,10 +387,10 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 - [ ] Infrastructure cost review and optimisation
 - [ ] Team workflow refinement
 - [ ] Documentation and knowledge transfer
-- [ ] Continuous improvement architecture as code implementation
+- [ ] Continuous improvement Architecture as Code implementation
 
 ### Long-term Sustainability
-- [ ] Regular architecture as code best practices review
+- [ ] Regular Architecture as Code best practices review
 - [ ] Team cross-training programme
 - [ ] Tool evaluation and updates
 - [ ] Compliance monitoring automation
