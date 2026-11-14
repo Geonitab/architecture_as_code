@@ -7,7 +7,7 @@ Migrating historical Architecture Decision Records (ADRs) into the structured fo
 1. **Preserve historical intent** so design rationale remains discoverable alongside the automated Architecture as Code assets.
 2. **Enrich legacy records with required metadata** (`adr_id`, review cadence, linked chapters, diagrams, and backlog references).
 3. **Ensure continuous integration coverage** by validating that every migrated ADR passes `python3 scripts/validate_adrs.py`.
-4. **Synchronise navigation and change logs** via `python3 scripts/generate_adr_catalogue.py` to keep MkDocs and book builds aligned.
+4. **Synchronise the catalogue and change logs** via `python3 scripts/generate_adr_catalogue.py` to keep MkDocs and book builds aligned.
 
 ## Migration Waves
 
@@ -34,7 +34,7 @@ Migrating historical Architecture Decision Records (ADRs) into the structured fo
 
 4. **Automate catalogue regeneration**
    - Run `python3 scripts/generate_adr_catalogue.py` after each merge to refresh `docs/adr/adr_catalogue.md`.
-   - Confirm MkDocs navigation highlights the new entries and that change notes appear in the automatically generated table.
+   - Confirm the catalogue page in the MkDocs site lists the new entries and that change notes appear in the automatically generated table.
 
 5. **Archive superseded artefacts**
    - Move deprecated or redundant ADRs into `docs/archive/` with cross-links to their successors.

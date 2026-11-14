@@ -244,7 +244,7 @@ Microsoft reported its EU Data Boundary complete in February 2025 and, in June 2
 - Partnership ecosystem with European system integrators
 
 **Google Cloud Sovereign Controls:**
-Google Cloud's partner-operated sovereign controls—run with T-Systems in Germany and with S3NS, the Thales-operated French entity—qualify when technical and organisational safeguards are enforced:
+Google Cloud's partner-operated sovereign controls—run with T-Systems in Germany and with S3NS, the French Thales subsidiary—qualify when technical and organisational safeguards are enforced:
 
 - EU-based data processing for GDPR compliance across all member states
 - Advanced AI/ML capabilities for research and innovation
@@ -253,9 +253,9 @@ Google Cloud's partner-operated sovereign controls—run with T-Systems in Germa
 **European Sovereign Cloud Providers:**
 European-native providers deliver offerings that satisfy strict localisation requirements and public sector procurement rules:
 
-- **OVHcloud** provides Gaia-X aligned services with full EU legal jurisdiction and SecNumCloud qualification for French public sector workloads.
+- **OVHcloud** provides Gaia-X aligned services with full EU legal jurisdiction and ANSSI SecNumCloud qualification for selected services that store sensitive and critical data.
 - **Scaleway** delivers sovereign cloud regions, Bare Metal, and Kubernetes platforms operated entirely within the EU with transparent supply-chain disclosure.
-- **Open Telekom Cloud**, operated by T-Systems on OpenStack with data centres in Germany and the Netherlands, provides German and broader EU data residency for regulated industries; it is distinct from the Google-based sovereign controls that T-Systems operates, described above.
+- **Open Telekom Cloud** (renamed T Cloud Public in January 2026), operated by T-Systems on OpenStack with data centres in Germany and the Netherlands, provides German and broader EU data residency for regulated industries; it is distinct from the Google-based sovereign controls that T-Systems operates, described above.
 
 Architecture as Code pipelines should allow these providers to be selected as first-class modules. Policy-as-code guardrails can then ensure that workloads default to an EU-native provider when contractual or regulatory obligations prohibit the use of global hyperscalers, or verify that hyperscaler services are constrained to their EU sovereign offerings.
 

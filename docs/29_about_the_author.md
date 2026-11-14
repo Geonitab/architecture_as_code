@@ -75,7 +75,7 @@ This book embodies the principles it teaches:
 
 This book builds upon the outstanding work of the open source community, particularly:
 
-- **Terraform** - Infrastructure as Code foundation
+- **Terraform** - Infrastructure as Code foundation (source-available under the Business Source License from version 1.6.0)
 - **Ansible** - Configuration management automation
 - **Docker** - Containerisation technology
 - **Kubernetes** - Container orchestration
@@ -139,4 +139,4 @@ As technology continues to evolve, the principles outlined in this book—declar
 ## Sources
 
 1. **Kvadrat.** *Sveriges vassaste konsulter.* Kvadrat corporate website (in Swedish). [https://www.kvadrat.se/](https://www.kvadrat.se/) (accessed 2026-10-30). [Source [130]](33_references.md#source-130)
-2. **FINOS.** *Architecture as Code: What is CALM?* FINOS Architecture as Code project. [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)
+2. **FINOS.** *Common Architecture Language Model* FINOS Architecture as Code project. [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)

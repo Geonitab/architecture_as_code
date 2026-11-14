@@ -85,7 +85,7 @@ This holistic approach requires DevOps practices that can manage the complexity 
 
 Governance as Code extends Infrastructure as Code principles to policies, approval flows, and organisational guardrails. When architecture governance is codified and version-controlled, teams gain transparency, traceability, and automation opportunities while meeting compliance and risk requirements.
 
-Policy definitions, decisions, and exceptions are captured in machine-readable YAML or JSON formats consumed by validation tools in the CI/CD pipeline through policy engines like Open Policy Agent (OPA). The policy lifecycle follows standard code change-management flows: pull requests, technical review, automated testing, and traceable releases.
+Policy parameters, decisions, and exceptions are captured in machine-readable YAML or JSON formats consumed by validation tools in the CI/CD pipeline through policy engines like Open Policy Agent (OPA). The policy lifecycle follows standard code change-management flows: pull requests, technical review, automated testing, and traceable releases.
 
 For comprehensive coverage of governance automation—including policy lifecycle management, federated operating models, exception handling, governance metrics, developer experience integration, and regulatory ecosystem alignment—see [Chapter 11: Governance as Code](11_governance_as_code.md).
 
@@ -372,7 +372,7 @@ Promotion through development, integration, pre-production, and production envir
 | Environment | Mandatory evidence | Automated enforcement |
 |-------------|--------------------|-----------------------|
 | Development | Unit-test pack reports, static-analysis summaries, bill-of-materials manifests. | Branch protection requires all `validate-modules` checks to succeed before merge. |
-| Staging | Ephemeral-integration logs, data-contract verification output, resilience rehearsal notes. | GitHub or Azure environment rules enforce successful `ephemeral-integration` and `governance-audit` jobs prior to promotion ([Source [12]](33_references.md#source-12)). |
+| Staging | Ephemeral-integration logs, data-contract verification output, resilience rehearsal notes. | GitHub or Azure environment rules (approvals and checks) gate promotion once the `ephemeral-integration` and `governance-audit` jobs have succeeded ([Source [12]](33_references.md#source-12)). |
 | Production | Signed change records, compliance attestation bundles, rollback rehearsal evidence within the last sprint. | Release gates require explicit architect approval plus policy-as-code attestation uploaded by the pipeline before the traffic switch executes ([Source [12]](33_references.md#source-12)). |
 
 This disciplined promotion ladder keeps regional deployments synchronised. When a new EU region is activated the automation replays the same promotion workflow, guaranteeing that data-classification controls, tagging baselines, and architectural diagrams remain consistent with existing locations.

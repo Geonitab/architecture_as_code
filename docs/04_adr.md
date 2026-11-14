@@ -6,7 +6,7 @@
 
 ## Overall Description
 
-The Architecture as Code methodology forms the foundation for Architecture Decision Records (ADR), which provide a systematic approach for documenting important architecture decisions that affect system structure, performance, security, and maintainability. The ADR method was introduced by Michael Nygard (2011) [Source [39]](33_references.md#source-39) and has become an established best practice in modern system development.
+The Architecture as Code methodology forms the foundation for Architecture Decision Records (ADR), which provide a systematic approach for documenting important architecture decisions that affect system structure, performance, security, and maintainability. The ADR method was popularised by Michael Nygard (2011) [Source [39]](33_references.md#source-39) and has become an established best practice in modern system development.
 
 For organisations implementing Architecture as Code, ADRs are particularly valuable because they ensure architecture decisions are documented in a structured manner that meets compliance requirements and facilitates knowledge transfer between teams and over time.
 
@@ -222,7 +222,7 @@ Treating ADRs as code artefacts keeps the decision log maintainable and auditabl
 
 ### Operationalising ADR Metadata
 
-ADR metadata becomes significantly more valuable when harvested into automated dashboards and change logs. Static site generators or lightweight data pipelines can parse the ADR directory and publish a living catalogue that highlights ownership, review status, and affected systems. HashiCorp's guidance on sensitive data in Terraform notes that state and plan files can contain secrets and recommends treating state as sensitive, storing it remotely, and encrypting it at rest ([Source [20]](33_references.md#source-20)); ADR metadata can make such operational controls visible by flagging decisions that enforce secure remote backends, encryption, or access monitoring.
+ADR metadata becomes significantly more valuable when harvested into automated dashboards and change logs. Static site generators or lightweight data pipelines can parse the ADR directory and publish a living catalogue that highlights ownership, review status, and affected systems. HashiCorp's guidance on sensitive data in Terraform notes that state and plan files can contain secrets, recommends treating the state file as sensitive data, and describes remote state storage with encryption at rest as a way to protect it ([Source [20]](33_references.md#source-20)); ADR metadata can make such operational controls visible by flagging decisions that enforce secure remote backends, encryption, or access monitoring.
 
 Teams can emit a structured JSON index during CI that feeds architectural observability boards. Typical widgets include:
 

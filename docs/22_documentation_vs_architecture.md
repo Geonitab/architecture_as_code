@@ -50,7 +50,7 @@ CALM is an open-source specification developed by the Architecture as Code commu
 - **Relationships**: Connections, data flows, and dependencies between nodes
 - **Metadata**: Compliance tags, operational data, and custom attributes
 
-CALM is built on a JSON meta-schema, which makes it compatible with existing tools and enables integration into CI/CD workflows; its command-line tool (`npm install -g @finos/calm-cli`) validates architectures against reusable patterns and renders visualisations and documentation straight from the pipeline [Source [1]](33_references.md#source-1). The schema is published in versioned releases (release 1.0 and 1.1 at the time of writing, with later drafts in progress), and every document declares the release it conforms to [Source [48]](33_references.md#source-48). Architecture defined in CALM can be:
+CALM is built on a JSON meta-schema, which makes it compatible with existing tools and enables integration into CI/CD workflows; its command-line tool (`npm install -g @finos/calm-cli`) validates architectures against reusable patterns and renders visualisations and documentation straight from the pipeline [Source [1]](33_references.md#source-1). The schema is published in versioned releases (releases 1.0 to 1.3 at the time of writing), and every document declares the release it conforms to [Source [48]](33_references.md#source-48). Architecture defined in CALM can be:
 
 - **Validated automatically**: Compliance checks run against the model to verify policy conformance
 - **Visualised dynamically**: Diagrams are generated from the model, ensuring they always reflect the current architecture
@@ -263,7 +263,7 @@ By integrating both disciplines—using Architecture as Code to define the syste
 
 ## Sources
 
-1. **FINOS (n.d.).** *Architecture as Code: What is CALM?* FINOS Architecture as Code project. [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)
+1. **FINOS (n.d.).** *Common Architecture Language Model* FINOS Architecture as Code project. [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)
 2. **FINOS (n.d.).** *Architecture as Code: Common Architecture Language Model (CALM) specification repository* (schema release 1.0, `https://calm.finos.org/release/1.0/meta/calm.json`). [https://github.com/finos/architecture-as-code](https://github.com/finos/architecture-as-code) [Source [48]](33_references.md#source-48)
 3. **Brown, S. (n.d.).** *The C4 model for visualising software architecture.* [https://c4model.com/](https://c4model.com/) (accessed 2026-10-30). [Source [37]](33_references.md#source-37)
 4. **Structurizr (n.d.).** *Structurizr DSL language reference.* [https://docs.structurizr.com/dsl/language](https://docs.structurizr.com/dsl/language) (accessed 2026-10-30). [Source [38]](33_references.md#source-38)

@@ -1,28 +1,28 @@
 # Architecture as Code - Book Structure {#book-structure}
 
-This document describes the logical structure for the book "Architecture as Code" which is organised into seven narrative parts plus extended appendices. Thirty-eight chapters, appendices, and structured templates build upon each other to provide a complete understanding of Architecture as Code and Infrastructure as Code for organisations operating in diverse global contexts.
+This document describes the logical structure for the book "Architecture as Code" which is organised into seven narrative parts plus extended appendices. Thirty-one chapters, seven appendix and reference entries, and three supplementary resources (the maturity model, the maturity radar tool, and the control mapping matrix template) build upon each other to provide a complete understanding of Architecture as Code and Infrastructure as Code for organisations operating in diverse global contexts.
 
 ## Table of Contents
 
-### Part 1: Foundations (Chapters 1-4)
-Foundational concepts, principles, and documentation practices
+### Part 1: Foundations (Chapters 1-4, including 26A)
+Foundational concepts, readiness prerequisites, principles, and documentation practices
 
 ### Part 2: Architecture Platform (Chapters 5-8)
 Core technical building blocks for Architecture as Code implementations
 
-### Part 3: Security & Governance (Chapters 9-12, including 9B and 9C)
-Security, policy automation, governance, and compliance as code
+### Part 3: Security & Governance (Chapters 9-12, including 9B, 9C and 15A)
+Security, policy automation, governance, compliance, and continuous assurance as code
 
-### Part 4: Delivery & Operations (Chapters 13-16, including 15A and 15B)
+### Part 4: Delivery & Operations (Chapters 13-16, including 15B)
 Testing, delivery practices, cost optimisation, and migration strategies
 
-### Part 5: Organisation & Leadership (Chapters 17-21)
-Organisational change, team design, management models, and collaborative delivery
+### Part 5: Organisation & Leadership (Chapters 17-21, including 23)
+Organisational change, team design, management models, cross-disciplinary interplay, and collaborative delivery
 
-### Part 6: Experience & Best Practices (Chapters 22-24)
-Cross-disciplinary collaboration and codified best practices
+### Part 6: Experience & Best Practices (Chapters 22 and 24)
+Documentation versus architecture disciplines and codified best practices
 
-### Part 7: Future & Wrap-up (Chapters 25-27, including 26A and 26B)
+### Part 7: Future & Wrap-up (Chapters 25-27, including 26B)
 Future outlook, risk avoidance, and closing guidance
 
 ### Appendices and Reference Material (Chapters 28-34 plus maturity resources)
@@ -32,13 +32,14 @@ Reference material, author information, technical enablers, and the Architecture
 
 ## Chapter Structure
 
-### Part 1: Foundations (Chapters 1-4)
+### Part 1: Foundations (Chapters 1-4, including 26A)
 
-**Focus:** Foundational concepts, principles, and documentation practices for Architecture as Code
+**Focus:** Foundational concepts, readiness prerequisites, principles, and documentation practices for Architecture as Code
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 1 | `01_introduction.md` | Introduction to Architecture as Code | Introduction to the concept Architecture as Code and its relation to Infrastructure as Code |
+| 26A | `26a_prerequisites_for_aac.md` | Prerequisites for Architecture as Code Adoption | Organisational, technical, and economic readiness signals |
 | 2 | `02_fundamental_principles.md` | Fundamental Principles of Architecture as Code | Fundamental principles including declarative architecture definition and holistic perspective |
 | 3 | `03_version_control.md` | Version Control and Code Structure | Best practices for version control of architecture code |
 | 4 | `04_adr.md` | Architecture Decision Records (ADR) | Structured documentation of architecture decisions |
@@ -54,9 +55,9 @@ Reference material, author information, technical enablers, and the Architecture
 | 7 | `07_containerisation.md` | Containerisation and Orchestration as Code | Container-based Architecture as Code |
 | 8 | `08_microservices.md` | Microservices Architecture as Code | Applying Architecture as Code disciplines across microservices estates |
 
-### Part 3: Security & Governance (Chapters 9-12, including 9B and 9C)
+### Part 3: Security & Governance (Chapters 9-12, including 9B, 9C and 15A)
 
-**Focus:** Security automation, policy enforcement, governance, and compliance requirements
+**Focus:** Security automation, policy enforcement, governance, compliance requirements, and evidence automation
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
@@ -66,49 +67,48 @@ Reference material, author information, technical enablers, and the Architecture
 | 10 | `10_policy_and_security.md` | Policy and Security as Code in Detail | Detailed review of policy-as-code |
 | 11 | `11_governance_as_code.md` | Governance as Code | Codifying governance processes, approval flows, and tooling support |
 | 12 | `12_compliance.md` | Compliance and Regulatory Adherence | Regulatory compliance considerations for international organisations |
+| 15A | `15a_evidence_as_code.md` | Evidence as Code and Continuous Assurance | Automated evidence pipelines that connect policy automation to operational reporting |
 
-### Part 4: Delivery & Operations (Chapters 13-16, including 15A and 15B)
+### Part 4: Delivery & Operations (Chapters 13-16, including 15B)
 
-**Focus:** Testing strategies, delivery patterns, evidence automation, financial optimisation, and migration approaches
+**Focus:** Testing strategies, delivery patterns, financial optimisation, and migration approaches
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 13 | `13_testing_strategies.md` | Testing Strategies for Infrastructure as Code | Testing of IaC and architecture code |
 | 14 | `14_practical_implementation.md` | Architecture as Code in Practice | Practical implementation examples |
-| 15A | `15a_evidence_as_code.md` | Evidence as Code and Continuous Assurance | Automated evidence pipelines that connect policy automation to operational reporting |
 | 15B | `15_cost_optimization.md` | Cost Optimisation and Resource Management | Economic optimisation of resources |
 | 16 | `16_migration.md` | Migration from Traditional Infrastructure | Migration strategies and best practices |
 
-### Part 5: Organisation & Leadership (Chapters 17-21)
+### Part 5: Organisation & Leadership (Chapters 17-21, including 23)
 
-**Focus:** Organisational transformation, leadership models, and digitally enabled collaboration
+**Focus:** Organisational transformation, leadership models, soft "as code" interplay, and digitally enabled collaboration
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 17 | `17_organisational_change.md` | Organisational Change and Team Structures | Organisational development for IaC |
 | 18 | `18_team_structure.md` | Team Structure and Competency Development for IaC | Team organisation and competency development |
 | 19 | `19_management_as_code.md` | Management as Code | Leadership practices encoded in collaborative tooling |
+| 23 | `23_soft_as_code_interplay.md` | The Interplay Between Soft As Code Disciplines | Cross-disciplinary synergies between soft 'as code' practices |
 | 20 | `20_ai_agent_team.md` | AI Agent Team for Architecture as Code Initiatives | Structure, roles, and processes for virtual agent teams |
 | 21 | `21_digitalisation.md` | Digitalisation through Code-based Infrastructure | Digital transformation through IaC |
 
-### Part 6: Experience & Best Practices (Chapters 22-24)
+### Part 6: Experience & Best Practices (Chapters 22 and 24)
 
-**Focus:** Cross-disciplinary collaboration and lessons learned
+**Focus:** Documentation versus architecture disciplines and lessons learned
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 22 | `22_documentation_vs_architecture.md` | Documentation as Code vs Architecture as Code | Distinction between documentation and architecture disciplines, modelling vs diagram tools |
-| 23 | `23_soft_as_code_interplay.md` | The Interplay Between Soft As Code Disciplines | Cross-disciplinary synergies between soft 'as code' practices |
 | 24 | `24_best_practices.md` | Best Practices and Lessons Learned | Summary of best practices |
 
-### Part 7: Future & Wrap-up (Chapters 25-27, including 26A and 26B)
+### Part 7: Future & Wrap-up (Chapters 25-27, including 26B)
 
 **Focus:** Strategic outlook, risk avoidance, and concluding guidance
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 25 | `25_future_trends.md` | Future Trends in Architecture as Code | Development trends, technological future, and long-term perspectives |
-| 26A | `26a_prerequisites_for_aac.md` | Prerequisites for Architecture as Code Adoption | Organisational, technical, and economic readiness signals |
 | 26B | `26b_aac_anti_patterns.md` | Anti-Patterns in Architecture as Code Programmes | Common pitfalls, early warning indicators, and recovery playbooks |
 | 27 | `27_conclusion.md` | Conclusion | Concluding reflections |
 

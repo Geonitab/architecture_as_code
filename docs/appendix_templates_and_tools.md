@@ -397,8 +397,8 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 
 ## EU Compliance Considerations
 
-### GDPR Requirements
-- [ ] Data residency in EU regions
+### GDPR Considerations
+- [ ] Data location in EU regions, or a Chapter V transfer mechanism for any transfer outside the EU/EEA
 - [ ] Encryption at rest and in transit
 - [ ] Access logging and audit trails
 - [ ] Data retention policy implementation

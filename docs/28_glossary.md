@@ -61,7 +61,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 | Service Level Indicator | The quantitative measurement—such as latency or error rate—that shows whether an SLO is being achieved. Frequently described as an SLI. |
 | Error Budget | The agreed allowance for unreliability that guides deployment pace and prioritisation of improvement work. |
 | Chaos Engineering | Intentional experimentation that reveals weaknesses by introducing controlled failure, strengthening resilience and team confidence. |
-| Chaos Monkey | Netflix's open-source tool that randomly terminates virtual machine instances and containers in production to verify that services tolerate instance failure; an early and widely known chaos engineering implementation [Source [135]](33_references.md#source-135). |
+| Chaos Monkey | Netflix's open-source tool that randomly terminates virtual machine instances and containers in production to verify that services tolerate instance failure; an example of a tool that follows the Principles of Chaos Engineering [Source [135]](33_references.md#source-135). |
 | Incident Command | An inclusive, role-based structure that coordinates response efforts during major events so everyone understands responsibilities and communication paths. |
 | Blameless Post-Incident Review | A learning-focused conversation after incidents that identifies systemic improvements without placing personal blame. |
 | Runway Health Check | A periodic review of capacity, tooling, and process debt to ensure teams have the runway to deliver sustainable change. |
@@ -121,7 +121,7 @@ Revisit this glossary as new capabilities emerge. Update both the definitions an
 
 ## Sources
 
-1. **FINOS.** *Architecture as Code: What is CALM?* FINOS Architecture as Code project. [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)
+1. **FINOS.** *Common Architecture Language Model* FINOS Architecture as Code project. [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)
 2. **OpenGitOps (2021).** *OpenGitOps Principles v1.0.0.* CNCF GitOps Working Group. [https://opengitops.dev/](https://opengitops.dev/) [Source [133]](33_references.md#source-133)
 3. **Rose, S., Borchert, O., Mitchell, S. & Connelly, S. (2020).** *Zero Trust Architecture.* NIST Special Publication 800-207, August 2020. [https://doi.org/10.6028/NIST.SP.800-207](https://doi.org/10.6028/NIST.SP.800-207) [Source [134]](33_references.md#source-134)
 4. **Netflix.** *Chaos Monkey.* Open-source project documentation. [https://netflix.github.io/chaosmonkey/](https://netflix.github.io/chaosmonkey/) [Source [135]](33_references.md#source-135)

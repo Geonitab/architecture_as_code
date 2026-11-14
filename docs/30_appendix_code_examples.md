@@ -476,7 +476,8 @@ import (
     "github.com/stretchr/testify/require"
 )
 
-// allowedRegions lists the EU regions approved for personal data (GDPR Articles 44–49)
+// allowedRegions lists the European regions approved for personal data. eu-west-2 (London)
+// is outside the EU and relies on the UK adequacy decision (GDPR Articles 44–49 govern transfers)
 var allowedRegions = []string{"eu-west-1", "eu-central-1", "eu-west-2", "eu-north-1"}
 
 // EuropeanVPCTestSuite defines the reusable Terratest suite for the VPC implementation
@@ -777,7 +778,7 @@ locals {
     CostCentre   = var.cost_centre
     DataClass    = var.data_classification
     EUCompliance = "GDPR"
-    Regulator    = "EDPB"
+    Regulator    = "National supervisory authority (consistency overseen by EDPB)"
   }
 }
 
@@ -948,7 +949,7 @@ class ComprehensiveIaCTesting:
         return check
 
     def _test_encryption_at_rest(self) -> CheckResult:
-        """Verify all S3 buckets default to KMS encryption with customer managed keys."""
+        """Verify all S3 buckets default to KMS encryption (SSEAlgorithm aws:kms)."""
         def findings() -> List[str]:
             weak = []
             for bucket in self.s3.list_buckets()['Buckets']:
@@ -1304,7 +1305,7 @@ export class TerraformConfigGenerator {
     region: string = 'eu-west-1'
   ): TerraformConfig {
     // Validate EU regions for GDPR compliance
-    const euRegions = ['eu-west-1', 'eu-central-1', 'eu-west-2'];
+    const euRegions = ['eu-west-1', 'eu-central-1', 'eu-west-3'];
     if (!euRegions.includes(region)) {
       throw new Error('Region must be within EU for GDPR compliance');
     }
@@ -1384,21 +1385,21 @@ describe('TerraformConfigGenerator', () => {
   const generator = new TerraformConfigGenerator();
 
   it('creates a GDPR-compliant VPC for production in the EU', () => {
-    const config = generator.generateVPCConfig('production', 'eu-west-2');
+    const config = generator.generateVPCConfig('production', 'eu-west-3');
 
-    expect(config.region).toBe('eu-west-2');
+    expect(config.region).toBe('eu-west-3');
     expect(config.resources[0].properties.tags.GdprCompliant).toBe('true');
     expect(config.resources[0].properties.tags.DataResidency).toBe('EU');
   });
 
   it('refuses to generate VPCs outside approved EU regions', () => {
-    expect(() => generator.generateVPCConfig('production', 'us-east-1')).toThrowError(
+    expect(() => generator.generateVPCConfig('production', 'us-east-1')).toThrow(
       'Region must be within EU for GDPR compliance'
     );
   });
 
   it('enforces encryption for production databases', () => {
-    expect(() => generator.generateRDSConfig('production', 'db.r6g.large', false)).toThrowError(
+    expect(() => generator.generateRDSConfig('production', 'db.r6g.large', false)).toThrow(
       'Production databases must have encryption enabled'
     );
 
@@ -1834,8 +1835,8 @@ func TestPlatformStackGDPRCompliance(t *testing.T) {
     flowLogsEnabled := terraform.Output(t, terraformOptions, "vpc_flow_logs_enabled")
     require.Equal(t, "true", flowLogsEnabled, "VPC flow logs must be enabled for GDPR auditing")
 
-    // Terratest has no S3 encryption helper: call the AWS SDK (v2) through the
-    // client that Terratest builds for the region
+    // Terratest also offers aws.AssertS3BucketServerSideEncryption (v1.0.1); here the
+    // AWS SDK (v2) is called through the client that Terratest builds for the region
     bucketID := terraform.Output(t, terraformOptions, "logging_bucket_id")
     s3Client := aws.NewS3Client(t, region)
     encryption, err := s3Client.GetBucketEncryption(context.Background(), &s3.GetBucketEncryptionInput{
@@ -2330,7 +2331,7 @@ class IaCCompetencyFramework:
             "cloud_platforms": {
                 "aws": ["EC2", "VPC", "RDS", "Lambda", "S3", "IAM"],
                 "azure": ["Virtual Machines", "Resource Groups", "Storage", "Functions"],
-                "gcp": ["Compute Engine", "VPC", "Cloud Storage", "Cloud Functions"],
+                "gcp": ["Compute Engine", "VPC", "Cloud Storage", "Cloud Run functions"],
                 "multi_cloud": ["Provider abstraction", "Cost optimisation", "Governance"]
             },
             "security_compliance": {
@@ -2707,7 +2708,7 @@ performance_measurement_framework:
       collection_method: "Incident correlation with deployments"
 
     rework_rate:
-      description: "Percentage of deployments that are unplanned fixes of earlier changes (the fifth DORA metric since 2024)"
+      description: "Percentage of deployments that are unplanned and made to fix bugs (the fifth DORA metric since 2024)"
       measurement: "Percentage"
       target: "Track together with change failure rate; set organisation-specific targets"
       collection_method: "Deployment metadata (planned versus unplanned deployments)"
@@ -3367,7 +3368,7 @@ variable "budget_threshold" {
 }
 
 variable "monthly_budget_limit_usd" {
-  description = "Monthly budget limit in USD (AWS bills in USD)"
+  description = "Monthly budget limit in USD (AWS billing tools report in USD)"
   type        = string
 }
 
@@ -3429,7 +3430,7 @@ locals {
 resource "aws_budgets_budget" "project_budget" {
   name         = "${var.project_name}-budget"
   budget_type  = "COST"
-  limit_amount = var.monthly_budget_limit_usd # AWS bills in USD
+  limit_amount = var.monthly_budget_limit_usd # AWS billing tools report in USD
   limit_unit   = "USD"
   time_unit    = "MONTHLY"
 
@@ -3480,13 +3481,8 @@ resource "aws_launch_template" "cost_optimized" {
     instance_generations = ["current"]
   }
 
-  # Spot instance preference for cost optimisation
-  instance_market_options {
-    market_type = "spot"
-    spot_options {
-      max_price = var.max_spot_price
-    }
-  }
+  # The template must not request Spot Instances itself: an Auto Scaling group with
+  # a mixed instances policy sets the Spot/On-Demand split in instances_distribution below.
 
   tag_specifications {
     resource_type = "instance"
@@ -3507,7 +3503,8 @@ resource "aws_autoscaling_group" "cost_aware" {
     instances_distribution {
       on_demand_base_capacity                  = 1
       on_demand_percentage_above_base_capacity = 20
-      spot_allocation_strategy                 = "diversified"
+      spot_allocation_strategy                 = "price-capacity-optimized"
+      spot_max_price                           = var.max_spot_price
     }
 
     launch_template {
@@ -3593,7 +3590,7 @@ spec:
     kind: Deployment
     name: web-application
   updatePolicy:
-    updateMode: "Auto"
+    updateMode: "Recreate" # "Auto" is deprecated and currently equivalent to "Recreate"
   resourcePolicy:
     containerPolicies:
     - containerName: app
@@ -3746,13 +3743,15 @@ class AWSCostOptimizer:
         opportunities = []
 
         for recommendation in rightsizing_response.get('RightsizingRecommendations', []):
-            if recommendation['RightsizingType'] == 'Modify':
+            if recommendation['RightsizingType'] == 'MODIFY':
                 current = recommendation['CurrentInstance']
                 target = recommendation['ModifyRecommendationDetail']['TargetInstances'][0]
+                # Instance types are reported in ResourceDetails.EC2ResourceDetails
+                # (InstanceName is only the Name tag of the current instance)
                 opportunities.append({
                     'instance_id': current['ResourceId'],
-                    'current_type': current['InstanceName'],
-                    'recommended_type': target['InstanceName'],
+                    'current_type': current.get('ResourceDetails', {}).get('EC2ResourceDetails', {}).get('InstanceType'),
+                    'recommended_type': target.get('ResourceDetails', {}).get('EC2ResourceDetails', {}).get('InstanceType'),
                     'estimated_monthly_savings_usd': float(target['EstimatedMonthlySavings']),
                     # CurrentInstance exposes ResourceUtilization (not UtilizationMetrics)
                     'utilisation': current.get('ResourceUtilization', {}),
@@ -3788,7 +3787,7 @@ class AWSCostOptimizer:
                 'spot_instances': self._analyze_spot_instance_opportunities()
             },
             'potential_monthly_savings_usd': 0,
-            'notes': 'Costs are in USD (AWS billing currency). Convert to EUR using current exchange rate for EU financial reporting.'
+            'notes': 'Costs are in USD (the currency in which Cost Explorer and AWS billing totals are reported). Convert to EUR using current exchange rate for EU financial reporting.'
         }
 
         # Calculate total potential savings
@@ -3902,7 +3901,7 @@ class AWSCostOptimizer:
                     idle.append({
                         'load_balancer': load_balancer['LoadBalancerName'],
                         'region': region,
-                        # Representative hourly ALB charge in EU regions (USD 0.0252/h)
+                        # Representative hourly ALB charge in eu-west-1 (USD 0.0252/h; eu-central-1 is USD 0.027/h)
                         'estimated_monthly_savings_usd': round(0.0252 * 730, 2)
                     })
 
@@ -3977,9 +3976,9 @@ class AWSCostOptimizer:
         if not candidates:
             return {}
 
-        # Heuristic, not an AWS API: Spot capacity is typically 60-90 % cheaper than
-        # On-Demand. A conservative 60 % saving on a representative On-Demand rate
-        # of USD 0.05/hour is assumed; replace with Pricing API data in production.
+        # Heuristic, not an AWS API: AWS advertises Spot savings of up to 90 % compared
+        # with On-Demand. A conservative 60 % saving (an assumption, not an AWS figure) on a
+        # representative On-Demand rate of USD 0.05/hour is used; replace with Pricing API data in production.
         on_demand_monthly_usd = len(candidates) * 0.05 * 730
 
         return {
@@ -3999,16 +3998,16 @@ class AWSCostOptimizer:
                 'gp2': 0.110,
                 'io1': 0.138,
                 'io2': 0.138,
-                'st1': 0.048,
-                'sc1': 0.026
+                'st1': 0.050,
+                'sc1': 0.0168
             },
             'eu-central-1': {  # Frankfurt
-                'gp3': 0.095,
+                'gp3': 0.0952,
                 'gp2': 0.119,
                 'io1': 0.149,
                 'io2': 0.149,
-                'st1': 0.052,
-                'sc1': 0.028
+                'st1': 0.054,
+                'sc1': 0.018
             }
         }
 
@@ -4072,7 +4071,7 @@ resource "aws_launch_template" "spot_optimized" {{
 ## Security and compliance {#security-compliance}
 
 ### 10_CODE_1: Advanced Policy-as-Code module for EU compliance {#10_code_1}
-*Referenced from Chapter 10: [Policy and Security as Code in Detail](10_policy_and_security.md).* This Rego module consolidates encryption validation, network segmentation checks inspired by MSB guidance, and GDPR Article 44 data residency controls. It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached. The module is written in OPA 1.0 syntax: since OPA 1.0 (December 2024) the `if` and `contains` keywords are mandatory in rule definitions, and `import rego.v1` keeps the module compatible with OPA 0.59 and later [Source [44]](33_references.md#source-44). Fall-back values are expressed with `default` functions, because a second definition that matched every input would conflict with the specific definitions at evaluation time.
+*Referenced from Chapter 10: [Policy and Security as Code in Detail](10_policy_and_security.md).* This Rego module consolidates encryption validation, network segmentation checks inspired by MSB guidance, and data residency controls that support the GDPR rules on transfers to third countries (Articles 44 to 49). It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached. The module is written in OPA 1.0 syntax: since OPA 1.0 (December 2024) the `if` and `contains` keywords are mandatory in rule definitions, and `import rego.v1` keeps the module compatible with OPA 0.59 and later [Source [44]](33_references.md#source-44). Fall-back values are expressed with `default` functions, because a second definition that matched every input would conflict with the specific definitions at evaluation time.
 
 ```rego
 package se.enterprise.security
@@ -4096,7 +4095,7 @@ sovereignty_scoped_services := encryption_required_services
 
 administrative_ports := {22, 3389, 5432, 3306, 1433, 27017, 6379, 9200, 5601}
 allowed_public_ports := {80, 443}
-eu_regions := {"eu-north-1", "eu-west-1", "eu-west-2", "eu-west-3", "eu-central-1", "eu-south-1"}
+eu_regions := {"eu-north-1", "eu-west-1", "eu-west-3", "eu-central-1", "eu-south-1", "eu-south-2"}
 
 encryption_compliant contains resource if {
     resource := input.resources[_]
@@ -4176,7 +4175,7 @@ validate_key_management("aws_managed") := {
     "strength": "medium",
     "recommendations": [
         "Consider migrating to customer managed keys for greater control",
-        "Enable automatic key rotation"
+        "AWS managed keys rotate automatically every year; the rotation cannot be configured"
     ]
 }
 
@@ -4361,7 +4360,7 @@ assess_regulator(name, violations) := summary if {
 ```
 
 ### 10_CODE_2: OSCAL profile for regulated financial services {#10_code_2}
-*Referenced from Chapter 10.* This OSCAL profile merges controls from NIST SP 800-53 with GDPR Article 32 and MSB network segmentation expectations. Parameters clarify the encryption standard and key management practices adopted by the organisation. The `regional-catalog.json` import refers to the organisation's own OSCAL catalogue, which encodes the GDPR articles and the MSB guidance as controls (`gdpr-*`, `msb-*`) and is not reproduced here; control selections use glob patterns such as `ac-*`, not regular expressions.
+*Referenced from Chapter 10.* This OSCAL profile merges controls from NIST SP 800-53 with GDPR Article 32 and MSB network segmentation expectations. Parameters clarify the encryption standard and key management practices adopted by the organisation. The `regional-catalog.json` import refers to the organisation's own OSCAL catalogue, which encodes the GDPR articles and the MSB guidance as controls (`gdpr-*`, `msb-*`) and is not reproduced here; control selections use glob patterns such as `ac-*`, not regular expressions. The custom `requirement` part carries the organisation's namespace because OSCAL reserves unqualified part names for the names its models define.
 
 ```json
 {
@@ -4438,6 +4437,7 @@ assess_regulator(name, violations) := summary if {
                 {
                   "id": "msb-3.2.1_fin-requirement",
                   "name": "requirement",
+                  "ns": "https://example.org/ns/architecture-as-code",
                   "title": "Financial Sector Isolation",
                   "prose": "Critical payment workloads must be isolated in dedicated network segments with inspection by AWS Network Firewall and VPC Traffic Mirroring."
                 }
@@ -4452,7 +4452,7 @@ assess_regulator(name, violations) := summary if {
 ```
 
 ### 10_CODE_3: OSCAL component definitions for reusable cloud modules {#10_code_3}
-*Referenced from Chapter 10.* Component definitions document how Terraform modules satisfy regulatory expectations. This example captures Amazon RDS, Amazon S3, and AWS Network Firewall implementations used throughout the financial profile. Every control implementation, implemented requirement and statement carries an RFC 4122 UUID as the OSCAL schema requires, the implementation status is recorded with the `implementation-status` property defined for the component model, and a `terraform-resource-type` property links each component to the Terraform resources it covers.
+*Referenced from Chapter 10.* Component definitions document how Terraform modules satisfy regulatory expectations. This example captures Amazon RDS, Amazon S3, and AWS Network Firewall implementations used throughout the financial profile. Every control implementation, implemented requirement and statement carries an RFC 4122 UUID as the OSCAL schema requires, the implementation status is recorded with an `implementation-status` property in the organisation's own namespace (the OSCAL component definition model does not define this property; the values follow the implementation states of the System Security Plan model), and a `terraform-resource-type` property links each component to the Terraform resources it covers.
 
 ```json
 {
@@ -4485,7 +4485,7 @@ assess_regulator(name, violations) := summary if {
                 "control-id": "gdpr-art32-1.1",
                 "description": "Encryption at rest enabled with customer managed KMS keys.",
                 "props": [
-                  { "name": "implementation-status", "value": "implemented" },
+                  { "name": "implementation-status", "ns": "https://example.org/ns/architecture-as-code", "value": "implemented" },
                   { "name": "kms-key-type", "ns": "https://example.org/ns/architecture-as-code", "value": "customer-managed" },
                   { "name": "rotation", "ns": "https://example.org/ns/architecture-as-code", "value": "365 days" }
                 ],
@@ -4502,7 +4502,7 @@ assess_regulator(name, violations) := summary if {
                 "control-id": "msb-3.2.1.1",
                 "description": "Database subnet groups isolated from public subnets.",
                 "props": [
-                  { "name": "implementation-status", "value": "implemented" }
+                  { "name": "implementation-status", "ns": "https://example.org/ns/architecture-as-code", "value": "implemented" }
                 ],
                 "statements": [
                   {
@@ -4535,7 +4535,7 @@ assess_regulator(name, violations) := summary if {
                 "control-id": "gdpr-art32-1.2",
                 "description": "Enforced TLS 1.2 for all data in transit.",
                 "props": [
-                  { "name": "implementation-status", "value": "implemented" }
+                  { "name": "implementation-status", "ns": "https://example.org/ns/architecture-as-code", "value": "implemented" }
                 ],
                 "statements": [
                   {
@@ -4550,7 +4550,7 @@ assess_regulator(name, violations) := summary if {
                 "control-id": "msb-3.2.1.2",
                 "description": "Zero Trust verification for access using IAM conditions.",
                 "props": [
-                  { "name": "implementation-status", "value": "planned" }
+                  { "name": "implementation-status", "ns": "https://example.org/ns/architecture-as-code", "value": "planned" }
                 ],
                 "statements": [
                   {
@@ -4583,13 +4583,13 @@ assess_regulator(name, violations) := summary if {
                 "control-id": "msb-3.2.1",
                 "description": "Micro-segmentation between payment and support zones.",
                 "props": [
-                  { "name": "implementation-status", "value": "implemented" }
+                  { "name": "implementation-status", "ns": "https://example.org/ns/architecture-as-code", "value": "implemented" }
                 ],
                 "statements": [
                   {
                     "statement-id": "msb-3.2.1_smt",
                     "uuid": "5d6e6b2c-e415-4996-9104-39fe282d01b2",
-                    "description": "Stateful rules restrict lateral movement and mirror traffic to a central collector."
+                    "description": "Stateful rules restrict lateral movement and firewall logs are published to a central collector."
                   }
                 ]
               }
@@ -4956,8 +4956,8 @@ workspace "E-Commerce Platform" "Complete architecture for online retail" {
             productService -> productDb "Reads/writes" "JDBC"
             productService -> searchIndex "Indexes products" "HTTP"
             orderService -> orderDb "Reads/writes" "JDBC"
-            userService -> userDb "Reads/writes" "JDBC"
-            inventoryService -> productDb "Updates stock" "JDBC"
+            userService -> userDb "Reads/writes" "PostgreSQL protocol"
+            inventoryService -> productDb "Updates stock" "PostgreSQL protocol"
 
             # Relationships - Services to Cache
             productService -> cache "Caches products" "Redis Protocol"
@@ -5035,7 +5035,7 @@ workspace "E-Commerce Platform" "Complete architecture for online retail" {
                     containerInstance cache
                 }
 
-                deploymentNode "Elasticsearch Service" {
+                deploymentNode "Amazon OpenSearch Service" {
                     containerInstance searchIndex
                 }
 
@@ -5087,7 +5087,7 @@ workspace "E-Commerce Platform" "Complete architecture for online retail" {
         # Dynamic View - Order Flow
         dynamic ecommercePlatform "OrderPlacementFlow" {
             title "Customer Order Placement"
-            # Steps are numbered automatically; manual numbers would render as "1. 1. ..."
+            # Steps are numbered automatically; an explicit "order:" prefix overrides the number
 
             customer -> webApp "Submits order"
             webApp -> apiGateway "POST /api/orders"

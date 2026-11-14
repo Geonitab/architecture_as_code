@@ -58,7 +58,7 @@ The following topics outline emerging areas that influence long-term compliance 
 
 ### Quantum Computing Readiness
 
-Quantum computing will require a rethink of security models, cryptography, and resource management strategies. NIST's first post-quantum cryptography standards—FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), and FIPS 205 (SLH-DSA), published on 13 August 2024—must be integrated into infrastructure security frameworks [Source [85]](33_references.md#source-85), and Architecture as Code definitions must be ready to rotate to quantum-resistant algorithms. Quantum-assisted optimisation techniques may support complex placement, routing, and resource allocation problems that are computationally expensive for classical systems, improving efficiency and resilience for regulated services.
+Quantum computing will require a rethink of security models, cryptography, and resource management strategies. NIST's first post-quantum cryptography standards—FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), and FIPS 205 (SLH-DSA), published on 13 August 2024—should be integrated into infrastructure security frameworks [Source [85]](33_references.md#source-85), and Architecture as Code definitions must be ready to rotate to quantum-resistant algorithms. Quantum-assisted optimisation techniques may support complex placement, routing, and resource allocation problems that are computationally expensive for classical systems, improving efficiency and resilience for regulated services.
 
 ### Sustainability and Green Computing
 
@@ -156,7 +156,7 @@ functions:
 
     reservedConcurrency: 1
     timeout: 300
-    memory: 1024
+    memorySize: 1024
 
     environment:
       MODEL_BUCKET: ${self:custom.modelBucket}
@@ -169,7 +169,7 @@ functions:
     layers:
       - ${self:custom.tensorflowLayer}
 
-    memory: 3008
+    memorySize: 3008
     timeout: 900
 
   costOptimiser:
@@ -247,7 +247,7 @@ resource "aws_acm_certificate" "crypto_agile" {
 resource "aws_kms_key" "crypto_agile" {
   description = "Symmetric data-encryption key (AES-256-GCM)"
   key_usage   = "ENCRYPT_DECRYPT"
-  key_spec    = "SYMMETRIC_DEFAULT"
+  customer_master_key_spec = "SYMMETRIC_DEFAULT"
 
   enable_key_rotation = true
 

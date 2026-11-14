@@ -60,7 +60,7 @@ Security-first thinking remains essential in every jurisdiction. Regulatory expe
 
 ### Security-by-Design Foundations
 
-Architectural baselines adopt least-privilege policies, network segmentation, and zero-trust controls by default, in line with published baselines such as the NCSC's cloud security principles [Source [128]](33_references.md#source-128). Platform teams implement guardrails as reusable templates rather than bespoke scripts, combining infrastructure definitions with security policies and validation tests.
+Architectural baselines adopt least-privilege policies, network segmentation, and zero-trust controls by default; the NCSC's cloud security principles, for example, advise applying granular access control according to the principle of least privilege [Source [128]](33_references.md#source-128). Platform teams implement guardrails as reusable templates rather than bespoke scripts, combining infrastructure definitions with security policies and validation tests.
 
 ### Compliance Automation
 
@@ -100,7 +100,7 @@ Policies live alongside the infrastructure artefacts they protect. Enforcement p
 
 ### Financial Management
 
-FinOps disciplines, as codified in the FinOps Foundation's framework [Source [124]](33_references.md#source-124), incorporate budgets into infrastructure definitions. Tagged resources, automated shutdown rules, and predictive spending alerts maintain fiscal control without requiring manual spreadsheet audits. Shared savings targets encourage teams to reinvest efficiency gains into innovation initiatives.
+FinOps disciplines, as codified in the FinOps Foundation's framework [Source [124]](33_references.md#source-124), treat budgeting, cost allocation through tags and anomaly management as core capabilities, and Architecture as Code practice incorporates budgets into infrastructure definitions. Tagged resources, automated shutdown rules, and predictive spending alerts maintain fiscal control without requiring manual spreadsheet audits. Shared savings targets encourage teams to reinvest efficiency gains into innovation initiatives.
 
 ### Change Management
 

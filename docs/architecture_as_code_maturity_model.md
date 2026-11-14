@@ -153,7 +153,7 @@ Testing is limited to manual checks.
 - Organisations adopt DSLs like Structurizr to model systems and generate diagrams.  
 - Governance requirements are expressed in policy languages like Rego.  
 - Pull-request templates and branch rules codify approvals.  
-- Tools such as Terratest and Checkov enforce compliance.  
+- Tools such as Terratest (automated tests for infrastructure code) and Checkov (static scanning for misconfigurations) check compliance.  
 - Documentation generated from code and published automatically.
 
 ---
@@ -220,5 +220,5 @@ By progressing through this maturity model, organisations can evolve from manual
 [7]: 12_compliance.md "Chapter 12: Compliance and Regulatory Adherence"  
 [8]: 22_documentation_vs_architecture.md "Chapter 22: Documentation as Code vs Architecture as Code"  
 [9]: 19_management_as_code.md "Chapter 19: Management as Code"  
-[10]: 05_automation_devops_cicd.md "Chapter 5: Automation, DevOps and CI/CD for Infrastructure as Code"  
+[10]: 05_automation_devops_cicd.md "Chapter 5: Automation, DevOps and CI/CD for Architecture as Code"  
 [11]: 06_structurizr.md "Chapter 6: Structurizr: Architecture Modelling as Code"  

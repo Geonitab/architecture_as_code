@@ -36,7 +36,7 @@ Model-Driven Development (MDD) grew out of decades of domain-specific modelling 
 
 Wider industry adoption exposed the limits of that optimism. Selic (2003) [Source [50]](33_references.md#source-50) already warned that models had "rarely produced anticipated benefits" and that success depended on resolving pragmatic issues rooted in the artefacts and culture of earlier generations of software technology. In the author's experience, brittle round-trip engineering, tool lock-in, and ambiguous semantics then caused MDD artefacts to fall out of sync as soon as teams customised generated code or adopted new frameworks. Architecture as Code internalises those lessons by favouring lightweight textual models, explicit version control, and continuous validation so that the architecture specification evolves alongside implementation rather than trying to replace it.
 
-Modern model-based architecture tooling such as Structurizr, built around the C4 model ([Source [37]](33_references.md#source-37)), focuses on keeping a single authoritative architecture model close to the codebase, generating diagrams and reviews from that source without enforcing fragile full-code generation. This pragmatic approach provides the automation benefits MDD aspired to while preserving developer autonomy, making Architecture as Code a practical successor that addresses the pragmatic concerns raised by Selic (2003) [Source [50]](33_references.md#source-50).
+Modern model-based architecture tooling such as Structurizr, built around the C4 model ([Source [37]](33_references.md#source-37), [Source [56]](33_references.md#source-56)), focuses on keeping a single authoritative architecture model close to the codebase, generating diagrams and reviews from that source without enforcing fragile full-code generation. This pragmatic approach provides the automation benefits MDD aspired to while preserving developer autonomy, making Architecture as Code a practical successor that addresses the pragmatic concerns raised by Selic (2003) [Source [50]](33_references.md#source-50).
 
 ## Implementation timeline for Architecture as Code
 
@@ -165,7 +165,7 @@ This historical record becomes the institutional memory of the architecture, acc
 
 As architectural definitions evolve, refactoring disciplines keep the codebase maintainable:
 
-- **Modular architecture boundaries**: Define clear module boundaries in architecture code, preventing cross-cutting dependencies that create maintenance burdens—the same discipline of drawing boundaries and controlling dependencies that Martin (2017) [Source [33]](33_references.md#source-33) places at the heart of software architecture
+- **Modular architecture boundaries**: Define clear module boundaries in architecture code, preventing cross-cutting dependencies that create maintenance burdens—the same discipline of drawing boundaries and controlling dependencies that Martin (2017) [Source [33]](33_references.md#source-33) addresses in his chapter "Boundaries: Drawing Lines" and in the Dependency Rule
 - **Incremental refactoring**: Large architectural changes are broken into incremental pull requests, each independently reviewable and testable
 - **Deprecation workflows**: Legacy architectural patterns are explicitly marked as deprecated with migration paths documented in ADRs before removal
 - **Backward compatibility gates**: Breaking changes to architectural interfaces require explicit approval and coordinated migration plans
@@ -381,7 +381,7 @@ spec:
         approved_regions := {"eu-central-1", "eu-west-1", "eu-west-3", "eu-north-1", "eu-south-1", "eu-south-2"}
 
         deny contains msg if {
-          input.resource_type == "aws_rds_instance"
+          input.resource_type == "aws_db_instance"
           not approved_regions[input.region]
           msg := sprintf("RDS instance must be located in an approved EU/EEA region, found %v", [input.region])
         }
@@ -406,7 +406,7 @@ EU_VALIDATION_AUTHORITIES = {
         "authority": "European Data Protection Board (EDPB)",
         "reference": (
             "Regulation (EU) 2016/679, Article 32 and Chapter V; "
-            "EDPB Recommendations 01/2020 on supplementary transfer measures"
+            "EDPB Recommendations 01/2020 on measures that supplement transfer tools"
         ),
     },
     "ISO27001": {
@@ -654,7 +654,7 @@ This dual approach – automated testing wherever a requirement is quantitative,
 
 1. **Red Hat.** *What is Infrastructure as Code (IaC)?* Red Hat Topics (accessed 2026-10-30). Available at: [https://www.redhat.com/en/topics/automation/what-is-infrastructure-as-code-iac](https://www.redhat.com/en/topics/automation/what-is-infrastructure-as-code-iac). [Source [29]](33_references.md#source-29)
 2. **Martin, R. C. (2017).** *Clean Architecture: A Craftsman's Guide to Software Structure and Design.* Prentice Hall (Pearson). ISBN 978-0-13-449416-6. [Source [33]](33_references.md#source-33)
-3. **FINOS.** *Architecture as Code: What is CALM?* FINOS Architecture as Code project (accessed 2026-10-30). Available at: [https://calm.finos.org/](https://calm.finos.org/). [Source [1]](33_references.md#source-1)
+3. **FINOS.** *Common Architecture Language Model* FINOS Architecture as Code project (accessed 2026-10-30). Available at: [https://calm.finos.org/](https://calm.finos.org/). [Source [1]](33_references.md#source-1)
 4. **Brown, S.** *The C4 model for visualising software architecture.* Available at: [https://c4model.com/](https://c4model.com/). [Source [37]](33_references.md#source-37)
 5. **Structurizr.** *Structurizr DSL language reference.* Available at: [https://docs.structurizr.com/dsl/language](https://docs.structurizr.com/dsl/language). [Source [38]](33_references.md#source-38)
 6. **Structurizr.** *Structurizr documentation: commands (local, server, export) and binaries.* docs.structurizr.com (accessed 2026-10-30). Available at: [https://docs.structurizr.com/](https://docs.structurizr.com/). [Source [56]](33_references.md#source-56)
