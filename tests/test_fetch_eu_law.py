@@ -77,3 +77,34 @@ def test_amending_article_is_not_checked_against_the_amended_act() -> None:
     assert [(k, n) for _, k, n in own] == [("ai_omnibus_own", "1")]
     amended = f.find_references("Article 6 of the AI Act as amended by the Digital Omnibus applies.")
     assert all(k != "ai_omnibus_own" for _, k, _ in amended)
+
+
+def test_dash_ranges_of_articles_are_expanded() -> None:
+    assert f._numbers("44–49") == ["44", "45", "46", "47", "48", "49"]
+    refs = f.find_references("GDPR Articles 44–46 apply to transfers.")
+    assert [n for _, _, n in refs] == ["44", "45", "46"]
+
+
+def test_cited_bullets_are_checked_but_the_sources_list_is_not() -> None:
+    text = "- GDPR Article 33 sets the deadline ([1, EU, 2016](28_references.md#source-1)).\n\n## Sources\n\n- GDPR Article 99 ([1](28_references.md#source-1))\n"
+    assert [(n) for _, _, n in f.find_references(text)] == ["33"]
+
+
+def test_article_of_the_amending_act_is_checked_against_it() -> None:
+    refs = f.find_references("Article 99 of Regulation (EU) 2026/1744 is cited here.")
+    assert [(k, n) for _, k, n in refs] == [("ai_omnibus_own", "99")]
+
+
+def test_sfs_lists_ranges_and_aliases() -> None:
+    refs = lambda t: [(c, s) for _, _, c, s in f.sfs_find_references(t)]  # noqa: E731
+    assert refs("MBL sections 11 and 12 apply.") == [("", "11"), ("", "12")]
+    assert refs("MBL 10 to 12 §§ apply.") == [("", "10"), ("", "11"), ("", "12")]
+    assert refs("MBL § 11 applies.") == [("", "11")]
+    assert refs("Section 11 of the Co-Determination Act applies.") == [("", "11")]
+
+
+def test_unloadable_instrument_fails_the_check(monkeypatch, tmp_path) -> None:
+    doc = tmp_path / "01_x.md"
+    doc.write_text("GDPR Article 5 applies.\n", encoding="utf-8")
+    monkeypatch.setattr(f, "load", lambda *a, **k: (_ for _ in ()).throw(RuntimeError("offline")))
+    assert f.check(None, files=[doc]) == 2

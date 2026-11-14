@@ -198,12 +198,13 @@ def write_manifest(celexes: list[str]) -> None:
 
 
 # ------------------------------------------------------------------- check
-ART_RE = re.compile(r"\bArticles?\s+((?:\d+[A-Za-z]?(?:\(\d+\))?(?:\s*(?:,|and|to|and/or)\s*)?)+)")
+ART_RE = re.compile(r"\bArticles?\s+((?:\d+[A-Za-z]?(?:\(\d+\))?(?:\s*(?:,|and|to|and/or|[–—-])\s*)?)+)")
 
 
 def _numbers(spec: str) -> list[str]:
     """Article numbers from '12, 14 and 26(1)' or '28 to 30'; ranges are expanded."""
     spec = re.sub(r"\(\d+\)", "", spec)
+    spec = re.sub(r"(?<=\d)\s*[–—-]\s*(?=\d)", " to ", spec)  # 44–49 is read as 44 to 49
     parts = re.split(r"\s*(?:,|and/or|and)\s*", spec.strip())
     nums: list[str] = []
     for part in parts:
@@ -218,8 +219,12 @@ def _numbers(spec: str) -> list[str]:
 def find_references(text: str) -> list[tuple[int, str, str]]:
     """(line number, instrument key, article number) for 'Article N ... <instrument>' in one sentence."""
     found = []
+    in_sources = False
     for lineno, line in enumerate(text.splitlines(), start=1):
-        if line.startswith("#") or "_references.md#source" in line and line.startswith("- "):
+        if line.startswith("#"):
+            in_sources = line.strip().lower() == "## sources"
+            continue
+        if in_sources and line.startswith("- "):  # bibliography entries are not claims
             continue
         for sentence in re.split(r"(?<=[.;:])(?<!\bkap\.)(?<!\bch\.)\s+", line):
             keys = [k for k, (_, _, aliases) in INSTRUMENTS.items()
@@ -232,7 +237,9 @@ def find_references(text: str) -> list[tuple[int, str, str]]:
                         key = keys[0]
                         # 'Article 1, point 40(b), of Regulation (EU) 2026/1744' cites the amending
                         # act's own article, not the same-numbered article of the amended AI Act.
-                        if key == "ai_omnibus" and re.match(r"\s*,?\s*points?\s+\d", sentence[m.end():]):
+                        if key == "ai_omnibus" and re.match(
+                                r"\s*,?\s*points?\s+\d|\s+of\s+(?:the\s+)?(?:Regulation\s+\(EU\)\s+2026/1744|Digital Omnibus)",
+                                sentence[m.end():]):
                             key = "ai_omnibus_own"
                         found.append((lineno, key, n))
     return found
@@ -254,7 +261,7 @@ def check(report: Path | None, files: list[Path] | None = None, strict: bool = F
     """
     files = files or chapter_files()
     roots: dict[str, dict[str, ET.Element]] = {}
-    rows, notfound = [], 0
+    rows, notfound, failed = [], 0, set()
     for path in files:
         for lineno, key, n in find_references(path.read_text(encoding="utf-8")):
             target = {"ai_omnibus": "ai_act", "ai_omnibus_own": "ai_omnibus"}.get(key, key)
@@ -264,6 +271,10 @@ def check(report: Path | None, files: list[Path] | None = None, strict: bool = F
                 except Exception as exc:  # network or parse failure
                     print(f"cannot load {target}: {exc}", file=sys.stderr)
                     roots[target] = {}
+                    failed.add(target)
+            if target in failed:
+                rows.append((path.name, lineno, key, n, "NOT CHECKED", "the instrument could not be loaded"))
+                continue
             div = roots[target].get(n)
             if div is None:
                 notfound += 1
@@ -281,13 +292,16 @@ def check(report: Path | None, files: list[Path] | None = None, strict: bool = F
         report.write_text(out, encoding="utf-8")
     else:
         print(out)
+    if failed:  # an unavailable source is not a successful check
+        print(f"not checked, could not load: {', '.join(sorted(failed))}", file=sys.stderr)
+        return 2
     return 1 if (notfound and strict) else 0
 
 
 # ------------------------------------------------------- Swedish statutes
 SFS_URL = "https://data.riksdagen.se/dokument/sfs-{year}-{num}.text"
 SFS: dict[str, tuple[str, str, list[str]]] = {
-    "mbl": ("1976:580", "Lag (1976:580) om medbestämmande i arbetslivet (MBL)", ["MBL", "Lag (1976:580)", "Co-determination in the Workplace Act", "medbestämmandelagen"]),
+    "mbl": ("1976:580", "Lag (1976:580) om medbestämmande i arbetslivet (MBL)", ["MBL", "Lag (1976:580)", "Co-determination in the Workplace Act", "Co-Determination Act", "Co-determination Act", "medbestämmandelagen"]),
     "forvaltningslag": ("2017:900", "Förvaltningslag (2017:900)", ["Förvaltningslag (2017:900)", "förvaltningslagen", "Administrative Procedure Act"]),
     "kommunallag": ("2017:725", "Kommunallag (2017:725)", ["Kommunallag (2017:725)", "kommunallagen", "Local Government Act"]),
     "tf": ("1949:105", "Tryckfrihetsförordning (1949:105)", ["Tryckfrihetsförordning (1949:105)", "tryckfrihetsförordningen", "Freedom of the Press Act"]),
@@ -363,11 +377,26 @@ def sfs_get(key: str, section: str, chapter: str | None) -> str:
     return secs[(ck, sk)]
 
 
+_SN = r"\d+(?:\s?[a-z](?![a-z]))?"
+_SPEC = rf"{_SN}(?:\s*(?:,|and|och|to|till|[–—-])\s*{_SN})*"
 SFS_REF = re.compile(
-    r"(?:(?:(\d+(?:\s?[a-z](?![a-z]))?)\s+(?:kap\.|ch\.|chapter)|(?:chapter|ch\.)\s+(\d+(?:\s?[a-z](?![a-z]))?),?)\s+)?"
-    r"(?:(\d+(?:\s?[a-z](?![a-z]))?)\s*(?:§§?|sections?)|(?:§§?|sections?)\s*(\d+(?:\s?[a-z](?![a-z]))?))",
+    rf"(?:(?:({_SN})\s+(?:kap\.|ch\.|chapter)|(?:chapter|ch\.)\s+({_SN}),?)\s+)?"
+    rf"(?:({_SPEC})\s*(?:§§?|sections?)|(?:§§?|sections?)\s*({_SPEC}))",
     re.I,
 )
+
+
+def _sfs_numbers(spec: str) -> list[str]:
+    """Section numbers from '11', '11 and 12' or '10 to 12'; ranges of plain numbers are expanded."""
+    spec = re.sub(r"(?<=\d)\s*[–—-]\s*(?=\d)", " to ", spec)
+    nums: list[str] = []
+    for part in re.split(r"\s*(?:,|and|och)\s*", spec.strip(), flags=re.I):
+        m = re.fullmatch(r"(\d+)\s+(?:to|till)\s+(\d+)", part.strip(), flags=re.I)
+        if m:
+            nums += [str(n) for n in range(int(m.group(1)), int(m.group(2)) + 1)]
+        elif part.strip():
+            nums.append(re.sub(r"\s", "", part.strip()))
+    return nums
 
 
 def sfs_find_references(text: str) -> list[tuple[int, str, str, str]]:
@@ -380,15 +409,15 @@ def sfs_find_references(text: str) -> list[tuple[int, str, str, str]]:
                 continue
             for m in SFS_REF.finditer(sentence):
                 chapter = (m.group(1) or m.group(2) or "").replace(" ", "")
-                section = (m.group(3) or m.group(4)).replace(" ", "")
-                found.append((lineno, keys[0], chapter, section))
+                for section in _sfs_numbers(m.group(3) or m.group(4)):
+                    found.append((lineno, keys[0], chapter, section))
     return found
 
 
 def sfs_check(report: Path | None) -> int:
     files = chapter_files()
     cache: dict[str, dict] = {}
-    rows, problems = [], 0
+    rows, problems, failed = [], 0, set()
     for path in files:
         for lineno, key, ch, sec in sfs_find_references(path.read_text(encoding="utf-8")):
             if key not in cache:
@@ -397,6 +426,10 @@ def sfs_check(report: Path | None) -> int:
                 except Exception as exc:
                     print(f"cannot load {key}: {exc}", file=sys.stderr)
                     cache[key] = {}
+                    failed.add(key)
+            if key in failed:
+                rows.append((path.name, lineno, key, ch, sec, "NOT CHECKED", "the statute could not be loaded"))
+                continue
             secs = cache[key]
             hit = secs.get((ch, sec)) or (None if ch else next((v for (c, s), v in secs.items() if s == sec), None))
             if hit is None:
@@ -414,6 +447,9 @@ def sfs_check(report: Path | None) -> int:
         report.write_text(out, encoding="utf-8")
     else:
         print(out)
+    if failed:  # an unavailable source is not a successful check
+        print(f"not checked, could not load: {', '.join(sorted(failed))}", file=sys.stderr)
+        return 2
     return 1 if problems else 0
 
 
