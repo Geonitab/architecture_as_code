@@ -1,0 +1,10 @@
+graph TD
+    Start([Issue labelled 'mermaid' or 'diagram']):::kv-primary --> Workflow[Bot workflow starts]:::kv-accent
+    Workflow --> Draft["Claude drafts the .mmd file<br/>with theme and British English"]:::kv-accent
+    Draft --> Validate{Syntax valid?}:::kv-highlight
+    Validate -->|No| Draft
+    Validate -->|Yes| PR[Pull request opened]:::kv-primary
+    PR --> Approve{Approved?}:::kv-highlight
+    Approve -->|No| Draft
+    Approve -->|Yes| Merge[Merged to main]:::kv-primary
+    Merge --> Build[Build converts .mmd to .png]:::kv-accent

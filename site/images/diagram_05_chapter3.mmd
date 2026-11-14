@@ -1,0 +1,9 @@
+%% Diagram: Version control and code structure for Architecture as Code — repository organisation, branching strategies and the collaborative review workflow
+flowchart TD
+    A["Repository\nStructure"]:::kv-primary --> B["Feature\nBranch"]:::kv-highlight
+    B --> C["Pull Request &\nCode Review"]:::kv-accent
+    C --> D["Automated\nValidation"]:::kv-highlight
+    D -->|"approved"| E["Merge to Main"]:::kv-accent
+    E --> F["Tagged\nRelease"]:::kv-primary
+    F --> G["Immutable\nChange History"]:::kv-muted
+    G -->|"informs"| A

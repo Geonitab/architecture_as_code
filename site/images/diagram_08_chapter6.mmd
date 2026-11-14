@@ -1,0 +1,6 @@
+graph TB
+    A[Architecture repository]:::kv-primary --> B[CI/CD pipeline]:::kv-highlight
+    B --> C["Validation per domain<br/>application, data,<br/>infrastructure, security"]:::kv-accent
+    C --> G[Integrated deployment]:::kv-primary
+    G --> H[Monitoring and feedback]:::kv-muted
+    H --> A

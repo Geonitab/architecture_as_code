@@ -1,0 +1,17 @@
+%% GitHub workflow for management artefacts
+flowchart TB
+    Repo[Management repository]:::kv-primary
+    Issues[Issue templates]:::kv-highlight
+    Discussions[Discussions]:::kv-highlight
+    PRs[Pull requests]:::kv-accent
+    Actions[GitHub Actions]:::kv-accent
+    Portal[Management portal]:::kv-primary
+    Alerts[Notifications]:::kv-pattern
+
+    Repo --> Issues
+    Repo --> Discussions
+    Issues --> PRs
+    Discussions --> PRs
+    PRs --> Actions
+    Actions --> Portal
+    Actions --> Alerts

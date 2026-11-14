@@ -1,0 +1,16 @@
+---
+standalone: true
+toc: true
+toc-depth: 3
+number-sections: true
+
+highlight-style: tango
+
+epub-chapter-level: 1
+
+metadata:
+  title: "Architecture as Code"
+  subtitle: "A practical handbook for Infrastructure as Code"
+  author: "Gunnar Nordqvist"
+  language: en-GB
+  lang: en-GB

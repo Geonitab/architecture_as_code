@@ -1,0 +1,8 @@
+%% Documentation and architecture alignment feedback loop
+%% Maintains the textual source for Figure 22.3.
+
+flowchart LR
+    Docs["Documentation as Code<br/>Markdown, review, publication"]:::kv-highlight
+    Models["Architecture as Code<br/>models, policy checks, provisioning"]:::kv-primary
+    Docs -. "feedback, guidance" .-> Models
+    Models -. "evidence" .-> Docs

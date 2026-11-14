@@ -1,0 +1,17 @@
+%% Governance as Code approval flow across stakeholders
+graph TD
+    Start[Policy Author:<br/>Draft governance update]:::kv-primary
+    Start --> Branch[Branch & Commit<br/>to Repository]:::kv-highlight
+    Branch --> CI[CI/CD:<br/>Automated tests]:::kv-accent
+    CI --> PR[Open pull request]:::kv-accent
+    PR --> Review[Governance Review]:::kv-primary
+    Review --> Comments{Approved?}:::kv-decision
+    Comments -->|No| Changes[Apply changes<br/>& revalidate]:::kv-highlight
+    Changes --> Review
+    Comments -->|Yes| Merge[Merge to main]:::kv-primary
+    Merge --> Deploy[Deploy to<br/>production]:::kv-accent
+    Deploy --> Audit[Audit trail<br/>published]:::kv-primary
+    Audit --> End[Complete]:::kv-accent
+    
+    classDef kv-decision fill:#1E3A8A,stroke:#0F172A,color:#F8FAFC,stroke-width:3px
+    class Comments kv-decision

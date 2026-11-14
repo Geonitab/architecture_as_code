@@ -1,0 +1,5 @@
+graph LR
+    DaC["Documentation as Code<br/>Purpose: communication<br/>Tools: Mermaid, PlantUML<br/>Output: sites, guides<br/>Audience: humans"]:::kv-highlight
+    AaC["Architecture as Code<br/>Purpose: structure, constraints<br/>Tools: CALM, Structurizr<br/>Output: validation, infrastructure code<br/>Audience: humans and machines"]:::kv-primary
+    DaC -. "narrative context" .-> AaC
+    AaC -. "generated diagrams" .-> DaC

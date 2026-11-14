@@ -1,0 +1,8 @@
+flowchart TB
+    P1["Business requirements<br/>↔ Operational validation"]:::kv-muted
+    P2["Functional requirements<br/>↔ Acceptance testing"]:::kv-highlight
+    P3["Non-functional requirements<br/>↔ System testing"]:::kv-highlight
+    P4["System design<br/>↔ Integration testing"]:::kv-accent
+    P5["Detailed design<br/>↔ Unit testing"]:::kv-accent
+    CODE["Implementation as code"]:::kv-primary
+    P1 --> P2 --> P3 --> P4 --> P5 --> CODE

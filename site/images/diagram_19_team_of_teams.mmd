@@ -1,0 +1,14 @@
+%% Team-of-teams leadership structure
+flowchart TD
+    Blueprint["Squad blueprint<br/>roles, rituals, interfaces"]:::kv-primary
+    Dependencies[Dependency map]:::kv-highlight
+    Nexus[Nexus governance]:::kv-primary
+    Shared[Shared services agreements]:::kv-accent
+    Support[Support automation]:::kv-muted
+    Dashboard[Organisation dashboard]:::kv-pattern
+
+    Blueprint --> Nexus
+    Dependencies --> Nexus
+    Blueprint --> Shared
+    Shared --> Support
+    Nexus --> Dashboard

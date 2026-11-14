@@ -1,0 +1,16 @@
+%% Diagram: Management as Code operating model
+flowchart TB
+    Intent[Leadership intent as code]:::kv-primary
+    Guardrails[Codified guardrails]:::kv-accent
+    Automation[Automated governance]:::kv-accent
+    Teams[Empowered teams]:::kv-highlight
+    Feedback[Feedback signals]:::kv-highlight
+    Culture[Codified culture]:::kv-pattern
+
+    Intent --> Guardrails
+    Guardrails --> Automation
+    Automation --> Teams
+    Teams --> Feedback
+    Feedback --> Intent
+    Intent --> Culture
+    Culture --> Teams

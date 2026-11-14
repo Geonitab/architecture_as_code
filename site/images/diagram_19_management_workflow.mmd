@@ -1,0 +1,15 @@
+%% Issue and discussion lifecycle for management topics
+graph TB
+    Topic[Topic raised]:::kv-primary
+    Template[Issue template applied]:::kv-highlight
+    Analysis[Cross-functional analysis]:::kv-accent
+    Decision[Decision logged in PR]:::kv-accent
+    FollowUp[Automated follow-up]:::kv-highlight
+    Archive[Historical record]:::kv-muted
+
+    Topic --> Template
+    Template --> Analysis
+    Analysis --> Decision
+    Decision --> FollowUp
+    Decision --> Archive
+    FollowUp --> Archive

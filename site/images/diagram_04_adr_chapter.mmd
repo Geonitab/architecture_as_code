@@ -1,0 +1,11 @@
+graph TD
+    A[Problem]:::kv-primary --> B[Context and alternatives]:::kv-accent
+    B --> C[Decision]:::kv-accent
+    C --> D[ADR documented]:::kv-primary
+    D --> G{Approved?}:::kv-outline
+    G -->|No| B
+    G -->|Yes| I[Implement and monitor]:::kv-highlight
+    I --> K{Works?}:::kv-outline
+    K -->|No| M[New ADR]:::kv-pattern
+    K -->|Yes| L[Continued use]:::kv-accent
+    M --> A

@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant Dev as Developer
+    participant Git as Git
+    participant CI as CI/CD
+    participant Rev as Reviewer
+
+    Dev->>Git: Push branch
+    Git->>CI: Run checks
+    CI-->>Git: Checks pass
+    Dev->>Rev: Open pull request
+    Rev->>Git: Approve
+    Git->>CI: Merge and deploy
