@@ -250,7 +250,7 @@ FinOps practices, as codified in the FinOps Foundation's framework [Source [124]
 
 This financial observability extends to sustainability metrics, turning carbon accounting into an operational concern rather than an annual report. Teams make informed trade-offs between cost, performance, and environmental impact, guided by dashboards and automated insights that are derived from the same declarative definitions used to provision infrastructure.
 
-Market signals reinforce the need for this financial discipline: the Infrastructure as Code market and public cloud spending forecasts discussed in [Chapter 15B: Cost Optimisation and Resource Management](15_cost_optimization.md) point in the same direction, and executive teams expect Architecture as Code programmes to convert rising automation budgets into measurable efficiency, regulatory resilience, and sustainability outcomes.
+Market signals reinforce the need for this financial discipline: the Infrastructure as Code market and public cloud spending forecasts discussed in [Chapter 15: Cost Optimisation and Resource Management](15_cost_optimization.md) point in the same direction, and executive teams expect Architecture as Code programmes to convert rising automation budgets into measurable efficiency, regulatory resilience, and sustainability outcomes.
 
 ## Advanced GitOps and Automation Patterns
 
