@@ -82,3 +82,7 @@ puppeteer-config.json
 final-release/
 whitepapers/images/
 .claude/worktrees/
+
+# EU and Swedish legal texts fetched by scripts/fetch_eu_law.py (manifest.json is committed)
+data/law/*.xhtml
+data/law/*.sv.txt

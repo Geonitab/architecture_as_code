@@ -227,6 +227,10 @@ python3 -m pytest tests/ -v
 python3 build_all_orchestrator.py
 ```
 
+### Verifying legal texts
+
+`eur-lex.europa.eu` serves a JavaScript loader to automated clients, so verify EU law against the authentic text from the Publications Office's Cellar service: `python3 scripts/fetch_eu_law.py get <instrument> --article N` (`list` shows the instruments and CELEX numbers; the AI Act is read in its consolidated version, which includes Regulation (EU) 2026/1744), `fetch_eu_law.py check` confirms that every cited article exists, and `fetch_eu_law.py sfs get <statute> --section N` reads Swedish statutes from the Riksdag's SFS database. Comparing the sentence with the text is the writer's and reviewer's job.
+
 ## Technology Stack
 
 **Core Publishing:**
