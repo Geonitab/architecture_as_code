@@ -21,7 +21,7 @@ docs/
 ├── 01_introduction.md … 04_adr.md                         # Part A: Foundations (1, 26A, 2, 3, 4)
 ├── 05_automation_devops_cicd.md … 08_microservices.md     # Part B: Architecture Platform (5–8)
 ├── 09_security_fundamentals.md … 15a_evidence_as_code.md  # Part C: Security, Governance & Assurance (9, 9B, 9C, 10, 11, 12, 15A)
-├── 13_testing_strategies.md … 16_migration.md             # Part D: Delivery & Operations (13, 14, 15B, 16)
+├── 13_testing_strategies.md … 16_migration.md             # Part D: Delivery & Operations (13, 14, 15, 16)
 ├── 17_organisational_change.md … 21_digitalisation.md     # Part E: Organisation & Leadership (17, 18, 19, 23, 20, 21)
 ├── 22_documentation_vs_architecture.md, 24_best_practices.md  # Part F: Experience & Best Practices (22, 24)
 ├── 25_future_trends.md … 27_conclusion.md                 # Part G: Future & Wrap-up (25, 26B, 27)

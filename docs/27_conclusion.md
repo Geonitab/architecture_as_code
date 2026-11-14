@@ -139,4 +139,4 @@ The regulation cited in this chapter:
 
 4. **European Parliament and Council (2024).** *Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act).* Official Journal of the European Union, L series, 12 July 2024. [https://eur-lex.europa.eu/eli/reg/2024/1689/oj](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) [Source [125]](33_references.md#source-125)
 
-For a full bibliography, see [Chapter 33: References and Sources](33_references.md).
+For a full bibliography, see [References and Sources](33_references.md).
