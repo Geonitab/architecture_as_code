@@ -56,3 +56,17 @@ def test_sfs_sections_handle_chapters_and_wrapped_lines() -> None:
     assert set(secs) == {("1", "1"), ("1", "2"), ("2", "1")}
     assert "radbruten" in secs[("1", "2")]
     assert secs[("2", "1")].startswith("1 § En annan")
+
+
+def test_sfs_references_accept_both_orders_and_english_forms() -> None:
+    refs = lambda t: [(k, c, s) for _, k, c, s in f.sfs_find_references(t)]  # noqa: E731
+    assert refs("MBL section 11 applies.") == [("mbl", "", "11")]
+    assert refs("MBL §11 applies.") == [("mbl", "", "11")]
+    assert refs("MBL 11 § applies.") == [("mbl", "", "11")]
+
+
+def test_sfs_references_keep_chapter_with_kap_abbreviation() -> None:
+    refs = lambda t: [(k, c, s) for _, k, c, s in f.sfs_find_references(t)]  # noqa: E731
+    assert refs("Enligt kommunallagen 6 kap. 37 § får nämnden delegera.") == [("kommunallag", "6", "37")]
+    assert refs("Local Government Act, chapter 6, section 37, allows delegation.") == [("kommunallag", "6", "37")]
+    assert refs("I kommunallagen 7 kap. 5 § och 7 kap. 6 §.") == [("kommunallag", "7", "5"), ("kommunallag", "7", "6")]

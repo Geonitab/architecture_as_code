@@ -221,7 +221,7 @@ def find_references(text: str) -> list[tuple[int, str, str]]:
     for lineno, line in enumerate(text.splitlines(), start=1):
         if line.startswith("#") or "_references.md#source" in line and line.startswith("- "):
             continue
-        for sentence in re.split(r"(?<=[.;:])\s+", line):
+        for sentence in re.split(r"(?<=[.;:])(?<!\bkap\.)(?<!\bch\.)\s+", line):
             keys = [k for k, (_, _, aliases) in INSTRUMENTS.items()
                     if any(re.search(rf"(?<![A-Za-z]){re.escape(a)}(?![A-Za-z])", sentence) for a in aliases)]
             if len(keys) != 1:  # none, or ambiguous: skip rather than guess
@@ -358,19 +358,25 @@ def sfs_get(key: str, section: str, chapter: str | None) -> str:
     return secs[(ck, sk)]
 
 
-SFS_REF = re.compile(r"(?:(\d+\s?[a-z]?)\s+(?:kap\.|ch\.|Chapter)\s+)?(\d+\s?[a-z]?)\s*(?:§§?|sections?)", re.I)
+SFS_REF = re.compile(
+    r"(?:(?:(\d+(?:\s?[a-z](?![a-z]))?)\s+(?:kap\.|ch\.|chapter)|(?:chapter|ch\.)\s+(\d+(?:\s?[a-z](?![a-z]))?),?)\s+)?"
+    r"(?:(\d+(?:\s?[a-z](?![a-z]))?)\s*(?:§§?|sections?)|(?:§§?|sections?)\s*(\d+(?:\s?[a-z](?![a-z]))?))",
+    re.I,
+)
 
 
 def sfs_find_references(text: str) -> list[tuple[int, str, str, str]]:
     """(line, key, chapter, section) for section references in a sentence that names one Swedish statute."""
     found = []
     for lineno, line in enumerate(text.splitlines(), start=1):
-        for sentence in re.split(r"(?<=[.;:])\s+", line):
+        for sentence in re.split(r"(?<=[.;:])(?<!\bkap\.)(?<!\bch\.)\s+", line):
             keys = [k for k, (_, _, al) in SFS.items() if any(re.search(re.escape(a), sentence) for a in al)]
             if len(keys) != 1:
                 continue
             for m in SFS_REF.finditer(sentence):
-                found.append((lineno, keys[0], (m.group(1) or "").replace(" ", ""), m.group(2).replace(" ", "")))
+                chapter = (m.group(1) or m.group(2) or "").replace(" ", "")
+                section = (m.group(3) or m.group(4)).replace(" ", "")
+                found.append((lineno, keys[0], chapter, section))
     return found
 
 
