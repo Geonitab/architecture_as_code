@@ -70,3 +70,10 @@ def test_sfs_references_keep_chapter_with_kap_abbreviation() -> None:
     assert refs("Enligt kommunallagen 6 kap. 37 § får nämnden delegera.") == [("kommunallag", "6", "37")]
     assert refs("Local Government Act, chapter 6, section 37, allows delegation.") == [("kommunallag", "6", "37")]
     assert refs("I kommunallagen 7 kap. 5 § och 7 kap. 6 §.") == [("kommunallag", "7", "5"), ("kommunallag", "7", "6")]
+
+
+def test_amending_article_is_not_checked_against_the_amended_act() -> None:
+    own = f.find_references("Article 1, point 40(b), of Regulation (EU) 2026/1744 amends the text.")
+    assert [(k, n) for _, k, n in own] == [("ai_omnibus_own", "1")]
+    amended = f.find_references("Article 6 of the AI Act as amended by the Digital Omnibus applies.")
+    assert all(k != "ai_omnibus_own" for _, k, _ in amended)

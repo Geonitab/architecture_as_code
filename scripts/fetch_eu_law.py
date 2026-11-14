@@ -229,7 +229,12 @@ def find_references(text: str) -> list[tuple[int, str, str]]:
             for m in ART_RE.finditer(sentence):
                 for n in _numbers(m.group(1)):
                     if re.fullmatch(r"\d+[A-Za-z]?", n):
-                        found.append((lineno, keys[0], n))
+                        key = keys[0]
+                        # 'Article 1, point 40(b), of Regulation (EU) 2026/1744' cites the amending
+                        # act's own article, not the same-numbered article of the amended AI Act.
+                        if key == "ai_omnibus" and re.match(r"\s*,?\s*points?\s+\d", sentence[m.end():]):
+                            key = "ai_omnibus_own"
+                        found.append((lineno, key, n))
     return found
 
 
@@ -252,7 +257,7 @@ def check(report: Path | None, files: list[Path] | None = None, strict: bool = F
     rows, notfound = [], 0
     for path in files:
         for lineno, key, n in find_references(path.read_text(encoding="utf-8")):
-            target = "ai_act" if key == "ai_omnibus" else key
+            target = {"ai_omnibus": "ai_act", "ai_omnibus_own": "ai_omnibus"}.get(key, key)
             if target not in roots:
                 try:
                     roots[target] = articles(load(INSTRUMENTS[target][0]))
