@@ -766,6 +766,9 @@ class Deck:
             # figure of the chapter, so that the slide does not repeat the title of the chapter's text slide.
             label = f"Figure {number.group(1)}" if number else "Figure"
             headline, rest = f"{label}  \u00b7  {chapter['title']}", caption
+        elif headline.strip().lower() == chapter["title"].strip().lower():
+            # The figure carries only the chapter title as alt text: mark it, so it does not repeat the text slide's title.
+            headline = f"{'Figure ' + number.group(1) if number else 'Figure'}  \u00b7  {headline}"
         slide, title = self.new_slide(headline, chapter["notes"])
         self.background(slide)
         self.accent_bar(slide)
@@ -778,7 +781,35 @@ class Deck:
         with Image.open(figure_path) as image:
             ratio = image.width / image.height
         pad = 0.2
-        if ratio < 1.3:
+        parts = self.split_tall(figure_path) if ratio < 0.8 else None
+        if parts:
+            # A very tall diagram is cut at its quietest rows into columns that are read left to right, so that
+            # its text is as large as on a wide diagram.
+            import io
+
+            scale, segments = parts
+            box_x, box_y, box_w, box_h = 0.8, 1.9, 11.7, 4.25
+            gap = 0.25
+            self.rect(slide, box_x, box_y, box_w, box_h, t["white"], line=t["tint"])
+            widths = [segment.width * scale for segment in segments]
+            x = box_x + (box_w - sum(widths) - gap * (len(segments) - 1)) / 2
+            for number_, (segment, seg_w) in enumerate(zip(segments, widths), 1):
+                seg_h = segment.height * scale
+                buffer = io.BytesIO()
+                segment.save(buffer, "PNG")
+                buffer.seek(0)
+                picture = slide.shapes.add_picture(
+                    buffer, self.In(x), self.In(box_y + (box_h - seg_h) / 2), self.In(seg_w), self.In(seg_h)
+                )
+                alt_text = figure["alt"] or headline
+                picture._element.nvPicPr.cNvPr.set("descr", f"{alt_text} (part {number_} of {len(segments)})")
+                x += seg_w
+                if number_ < len(segments):
+                    self.rect(slide, x + gap / 2 - 0.01, box_y + 0.3, 0.02, box_h - 0.6, t["tint"])
+                    x += gap
+            if rest:
+                self.text(slide, 0.8, 6.28, 11.7, 0.66, [{"text": figure_caption(rest), "size": 13, "colour": t["muted"], "line": 1.05}])
+        elif ratio < 1.3:
             # A tall diagram would be a narrow strip in a wide frame, with its text too small to read. It gets the
             # full height under the title and the caption beside it.
             box_x, box_y, box_h = 0.8, 1.85, 4.9
@@ -808,6 +839,62 @@ class Deck:
             if rest:
                 self.text(slide, 0.8, 6.28, 11.7, 0.66, [{"text": figure_caption(rest), "size": 13, "colour": t["muted"], "line": 1.05}])
         self.footer(slide)
+
+    def split_tall(self, path):
+        """Cut a tall diagram into 2 to 4 columns at its quietest rows; None if that would not make it larger."""
+        from PIL import Image
+
+        with Image.open(path) as source:
+            rgba = source.convert("RGBA")
+        canvas = Image.new("RGBA", rgba.size, (255, 255, 255, 255))
+        canvas.alpha_composite(rgba)
+        image = canvas.convert("RGB")
+        w, h = image.size
+        avail_w, avail_h, gap = 11.3, 3.85, 0.25
+        current = min(6.2 / w, 4.5 / h)
+        mask = image.convert("L").point(lambda v: 255 if v < 250 else 0)
+        ink = mask.resize((1, h), Image.BOX)
+        # Only the middle of a run of at least 8 rows that hold nothing but one thin connector line is a safe cut: a
+        # row through a node or a label, one between two lines of text, or one that a branch or a feedback loop
+        # crosses, is never one.
+        limit = max(4.0, 0.015 * w) * 255 / w
+        quiet = [value <= limit for value in ink.getdata()]
+        safe, y = [], 0
+        while y < h:
+            if quiet[y]:
+                z = y
+                while z < h and quiet[z]:
+                    z += 1
+                if z - y >= 8:
+                    middle = (y + z) // 2
+                    crossings = 0
+                    for r in range(middle - 3, middle + 4):
+                        row = list(mask.crop((0, r, w, r + 1)).getdata())
+                        crossings = max(crossings, sum(1 for i in range(w) if row[i] and (i == 0 or not row[i - 1])))
+                    if crossings <= 1:  # a single connector crosses the cut: a branch or a feedback loop would be severed
+                        safe.append(middle)
+                y = z
+            else:
+                y += 1
+        best = None
+        for k in (2, 3, 4):
+            cuts = [0]
+            for i in range(1, k):
+                centre, window = round(i * h / k), int(h * 0.12)
+                options = [m for m in safe if m > cuts[-1] and abs(m - centre) <= window]
+                if not options:
+                    break
+                cuts.append(min(options, key=lambda m: abs(m - centre)))
+            else:
+                cuts.append(h)
+                tallest = max(cuts[i + 1] - cuts[i] for i in range(k))
+                scale = min((avail_w - gap * (k - 1)) / (k * w), avail_h / tallest)
+                if best is None or scale > best[0]:
+                    best = (scale, cuts)
+        if best is None or best[0] < 1.25 * current:
+            return None
+        scale, cuts = best
+        return scale, [image.crop((0, cuts[i], w, cuts[i + 1])) for i in range(len(cuts) - 1)]
 
     def author_portrait(self, slide, x, y, size):
         """The author's portrait, cropped to a circle. Does nothing if the file is missing."""
