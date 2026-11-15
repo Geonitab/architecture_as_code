@@ -11,7 +11,7 @@ from pathlib import Path
 # Add the project root to Python path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from generate_presentation import (
+from bookengine.generate_presentation import (
     analyze_mermaid_diagram_types,
     get_missing_diagram_types,
     validate_chapter_diagrams

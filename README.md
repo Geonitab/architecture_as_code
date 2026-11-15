@@ -54,8 +54,6 @@ docs/                     # Manuscript chapters, diagrams, and publishing assets
 ├── *.md                  # Numbered chapters and appendices (01_introduction.md … appendix_d_control_mapping_matrix_template.md)
 ├── archive/              # Retired chapter drafts kept for reference (e.g., former Chapter 32)
 ├── images/               # Mermaid sources (*.mmd) and generated PNG diagrams
-├── build_book.sh         # Local helper for PDF/EPUB/DOCX generation
-└── pandoc.yaml           # Shared Pandoc configuration
 
 releases/                 # Git-ignored distribution bundles populated by build scripts
 ├── book/                 # architecture_as_code.{pdf,epub,docx}
@@ -76,7 +74,7 @@ Mermaid diagrams live in `docs/images/` with the source (`*.mmd`) and the render
 When you adjust or add diagrams:
 
 - Run `npm ci` once per workspace to install the locked Mermaid CLI toolchain.
-- Execute `python3 scripts/check_mermaid_diagrams.py` to confirm every committed PNG still matches its Mermaid source. The helper renders each diagram using the same parameters as the book build and fails fast if an image is missing or outdated.【F:scripts/check_mermaid_diagrams.py†L1-L138】
+- Execute `bookengine run check_mermaid_diagrams` to confirm every committed PNG still matches its Mermaid source. The helper renders each diagram using the same parameters as the book build and fails fast if an image is missing or outdated.【F:scripts/check_mermaid_diagrams.py†L1-L138】
 - If the check reports that Chromium cannot start, install the headless browser dependencies listed in the error output or point `PUPPETEER_EXECUTABLE_PATH` to an existing Chrome binary before rerunning the command.【F:scripts/check_mermaid_diagrams.py†L94-L138】
 
 Continuous integration reinforces this policy via the **Verify Mermaid Diagrams** workflow, which installs the toolchain and runs the same check on every push or pull request that touches the diagram set.【F:.github/workflows/verify-mermaid-diagrams.yml†L1-L53】
@@ -95,23 +93,23 @@ Use `make verify-env` to confirm the local toolchain matches the locked versions
 ### Core Commands
 ```bash
 # Regenerate chapter content from automation scripts
-python3 generate_book.py
+bookengine generate-book
 
 # Build PDF, EPUB, and DOCX (runs diagram export, copies cover art, and writes to releases/book/)
-docs/build_book.sh
+bookengine build
 
 # Generate the PowerPoint deck (writes to releases/presentation/ by default with --release)
 python3 generate_presentation.py --release --create-pptx
 
 # Orchestrate every deliverable and create an optional release archive
-python3 build_all_orchestrator.py --zip
+bookengine release --zip
 
 # Create the full distribution bundle (book formats, presentation, whitepapers, website)
-./build_release.sh
+bookengine release --zip
 
 ```
 
-> **Where is the build script?** The helper referenced above lives at `docs/build_book.sh`, is checked into source control, and ships with executable permissions so it can be invoked directly from the repository root (`./docs/build_book.sh`). The high-level orchestrator (`build_all_orchestrator.py`) calls the same entry point internally, keeping the README instructions and the automated workflow in lockstep.
+> **Where is the build script?** The helper referenced above lives at `bookengine build`, is checked into source control, and ships with executable permissions so it can be invoked directly from the repository root (`./docs/build_book.sh`). The high-level orchestrator (`build_all_orchestrator.py`) calls the same entry point internally, keeping the README instructions and the automated workflow in lockstep.
 
 The GitHub Actions pipeline (`.github/workflows/unified-build-release.yml`) mirrors these commands to produce release artifacts whenever book content or automation scripts change.【F:build_release.sh】
 
@@ -163,8 +161,8 @@ Key workflows include:
    automation scripts in line with the shared workflow.
 3. Regenerate content and verify outputs:
    ```bash
-   python3 generate_book.py
-   docs/build_book.sh
+   bookengine generate-book
+   bookengine build
    ```
 4. When ADRs are added or updated, run:
    ```bash
@@ -172,7 +170,7 @@ Key workflows include:
    python3 scripts/generate_adr_catalogue.py
    ```
    These checks confirm the metadata links to chapters, diagrams, and backlog items whilst refreshing the MkDocs catalogue.
-5. If changes affect release collateral, run `./build_release.sh` to confirm presentation, whitepaper, and website builds succeed.
+5. If changes affect release collateral, run `bookengine release --zip` to confirm presentation, whitepaper, and website builds succeed.
 6. Commit changes with clear messages and submit a pull request following the shared
    Git-based review workflow so automation validates heading and link conventions.
 
@@ -189,9 +187,9 @@ Key workflows include:
 Use `scripts/verify_sources.py` to verify all cited sources throughout the manuscript. The script checks URL accessibility, validates ISBN formats, and identifies sources requiring manual verification. It generates comprehensive Markdown and JSON reports listing verified, broken, and manually-verifiable sources.【F:scripts/verify_sources.py】
 
 ```bash
-python3 scripts/verify_sources.py            # default run
-python3 scripts/verify_sources.py --timeout 15  # custom timeout for slow endpoints
-python3 scripts/verify_sources.py --output reports/sources  # custom output location
+bookengine run verify_sources            # default run
+bookengine run verify_sources --timeout 15  # custom timeout for slow endpoints
+bookengine run verify_sources --output reports/sources  # custom output location
 ```
 
 ## 📄 Governance

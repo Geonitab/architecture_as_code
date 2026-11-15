@@ -91,8 +91,6 @@ docs/                           # All manuscript content
 ├── appendix_*.md               # Appendices
 ├── book_index.json             # Canonical chapter ordering (single source of truth)
 ├── images/                     # Mermaid sources (*.mmd) and generated PNGs
-├── build_book.sh               # PDF / EPUB / DOCX build script
-└── pandoc.yaml                 # Pandoc configuration
 
 scripts/                        # Validation and automation utilities
 ├── check_mermaid_diagrams.py   # Verify diagram consistency
@@ -105,7 +103,6 @@ scripts/                        # Validation and automation utilities
 templates/                      # Reusable document templates
 └── chapter_template.md         # Starting point for new chapters
 
-tests/                          # Pytest test suites
 ├── test_completeness.py        # Content completeness validation
 ├── test_consistency.py         # Cross-chapter consistency checks
 └── test_technical_accuracy.py  # Technical correctness checks
@@ -154,17 +151,17 @@ If you are adding a new chapter, add an entry in the correct position within `bo
 
 ```bash
 # Regenerate manuscript output
-python3 generate_book.py
+bookengine generate-book
 
 # Build all formats
-docs/build_book.sh
+bookengine build
 
 # Run content validation
-python3 -m pytest tests/ -v
+bookengine test -v
 
 # Check links and sources
-python3 scripts/verify_links.py
-python3 scripts/verify_sources.py
+bookengine run verify_links
+bookengine run verify_sources
 ```
 
 ### 7. Open a pull request
@@ -210,7 +207,7 @@ Mermaid diagrams are the primary diagramming format. Both the `.mmd` source and 
 4. Validate consistency across all diagrams:
 
    ```bash
-   python3 scripts/check_mermaid_diagrams.py
+   bookengine run check_mermaid_diagrams
    ```
 
 5. Reference the diagram in your chapter Markdown:
@@ -236,7 +233,7 @@ All diagram text must meet WCAG AA contrast requirements (minimum 4.5:1 for norm
 If `mmdc` fails with a Chrome or Chromium error:
 
 ```bash
-PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) python3 scripts/check_mermaid_diagrams.py
+PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) bookengine run check_mermaid_diagrams
 ```
 
 ---
@@ -280,7 +277,7 @@ Maintain a formal, instructional tone suitable for professional and academic rea
 
 ### Automation scripts
 
-Python scripts under `scripts/` and root-level generators follow PEP 8. Run `python3 -m pytest tests/test_technical_accuracy.py -v` to verify correctness after changes to automation code.
+Python scripts under `scripts/` and root-level generators follow PEP 8. Run `bookengine test -v -k technical_accuracy` to verify correctness after changes to automation code.
 
 ---
 
@@ -292,12 +289,12 @@ All contributions must pass the full pytest test suite before submission.
 
 ```bash
 # Full suite
-python3 -m pytest tests/ -v
+bookengine test -v
 
 # Individual suites
-python3 -m pytest tests/test_completeness.py -v
-python3 -m pytest tests/test_consistency.py -v
-python3 -m pytest tests/test_technical_accuracy.py -v
+bookengine test -v -k completeness
+bookengine test -v -k consistency
+bookengine test -v -k technical_accuracy
 ```
 
 ### What the tests cover
@@ -312,16 +309,16 @@ python3 -m pytest tests/test_technical_accuracy.py -v
 
 ```bash
 # Verify all internal and external links
-python3 scripts/verify_links.py
+bookengine run verify_links
 
 # Verify cited sources (URLs and ISBNs)
-python3 scripts/verify_sources.py
+bookengine run verify_sources
 
 # Check document numbering consistency
-python3 scripts/check_doc_numbering.py
+bookengine run check_doc_numbering
 
 # Validate diagram consistency
-python3 scripts/check_mermaid_diagrams.py
+bookengine run check_mermaid_diagrams
 ```
 
 ---
@@ -331,7 +328,7 @@ python3 scripts/check_mermaid_diagrams.py
 ### Quick build (content only)
 
 ```bash
-python3 generate_book.py
+bookengine generate-book
 ```
 
 This completes in under one second and confirms that all chapter files referenced in `book_index.json` are present and parseable.
@@ -339,7 +336,7 @@ This completes in under one second and confirms that all chapter files reference
 ### Full book build (PDF, EPUB, DOCX)
 
 ```bash
-docs/build_book.sh
+bookengine build
 ```
 
 This takes approximately 30 seconds and produces output files in `releases/book/`.
@@ -347,7 +344,7 @@ This takes approximately 30 seconds and produces output files in `releases/book/
 ### Complete release build
 
 ```bash
-python3 build_all_orchestrator.py --zip
+bookengine release --zip
 ```
 
 This generates all deliverables: book formats, presentation deck, per-chapter HTML whitepapers, and the documentation website.
@@ -363,7 +360,7 @@ Open `http://127.0.0.1:8000` in a browser to preview the site locally.
 ### Combined content and build
 
 ```bash
-python3 generate_book.py && docs/build_book.sh
+bookengine generate-book && bookengine build
 ```
 
 Run this after any manuscript change to verify the full publishing pipeline succeeds before committing.
@@ -455,12 +452,12 @@ Complete this checklist before marking a PR as ready for review.
 - [ ] Terminology follows `docs/STYLE_GUIDE.md`
 - [ ] All new sections include appropriate headings and are logically ordered
 - [ ] Code examples have language identifiers and are technically correct
-- [ ] References and citations are complete and verified (`python3 scripts/verify_sources.py`)
+- [ ] References and citations are complete and verified (`bookengine run verify_sources`)
 
 ### Diagrams
 
 - [ ] Every new or modified `.mmd` file has a corresponding regenerated `.png`
-- [ ] `python3 scripts/check_mermaid_diagrams.py` passes with no errors
+- [ ] `bookengine run check_mermaid_diagrams` passes with no errors
 - [ ] Diagram alt text is descriptive and in British English
 - [ ] Diagrams use the approved Kvadrat colour palette
 
@@ -468,13 +465,13 @@ Complete this checklist before marking a PR as ready for review.
 
 - [ ] `docs/book_index.json` is updated if a chapter was added or renamed
 - [ ] Chapter YAML frontmatter is complete (title, chapter number, author, date, tags)
-- [ ] All internal links resolve (`python3 scripts/verify_links.py`)
+- [ ] All internal links resolve (`bookengine run verify_links`)
 
 ### Build and tests
 
-- [ ] `python3 generate_book.py` completes without errors
-- [ ] `docs/build_book.sh` completes without errors
-- [ ] `python3 -m pytest tests/ -v` passes with no failures
+- [ ] `bookengine generate-book` completes without errors
+- [ ] `bookengine build` completes without errors
+- [ ] `bookengine test -v` passes with no failures
 - [ ] `make verify-env` reports all versions as matching
 
 ### General

@@ -35,16 +35,16 @@ pandoc --print-default-template=latex > ~/.local/share/pandoc/templates/eisvogel
 Build and Test Commands
 CRITICAL TIMING - NEVER CANCEL these operations:
 # Book generation
-python3 generate_book.py          # <1 second - generates markdown content
-docs/build_book.sh                # 30 seconds (timeout: 300s) - full PDF build with diagrams
+bookengine generate-book          # <1 second - generates markdown content
+bookengine build                # 30 seconds (timeout: 300s) - full PDF build with diagrams
 
 # Complete book publishing workflow (45 seconds total - NEVER CANCEL, timeout: 600s)
-python3 generate_book.py && docs/build_book.sh
+bookengine generate-book && bookengine build
 Validation Requirements
 MANUAL VALIDATION: After ANY changes, you MUST test actual functionality:
 Book Building Validation
 # Generate and build complete book
-python3 generate_book.py && docs/build_book.sh
+bookengine generate-book && bookengine build
 
 # Verify outputs
 ls -la releases/book/architecture_as_code.pdf   # Primary PDF output
@@ -63,8 +63,6 @@ docs/                     # Book content
 ├── part_*.md            # Part introductions
 ├── images/*.mmd         # Mermaid diagram source files (≈100)
 ├── images/*.png         # Generated PNG diagrams (kept under version control)
-├── build_book.sh        # Local PDF/EPUB/DOCX build script
-└── pandoc.yaml          # Shared Pandoc configuration
 
 releases/book/           # Generated book formats (git-ignored, created by builds)
 ├── architecture_as_code.pdf
@@ -80,7 +78,7 @@ PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) mmdc -i input.mmd -o output.png
 ESLint Warnings: Existing lint configurations are retained for historical reasons and may reference React refresh or TypeScript interfaces. These warnings are expected until the front-end is reinstated and do not prevent book builds.
 TeXLive Installation: Takes 8+ minutes and includes kernel updates. This is normal - NEVER CANCEL.
 Development Workflow
-1. Test book generation first: `python3 generate_book.py && docs/build_book.sh`
+1. Test book generation first: `bookengine generate-book && bookengine build`
 2. Make minimal changes.
 3. Re-validate immediately by rerunning the book build after each change.
 4. Run additional scripts as needed (e.g., `npm run generate:whitepapers`).

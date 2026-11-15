@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repository is a **book publishing platform** for "Architecture as Code", a comprehensive technical book covering architecture-as-code principles across 38 chapters and appendices. The project automates the generation of multiple publication formats (PDF, EPUB, DOCX), presentations, whitepapers, and a documentation website.
 
+**The engine.** The scripts, tests, build, Pandoc configuration, LaTeX templates, MkDocs hook, Dockerfile and reusable CI workflows are not in this repository. They live in the shared engine, the `geon-book-engine` package (repository Geonitab/book-engine, Apache-2.0, provided by GEON IT AB), which every book of the series installs (`requirements.txt` pins the version) and runs as `bookengine`. This repository holds only what is the book's own: the manuscript in `docs/`, `book.yaml` (title, file prefix `architecture_as_code`, series position 1, bibliography file, URLs), the book-specific scripts (`scripts/adr_impact_analysis.py`, `scripts/adr_metrics.py`, `scripts/analyze_diagram_complexity.py`, `scripts/check_structurizr_manifest.py`, `scripts/generate_adr_catalogue.py`, `scripts/translate_repo.py`, `scripts/update_structurizr_manifest.py`, `scripts/validate_adrs.py`, `scripts/validate_docs_protection.py`, `scripts/validate_presentation_guidelines.py`), the cover and any other template of its own in `templates/`, `mkdocs.yml`, `BOOK_REQUIREMENTS.md` and thin CI callers. A change to the engine is made in Geonitab/book-engine, never here. `bookengine --help` lists the commands.
+
 **Key principle:** This is primarily a publishing automation project. There is no React dashboard or front-end application (historical references in old configs may exist but can be ignored).
 
 ## Essential Commands
@@ -13,13 +15,13 @@ This repository is a **book publishing platform** for "Architecture as Code", a 
 ### Book Building
 ```bash
 # Generate manuscript content from automation scripts
-python3 generate_book.py
+bookengine generate-book
 
 # Build all book formats (PDF, EPUB, DOCX) - runs from repo root
-docs/build_book.sh
+bookengine build
 
 # Complete book workflow (content + build)
-python3 generate_book.py && docs/build_book.sh
+bookengine generate-book && bookengine build
 
 # Verify environment matches locked versions
 make verify-env
@@ -31,16 +33,16 @@ make verify-env
 npm ci
 
 # Validate all Mermaid diagrams match their PNG exports
-python3 scripts/check_mermaid_diagrams.py
+bookengine run check_mermaid_diagrams
 ```
 
 ### Complete Release Build
 ```bash
 # Generate all deliverables (book, presentations, whitepapers)
-python3 build_all_orchestrator.py --zip
+bookengine release --zip
 
 # Full release pipeline (same as CI/CD)
-./build_release.sh
+bookengine release --zip
 ```
 
 ### Documentation Site
@@ -55,24 +57,24 @@ mkdocs build
 ### Testing
 ```bash
 # Run content validation tests
-python3 -m pytest tests/ -v
+bookengine test -v
 
 # Run specific test suites
-python3 -m pytest tests/test_completeness.py -v
-python3 -m pytest tests/test_consistency.py -v
-python3 -m pytest tests/test_technical_accuracy.py -v
+bookengine test -v -k completeness
+bookengine test -v -k consistency
+bookengine test -v -k technical_accuracy
 ```
 
 ### Validation Scripts
 ```bash
 # Verify cited sources (URLs and ISBNs)
-python3 scripts/verify_sources.py
+bookengine run verify_sources
 
 # Audit chapter citations against the bibliography
-python3 scripts/audit_references.py
+bookengine run audit_references
 
 # Check document numbering consistency
-python3 scripts/check_doc_numbering.py
+bookengine run check_doc_numbering
 ```
 
 ## Architecture Overview
@@ -99,8 +101,6 @@ docs/                           # All manuscript content
 ├── appendix_*.md               # Appendices
 ├── images/*.mmd                # Mermaid diagram sources (~100 files)
 ├── images/*.png                # Generated PNG diagrams (committed)
-├── build_book.sh               # PDF/EPUB/DOCX build script
-└── pandoc.yaml                 # Pandoc configuration
 
 releases/                       # Generated deliverables (git-ignored)
 ├── book/                       # PDF, EPUB, DOCX
@@ -108,7 +108,7 @@ releases/                       # Generated deliverables (git-ignored)
 ├── whitepapers/                # HTML exports per chapter
 └── website/                    # Static site output
 
-scripts/                        # Validation and automation utilities
+scripts/                        # Book-specific only: adr_impact_analysis.py, adr_metrics.py, analyze_diagram_complexity.py, check_structurizr_manifest.py, generate_adr_catalogue.py, translate_repo.py, update_structurizr_manifest.py, validate_adrs.py, validate_docs_protection.py, validate_presentation_guidelines.py
 ├── check_mermaid_diagrams.py   # Verify diagram consistency
 ├── audit_references.py         # Citation audit against 33_references.md
 ├── verify_sources.py           # Source verification
@@ -124,7 +124,6 @@ scripts/                        # Validation and automation utilities
 ├── structurizr-diagrams.yml    # Structurizr example rendering
 └── mermaid-designer-bot.yml    # Label-triggered diagram bot
 
-tests/                          # Pytest test suites
 ├── test_completeness.py        # Content completeness validation
 ├── test_consistency.py         # Cross-chapter consistency
 └── test_technical_accuracy.py  # Technical correctness
@@ -133,7 +132,7 @@ tests/                          # Pytest test suites
 ### Build Pipeline Architecture
 
 1. **Content Generation:** `generate_book.py` reads `docs/book_index.json` and processes chapter files using the `scripts/navigation.py` module
-2. **Diagram Export:** `docs/build_book.sh` uses Mermaid CLI to convert `.mmd` files to PNG (with fallback if Chromium unavailable)
+2. **Diagram Export:** `bookengine build` uses Mermaid CLI to convert `.mmd` files to PNG (with fallback if Chromium unavailable)
 3. **Book Compilation:** Pandoc converts Markdown → PDF/EPUB/DOCX using the Eisvogel LaTeX template
 4. **Supplementary Formats:**
    - `generate_presentation.py` creates PowerPoint decks with chapter summaries
@@ -165,7 +164,7 @@ tests/                          # Pytest test suites
 - Use "programme" for initiatives (British usage)
 - Refer to audiences as "teams", "practitioners", or "organisations"
 
-**Series order:** this book is Book 1 of *The Transformed Architecture* and refers to no other volume of the series. The later volumes build on its conclusions, never the other way round, so that there is no circular reasoning between the books. Every claim cites an external source or is the book's own conclusion. `tests/test_series_references.py` enforces this.
+**Series order:** this book is Book 1 of *The Transformed Architecture* and refers to no other volume of the series. The later volumes build on its conclusions, never the other way round, so that there is no circular reasoning between the books. Every claim cites an external source or is the book's own conclusion. the engine's `test_series_references.py` enforces this.
 
 **Reference:** See `docs/STYLE_GUIDE.md` for complete editorial rules and `docs/AUTHOR_PERSONA.md` for authorial voice and IT architect technical vocabulary.
 
@@ -175,7 +174,7 @@ tests/                          # Pytest test suites
    ```bash
    # Edit chapter files in docs/
    # Then regenerate and validate
-   python3 generate_book.py && docs/build_book.sh
+   bookengine generate-book && bookengine build
    ```
 
 2. **For diagram changes:**
@@ -183,17 +182,17 @@ tests/                          # Pytest test suites
    # Edit .mmd file in docs/images/
    # Regenerate PNG
    npm ci  # if not already done
-   python3 scripts/check_mermaid_diagrams.py
+   bookengine run check_mermaid_diagrams
    ```
 
 3. **For automation scripts:**
    ```bash
    # Edit Python files in scripts/ or root-level generators
    # Test with actual build
-   python3 generate_book.py && docs/build_book.sh
+   bookengine generate-book && bookengine build
 
    # Run relevant tests
-   python3 -m pytest tests/test_completeness.py -v
+   bookengine test -v -k completeness
    ```
 
 ### Critical Timing Notes (from AGENTS.md)
@@ -212,16 +211,16 @@ After making changes:
 make verify-env
 
 # Check sources
-python3 scripts/verify_sources.py
+bookengine run verify_sources
 
 # Audit citations
-python3 scripts/audit_references.py
+bookengine run audit_references
 
 # Check diagrams
-python3 scripts/check_mermaid_diagrams.py
+bookengine run check_mermaid_diagrams
 
 # Run content tests
-python3 -m pytest tests/ -v
+bookengine test -v
 
 # Build everything
 python3 build_all_orchestrator.py
@@ -229,7 +228,7 @@ python3 build_all_orchestrator.py
 
 ### Verifying legal texts
 
-`eur-lex.europa.eu` serves a JavaScript loader to automated clients, so verify EU law against the authentic text from the Publications Office's Cellar service: `python3 scripts/fetch_eu_law.py get <instrument> --article N` (`list` shows the instruments and CELEX numbers; the AI Act is read in its consolidated version, which includes Regulation (EU) 2026/1744), `fetch_eu_law.py check` confirms that every cited article exists, and `fetch_eu_law.py sfs get <statute> --section N` reads Swedish statutes from the Riksdag's SFS database. Comparing the sentence with the text is the writer's and reviewer's job.
+`eur-lex.europa.eu` serves a JavaScript loader to automated clients, so verify EU law against the authentic text from the Publications Office's Cellar service: `bookengine run fetch_eu_law get <instrument> --article N` (`list` shows the instruments and CELEX numbers; the AI Act is read in its consolidated version, which includes Regulation (EU) 2026/1744), `fetch_eu_law.py check` confirms that every cited article exists, and `fetch_eu_law.py sfs get <statute> --section N` reads Swedish statutes from the Riksdag's SFS database. Comparing the sentence with the text is the writer's and reviewer's job.
 
 ## Technology Stack
 
@@ -307,7 +306,7 @@ Run tests after manuscript changes to catch quality issues before CI/CD.
 If `mmdc` fails with a Chrome/Chromium error:
 ```bash
 # Set explicit Chrome path
-PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) python3 scripts/check_mermaid_diagrams.py
+PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) bookengine run check_mermaid_diagrams
 ```
 
 ### Pandoc Template Missing
