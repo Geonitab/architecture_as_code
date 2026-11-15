@@ -81,6 +81,9 @@ env:
   PANDOC_VERSION: "3.1.9"
   ARTIFACT_RETENTION_DAYS: 30
 
+permissions:
+  contents: read
+
 jobs:
   # Determine build strategy based on inputs or defaults
   setup:
@@ -473,6 +476,8 @@ jobs:
   finalize:
     name: 📦 Finalize & Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # creates the GitHub release
     timeout-minutes: 15
     needs: [setup, docker-build]
     if: always() && needs.docker-build.result == 'success'
