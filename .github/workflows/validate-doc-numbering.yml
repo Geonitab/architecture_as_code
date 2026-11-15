@@ -14,5 +14,5 @@ permissions:
 
 jobs:
   numbering:
-    uses: Geonitab/book-engine/.github/workflows/validate-numbering.yml@60c637e8fdf974487bb99e92291210a80c80f7e7
+    uses: Geonitab/book-engine/.github/workflows/validate-numbering.yml@d9576bb98b10293e5fa8abf92c20855095143641
     secrets: inherit

@@ -17,26 +17,26 @@ For detailed brand requirements, see `docs/archive/book-cover/source/BRAND_GUIDE
 
 ## Colour Palette
 
-All diagrams use the GEON blue colour palette defined in `docs/mermaid-kvadrat-theme.json`. Apply CSS classes to diagram elements using the `:::kv-*` syntax:
+All diagrams use the GEON blue colour palette defined in `docs/mermaid-geon-theme.json`. Apply CSS classes to diagram elements using the `:::geon-*` syntax:
 
 ### Available Colour Classes
 
 | Class | Colour | Hex Code | Usage |
 |-------|--------|----------|-------|
-| `:::kv-primary` | GEON Blue (Dark) | #1E3A8A | Primary elements, strategic components |
-| `:::kv-accent` | Blue (Medium) | #2563EB | Secondary elements, supporting components |
-| `:::kv-highlight` | Light Blue | #3B82F6 | Emphasis elements, callouts |
-| `:::kv-muted` | Ice Blue | #E0F2FE | Background, deprecated elements |
-| `:::kv-pattern` | Lighter Blue | #93C5FD | Pattern elements, tertiary items |
-| `:::kv-outline` | White with Border | White + border | Hollow boxes, outline elements |
+| `:::geon-primary` | GEON Blue (Dark) | #1E3A8A | Primary elements, strategic components |
+| `:::geon-accent` | Blue (Medium) | #2563EB | Secondary elements, supporting components |
+| `:::geon-highlight` | Light Blue | #3B82F6 | Emphasis elements, callouts |
+| `:::geon-muted` | Ice Blue | #E0F2FE | Background, deprecated elements |
+| `:::geon-pattern` | Lighter Blue | #93C5FD | Pattern elements, tertiary items |
+| `:::geon-outline` | White with Border | White + border | Hollow boxes, outline elements |
 
 ### Example Usage
 
 ```mermaid
 graph LR
-    A[Strategic Component]:::kv-primary --> B[Supporting Component]:::kv-accent
-    B --> C[Highlighted Element]:::kv-highlight
-    D[Background Element]:::kv-muted
+    A[Strategic Component]:::geon-primary --> B[Supporting Component]:::geon-accent
+    B --> C[Highlighted Element]:::geon-highlight
+    D[Background Element]:::geon-muted
 ```
 
 ## Legibility limits
@@ -73,17 +73,17 @@ Use flowcharts for process flows, system architectures, and component relationsh
 ```mermaid
 graph TB
     subgraph "System Architecture"
-        A[Frontend Application]:::kv-primary
-        B[API Gateway]:::kv-accent
-        C[Backend Services]:::kv-accent
-        D[Database]:::kv-highlight
+        A[Frontend Application]:::geon-primary
+        B[API Gateway]:::geon-accent
+        C[Backend Services]:::geon-accent
+        D[Database]:::geon-highlight
     end
     
     A --> B
     B --> C
     C --> D
     
-    class A,B,C,D kv-primary
+    class A,B,C,D geon-primary
 ```
 
 ### Sequence Diagrams
@@ -187,10 +187,10 @@ requirementDiagram
 
 ### DO
 
-✅ Use `:::kv-*` CSS classes for all styled nodes  
+✅ Use `:::geon-*` CSS classes for all styled nodes  
 ✅ Write all text in British English (organisation, optimisation, behaviour)  
 ✅ Keep titles clear, professional, and descriptive  
-✅ Rely on the central theme file (`mermaid-kvadrat-theme.json`)  
+✅ Rely on the central theme file (`mermaid-geon-theme.json`)  
 ✅ Test diagram rendering before committing  
 ✅ Use rounded corners (defined in theme)  
 ✅ Apply consistent stroke widths (defined in theme)  
@@ -251,7 +251,7 @@ find docs/images -name "*.mmd" -exec grep -l "🛠\|🏆\|📊\|🔧\|📈\|💡
 
 ```bash
 # Generate PNG files from Mermaid diagrams
-PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) mmdc -i docs/images/your_diagram.mmd -o docs/images/your_diagram.png -t docs/mermaid-kvadrat-theme.json
+PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) mmdc -i docs/images/your_diagram.mmd -o docs/images/your_diagram.png -t docs/mermaid-geon-theme.json
 ```
 
 **Expected result**: PNG file generated successfully with correct colours and styling
@@ -272,8 +272,8 @@ python3 generate_book.py && docs/build_book.sh
 **Symptom**: Nodes appear in default Mermaid colours instead of GEON blue shades
 
 **Solution**: 
-- Check CSS class syntax: `[Label]:::kv-primary` (note the triple colons)
-- Verify the class name is exactly one of: `kv-primary`, `kv-accent`, `kv-highlight`, `kv-muted`, `kv-pattern`, `kv-outline`
+- Check CSS class syntax: `[Label]:::geon-primary` (note the triple colons)
+- Verify the class name is exactly one of: `geon-primary`, `geon-accent`, `geon-highlight`, `geon-muted`, `geon-pattern`, `geon-outline`
 - Ensure no extra spaces between node definition and class
 
 ### Problem: Text Truncated
@@ -300,7 +300,7 @@ python3 generate_book.py && docs/build_book.sh
 **Symptom**: Diagrams render with default theme instead of GEON theme
 
 **Solution**:
-- Ensure `mmdc` command includes `-t docs/mermaid-kvadrat-theme.json` parameter
+- Ensure `mmdc` command includes `-t docs/mermaid-geon-theme.json` parameter
 - Verify theme file exists and is valid JSON
 - Check that `PUPPETEER_EXECUTABLE_PATH` environment variable is set
 
@@ -321,7 +321,7 @@ export PUPPETEER_EXECUTABLE_PATH=$(which chromium)
 
 1. **Plan**: Sketch the diagram structure and identify key components
 2. **Create**: Write Mermaid syntax in `.mmd` file following naming convention
-3. **Style**: Apply appropriate `:::kv-*` classes to all important nodes
+3. **Style**: Apply appropriate `:::geon-*` classes to all important nodes
 4. **Validate**: Run validation checks (spelling, emojis, syntax)
 5. **Render**: Generate PNG using `mmdc` with GEON theme
 6. **Review**: Verify rendered PNG matches brand guidelines
@@ -332,13 +332,13 @@ export PUPPETEER_EXECUTABLE_PATH=$(which chromium)
 
 ### Highlighting Critical Paths
 
-Use `:::kv-primary` for critical path elements:
+Use `:::geon-primary` for critical path elements:
 
 ```mermaid
 graph LR
-    A[Input]:::kv-muted --> B[Critical Process]:::kv-primary
-    B --> C[Output]:::kv-muted
-    A --> D[Alternative Path]:::kv-accent
+    A[Input]:::geon-muted --> B[Critical Process]:::geon-primary
+    B --> C[Output]:::geon-muted
+    A --> D[Alternative Path]:::geon-accent
     D --> C
 ```
 
@@ -348,9 +348,9 @@ Use different classes to indicate state:
 
 ```mermaid
 graph TD
-    A[Active Service]:::kv-primary
-    B[Deprecated Service]:::kv-muted
-    C[New Service]:::kv-highlight
+    A[Active Service]:::geon-primary
+    B[Deprecated Service]:::geon-muted
+    C[New Service]:::geon-highlight
 ```
 
 ### Grouping with Subgraphs
@@ -360,13 +360,13 @@ Use subgraphs for logical grouping:
 ```mermaid
 graph TB
     subgraph "Frontend Layer"
-        A[Web App]:::kv-accent
-        B[Mobile App]:::kv-accent
+        A[Web App]:::geon-accent
+        B[Mobile App]:::geon-accent
     end
     
     subgraph "Backend Layer"
-        C[API Gateway]:::kv-primary
-        D[Services]:::kv-primary
+        C[API Gateway]:::geon-primary
+        D[Services]:::geon-primary
     end
     
     A --> C
@@ -394,7 +394,7 @@ cd docs/images
 # Regenerate all diagrams (requires Chrome/Chromium)
 for file in *.mmd; do
     PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) \
-    mmdc -i "$file" -o "${file%.mmd}.png" -t ../mermaid-kvadrat-theme.json
+    mmdc -i "$file" -o "${file%.mmd}.png" -t ../mermaid-geon-theme.json
 done
 
 # Verify count matches
@@ -406,7 +406,7 @@ ls -1 *.png | wc -l
 
 Before considering a diagram complete, verify:
 
-- [ ] Diagram uses only GEON colour palette (`:::kv-*` classes)
+- [ ] Diagram uses only GEON colour palette (`:::geon-*` classes)
 - [ ] All text uses British English spelling
 - [ ] No emojis in titles, labels, or annotations
 - [ ] Title is clear, professional, and descriptive
@@ -420,7 +420,7 @@ Before considering a diagram complete, verify:
 ## References
 
 - **Editorial Standards**: `docs/STYLE_GUIDE.md`
-- **Theme Configuration**: `docs/mermaid-kvadrat-theme.json`
+- **Theme Configuration**: `docs/mermaid-geon-theme.json`
 - **Brand Guidelines**: `docs/archive/book-cover/source/BRAND_GUIDELINES.md`
 - **Mermaid Documentation**: https://mermaid.js.org/
 - **Build Process**: `docs/build_book.sh`

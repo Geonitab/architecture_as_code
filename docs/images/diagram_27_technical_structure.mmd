@@ -5,36 +5,36 @@ flowchart TB
     subgraph defs["Layer 1 — Declarative Definitions"]
         direction LR
         DSL["Architecture DSL
-        Structurizr"]:::kv-muted
+        Structurizr"]:::geon-muted
         IaC["Infrastructure Code
-        Terraform / HCL"]:::kv-muted
+        Terraform / HCL"]:::geon-muted
         Diag["Diagram Sources
-        Mermaid"]:::kv-muted
+        Mermaid"]:::geon-muted
         Docs["Documentation
-        Markdown"]:::kv-muted
+        Markdown"]:::geon-muted
     end
 
     VCS["Version Control
-    Git — Single Source of Truth"]:::kv-primary
+    Git — Single Source of Truth"]:::geon-primary
 
     subgraph pipelines["Layer 2 — Automation Pipelines"]
         direction LR
-        Build["Build & Validate"]:::kv-accent
-        Test["Automated Testing"]:::kv-accent
-        Deploy["Publish & Deploy"]:::kv-accent
+        Build["Build & Validate"]:::geon-accent
+        Test["Automated Testing"]:::geon-accent
+        Deploy["Publish & Deploy"]:::geon-accent
         Build --> Test --> Deploy
     end
 
     subgraph governance["Layer 3 — Governance Controls"]
         direction LR
         Policy["Policy as Code
-        OPA / Sentinel"]:::kv-highlight
-        Audit["Audit Trails"]:::kv-highlight
-        Reports["Compliance Reports"]:::kv-highlight
+        OPA / Sentinel"]:::geon-highlight
+        Audit["Audit Trails"]:::geon-highlight
+        Reports["Compliance Reports"]:::geon-highlight
     end
 
     Artifacts["Published Artefacts
-    PDF · EPUB · Website · Diagrams"]:::kv-pattern
+    PDF · EPUB · Website · Diagrams"]:::geon-pattern
 
     defs --> VCS
     VCS --> Build

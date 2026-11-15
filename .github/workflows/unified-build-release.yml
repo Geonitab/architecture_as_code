@@ -24,9 +24,9 @@ permissions:
 
 jobs:
   release:
-    uses: Geonitab/book-engine/.github/workflows/build-release.yml@60c637e8fdf974487bb99e92291210a80c80f7e7
+    uses: Geonitab/book-engine/.github/workflows/build-release.yml@d9576bb98b10293e5fa8abf92c20855095143641
     with:
       deliverables: ${{ inputs.deliverables || 'all' }}
       create_release: ${{ inputs.create_release != false }}
-      engine_ref: 60c637e8fdf974487bb99e92291210a80c80f7e7
+      engine_ref: d9576bb98b10293e5fa8abf92c20855095143641
     secrets: inherit

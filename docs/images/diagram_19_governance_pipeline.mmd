@@ -1,11 +1,11 @@
 %% Governance repository automation flow
 graph TD
-    Repo["Governance repository<br/>policies, guardrails,<br/>playbooks, approval matrices"]:::kv-primary
-    Checks[Automated policy checks]:::kv-highlight
-    Workflow[Incident workflow]:::kv-accent
-    IAM[Access control]:::kv-accent
-    PR[Pull requests]:::kv-primary
-    Response[Executive response team]:::kv-muted
+    Repo["Governance repository<br/>policies, guardrails,<br/>playbooks, approval matrices"]:::geon-primary
+    Checks[Automated policy checks]:::geon-highlight
+    Workflow[Incident workflow]:::geon-accent
+    IAM[Access control]:::geon-accent
+    PR[Pull requests]:::geon-primary
+    Response[Executive response team]:::geon-muted
 
     Repo --> Checks
     Repo --> Workflow
