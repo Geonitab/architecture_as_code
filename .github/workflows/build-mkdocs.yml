@@ -12,5 +12,5 @@ permissions:
 
 jobs:
   site:
-    uses: Geonitab/book-engine/.github/workflows/build-site.yml@d10efab9fe08b48dac997fded2214b26a30b7566
+    uses: Geonitab/book-engine/.github/workflows/build-site.yml@80f40876d712d008e3ff75a6526961f22ff6f063
     secrets: inherit
