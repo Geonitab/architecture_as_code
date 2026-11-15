@@ -37,6 +37,9 @@ updates:
         update-types:
           - "minor"
           - "patch"
+    ignore:
+      - dependency-name: "@mermaid-js/mermaid-cli"
+        update-types: ["version-update:semver-major"]  # pinned in BOOK_REQUIREMENTS.md
 
   # ── GitHub Actions ──────────────────────────────────────────────────────────
   - package-ecosystem: "github-actions"
