@@ -18,6 +18,9 @@ on:
 env:
   ARTIFACT_RETENTION_DAYS: 30
 
+permissions:
+  contents: read
+
 jobs:
   content-validation:
     runs-on: ubuntu-latest

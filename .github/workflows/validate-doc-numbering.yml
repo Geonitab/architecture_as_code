@@ -13,6 +13,9 @@ on:
       - 'scripts/check_doc_numbering.py'
   workflow_dispatch: {}
 
+permissions:
+  contents: read
+
 jobs:
   numbering-check:
     runs-on: ubuntu-latest
