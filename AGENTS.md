@@ -35,16 +35,16 @@ pandoc --print-default-template=latex > ~/.local/share/pandoc/templates/eisvogel
 Build and Test Commands
 CRITICAL TIMING - NEVER CANCEL these operations:
 # Book generation
-python3 generate_book.py          # <1 second - generates markdown content
-docs/build_book.sh                # 30 seconds (timeout: 300s) - full PDF build with diagrams
+bookengine generate-book          # <1 second - generates markdown content
+bookengine build                # 30 seconds (timeout: 300s) - full PDF build with diagrams
 
 # Complete book publishing workflow (45 seconds total - NEVER CANCEL, timeout: 600s)
-python3 generate_book.py && docs/build_book.sh
+bookengine generate-book && bookengine build
 Validation Requirements
 MANUAL VALIDATION: After ANY changes, you MUST test actual functionality:
 Book Building Validation
 # Generate and build complete book
-python3 generate_book.py && docs/build_book.sh
+bookengine generate-book && bookengine build
 
 # Verify outputs
 ls -la releases/book/architecture_as_code.pdf   # Primary PDF output
@@ -63,8 +63,6 @@ docs/                     # Book content
 ├── part_*.md            # Part introductions
 ├── images/*.mmd         # Mermaid diagram source files (≈100)
 ├── images/*.png         # Generated PNG diagrams (kept under version control)
-├── build_book.sh        # Local PDF/EPUB/DOCX build script
-└── pandoc.yaml          # Shared Pandoc configuration
 
 releases/book/           # Generated book formats (git-ignored, created by builds)
 ├── architecture_as_code.pdf
@@ -80,7 +78,7 @@ PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) mmdc -i input.mmd -o output.png
 ESLint Warnings: Existing lint configurations are retained for historical reasons and may reference React refresh or TypeScript interfaces. These warnings are expected until the front-end is reinstated and do not prevent book builds.
 TeXLive Installation: Takes 8+ minutes and includes kernel updates. This is normal - NEVER CANCEL.
 Development Workflow
-1. Test book generation first: `python3 generate_book.py && docs/build_book.sh`
+1. Test book generation first: `bookengine generate-book && bookengine build`
 2. Make minimal changes.
 3. Re-validate immediately by rerunning the book build after each change.
 4. Run additional scripts as needed (e.g., `npm run generate:whitepapers`).
@@ -146,7 +144,7 @@ python3 generate_presentation.py --create-pptx --release
 **Presentation Design Guidelines**:
 - All presentations must follow [PRESENTATION_DESIGN_GUIDELINES.md](docs/PRESENTATION_DESIGN_GUIDELINES.md)
 - 16:9 aspect ratio (1280×720px or 1920×1080px)
-- Kvadrat brand colours and typography (Inter font family)
+- GEON brand colours and typography (Inter font family)
 - Minimum 18pt body text for readability
 - WCAG AA colour contrast (4.5:1 minimum)
 - Hero layout (full-width diagram) or Side layout (50/50 split)
@@ -156,7 +154,7 @@ python3 generate_presentation.py --create-pptx --release
 **Whitepaper Design Guidelines**:
 - All whitepapers must follow [WHITEPAPER_DESIGN_GUIDELINES.md](docs/WHITEPAPER_DESIGN_GUIDELINES.md)
 - A4/Letter format (210mm × 297mm) optimised for screen and print
-- Kvadrat brand colours and typography (Inter and JetBrains Mono fonts)
+- GEON brand colours and typography (Inter and JetBrains Mono fonts)
 - WCAG AA accessibility compliance (4.5:1 minimum contrast)
 - Semantic HTML5 with proper heading hierarchy
 - Responsive design with mobile breakpoints (min-width: 320px)
@@ -172,7 +170,7 @@ python3 generate_presentation.py --create-pptx --release
 **Validation**:
 - Run `--validate-diagrams` to check that all chapters have diagrams
 - Verify diagram type coverage (flowcharts, sequence diagrams, etc.)
-- Ensure all Mermaid `.mmd` files include Kvadrat theme configuration
+- Ensure all Mermaid `.mmd` files include GEON theme configuration
 
 ### Whitepaper Generation
 
@@ -189,7 +187,7 @@ python3 generate_whitepapers.py --release
 **Whitepaper Design Guidelines**:
 - All whitepapers must follow [WHITEPAPER_DESIGN_GUIDELINES.md](docs/WHITEPAPER_DESIGN_GUIDELINES.md)
 - A4/Letter format (210mm × 297mm) optimised for screen and print
-- Kvadrat brand colours and typography (Inter and JetBrains Mono fonts)
+- GEON brand colours and typography (Inter and JetBrains Mono fonts)
 - WCAG AA accessibility compliance (4.5:1 minimum contrast)
 - Semantic HTML5 with proper heading hierarchy
 - Responsive design with mobile breakpoints (min-width: 320px)

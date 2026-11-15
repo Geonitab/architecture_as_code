@@ -1,48 +1,60 @@
+# Inlined from Geonitab/book-engine/.github/workflows/validate-content.yml@d9576bb: this repository is public and cannot call the organisation's internal reusable workflows.
 name: Content Validation Tests
 
 on:
   pull_request:
     branches: [main]
-    paths:
-      - 'docs/**/*.md'
-      - 'tests/**'
-      - 'generate_book.py'
+    paths: ['docs/**/*.md', 'book.yaml', 'requirements.txt']
   push:
     branches: [main]
-    paths:
-      - 'docs/**/*.md'
-      - 'tests/**'
-      - 'generate_book.py'
+    paths: ['docs/**/*.md', 'book.yaml', 'requirements.txt']
   workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pull-requests: write
 
 env:
   ARTIFACT_RETENTION_DAYS: 30
 
+
 jobs:
   content-validation:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    env:
+      # Lets pip and git read the private repositories of the organisation when the secret GEONITAB_READ_TOKEN exists.
+      GIT_CONFIG_COUNT: "1"
+      GIT_CONFIG_KEY_0: url.${{ secrets.GEONITAB_READ_TOKEN && format('https://x-access-token:{0}@github.com/Geonitab/', secrets.GEONITAB_READ_TOKEN) || 'https://github.com/Geonitab/' }}.insteadOf
+      GIT_CONFIG_VALUE_0: https://github.com/Geonitab/
     timeout-minutes: 10
     
     steps:
       - name: 📥 Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
 
       - name: 🐍 Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: '3.12'
 
-      - name: 📦 Install test dependencies
+
+      - name: 📦 Install the book engine and the book's dependencies
         run: |
           python3 -m pip install --upgrade pip
           python3 -m pip install -r requirements.txt
 
+      - name: 🔢 Check that sources are numbered in one series without duplicates
+        run: bookengine run renumber_sources --check
+
       - name: 🧪 Run content validation tests
         run: |
           echo "=== Running content validation tests ==="
-          python3 tests/run_tests.py --type all
+          bookengine test -q
           echo "✅ Content validation completed"
 
       - name: 📊 Generate test reports with coverage
@@ -52,25 +64,18 @@ jobs:
           mkdir -p test-reports
 
           # Run full suite with coverage reporting
-          python3 -m pytest tests/ \
-            --cov=scripts \
+          bookengine test -v \
+            --cov=bookengine.scripts \
             --cov-report=xml:test-reports/coverage.xml \
             --cov-report=html:test-reports/htmlcov \
             --cov-report=term-missing \
             --html=test-reports/full-report.html \
-            --self-contained-html \
-            -v || true
-
-          # Run individual test suites with detailed reporting
-          python3 -m pytest tests/test_completeness.py -v --html=test-reports/completeness-report.html --self-contained-html || true
-          python3 -m pytest tests/test_consistency.py -v --html=test-reports/consistency-report.html --self-contained-html || true
-          python3 -m pytest tests/test_clarity.py -v --html=test-reports/clarity-report.html --self-contained-html || true
-          python3 -m pytest tests/test_technical_accuracy.py -v --html=test-reports/technical-report.html --self-contained-html || true
+            --self-contained-html || true
 
           echo "✅ Test reports and coverage generated"
 
       - name: 📤 Upload test reports
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()
         with:
           name: content-validation-reports
@@ -79,7 +84,8 @@ jobs:
 
       - name: 📝 Comment test results on PR
         if: github.event_name == 'pull_request' && always()
-        uses: actions/github-script@v8
+        continue-on-error: true
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         with:
           script: |
             const fs = require('fs');

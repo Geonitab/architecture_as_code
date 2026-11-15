@@ -271,7 +271,7 @@ def generate_report(issues, warnings, output_file=None):
         "For detailed standards, see:",
         "- [PRESENTATION_DESIGN_GUIDELINES.md](../docs/PRESENTATION_DESIGN_GUIDELINES.md)",
         "- [STYLE_GUIDE.md](../docs/STYLE_GUIDE.md)",
-        "- [Kvadrat Brand Guidelines](../docs/archive/book-cover/source/BRAND_GUIDELINES.md)",
+        "- [GEON Brand Guidelines](../docs/archive/book-cover/source/BRAND_GUIDELINES.md)",
         "",
     ])
     

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="210mm" height="297mm" viewBox="0 0 794 1123" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
-    <!-- Kvadrat Brand Gradients -->
+    <!-- GEON Brand Gradients -->
     <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:hsl(221, 67%, 32%);stop-opacity:1" />
       <stop offset="100%" style="stop-color:hsl(214, 32%, 18%);stop-opacity:1" />
@@ -287,11 +287,11 @@
   <!-- Additional metadata for editing -->
   <metadata>
     <title>Architecture as Code - Enhanced Book Cover</title>
-    <description>Professional book cover design for Kvadrat's Architecture as Code publication featuring DevOps, CI/CD, security, and cloud architecture themes</description>
+    <description>Professional book cover design for GEON's Architecture as Code publication featuring DevOps, CI/CD, security, and cloud architecture themes</description>
     <author>Gunnar Nordqvist</author>
     <created>oktober 2025</created>
     <updated>January 2025</updated>
-    <brand-guidelines>Kvadrat Brand Guidelines v1.0</brand-guidelines>
+    <brand-guidelines>GEON Brand Guidelines v1.0</brand-guidelines>
       <themes>Architecture as Code, Design, Development, Governance, Testing, Requirements</themes>
     <visual-elements>Pipeline patterns, security shields, cloud nodes, microservices, git repositories, containers</visual-elements>
   </metadata>

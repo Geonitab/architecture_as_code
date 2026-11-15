@@ -1,10 +1,10 @@
 %% Diagram: Architecture Decision Record lifecycle — from problem identification through options analysis and peer review to a versioned, searchable decision log
 flowchart TD
-    A["Architecture\nChallenge"]:::kv-primary --> B["Context &\nConstraints"]:::kv-highlight
-    B --> C["Options\nAnalysis"]:::kv-accent
-    C --> D["ADR\nDocument"]:::kv-accent
-    D -->|"team review"| E{"Accepted?"}:::kv-outline
-    E -->|"Yes"| F["Archived\nin Repository"]:::kv-primary
+    A["Architecture\nChallenge"]:::geon-primary --> B["Context &\nConstraints"]:::geon-highlight
+    B --> C["Options\nAnalysis"]:::geon-accent
+    C --> D["ADR\nDocument"]:::geon-accent
+    D -->|"team review"| E{"Accepted?"}:::geon-outline
+    E -->|"Yes"| F["Archived\nin Repository"]:::geon-primary
     E -->|"No"| C
-    F --> G["Implementation\nTracking"]:::kv-highlight
+    F --> G["Implementation\nTracking"]:::geon-highlight
     G -->|"superseded?"| A

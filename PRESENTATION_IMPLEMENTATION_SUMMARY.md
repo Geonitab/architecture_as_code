@@ -9,7 +9,7 @@
 
 ## Overview
 
-This document summarizes the implementation of comprehensive presentation design guidelines for the Architecture as Code project. All presentations generated from book content now follow modern design best practices, Kvadrat brand standards, and WCAG AA accessibility requirements.
+This document summarizes the implementation of comprehensive presentation design guidelines for the Architecture as Code project. All presentations generated from book content now follow modern design best practices, GEON brand standards, and WCAG AA accessibility requirements.
 
 ---
 
@@ -23,7 +23,7 @@ This document summarizes the implementation of comprehensive presentation design
 - ✅ Core design principles (visual hierarchy, cognitive load management, accessibility)
 - ✅ 9 slide layout types with detailed specifications
 - ✅ Typography standards (font families, sizes, line-height, letter-spacing)
-- ✅ Kvadrat brand colour palette with WCAG AA validation
+- ✅ GEON brand colour palette with WCAG AA validation
 - ✅ Diagram integration standards (metadata, sizing, positioning)
 - ✅ Content guidelines (word limits, bullet points, speaker notes)
 - ✅ Animation and transition recommendations
@@ -79,8 +79,8 @@ python3 scripts/validate_presentation_guidelines.py --strict
 **File:** `generate_presentation.py`
 
 **Changes:**
-- ✅ Updated colour constants to Kvadrat brand palette
-  - `THEME_BLUE` = #1e3a8a (Kvadrat Blue)
+- ✅ Updated colour constants to GEON brand palette
+  - `THEME_BLUE` = #1e3a8a (GEON Blue)
   - `THEME_BLUE_DARK` = #1e293b (Primary text)
   - `THEME_GREY` = #64748b (Muted text)
   - `THEME_ACCENT` = #d97706 (Keyword banners)
@@ -114,7 +114,7 @@ python3 scripts/validate_presentation_guidelines.py --strict
 **File:** `templates/presentation-template.html`
 
 **Updates:**
-- ✅ CSS variables for Kvadrat brand colours
+- ✅ CSS variables for GEON brand colours
 - ✅ Typography following guidelines (font sizes, line-height, letter-spacing)
 - ✅ Slide dimensions (1280×720px, 16:9 aspect ratio)
 - ✅ Border radius standardized (12px)
@@ -152,20 +152,20 @@ python3 scripts/validate_presentation_guidelines.py --strict
 |---------|------|--------|--------|-------------|
 | Title slide main | 72px | 800 | White | 1.1 |
 | Title slide subtitle | 32px | 400 | White 90% | 1.4 |
-| Section divider | 64px | 700 | Kvadrat Blue | 1.2 |
-| Slide title (H1) | 36-48px | 700 | Kvadrat Blue Dark | 1.2 |
-| Slide subtitle (H2) | 24-28px | 600 | Kvadrat Blue | 1.4 |
-| Body text | 18-20px | 400 | Kvadrat Blue Dark | 1.4 |
-| Bullet points | 20px | 400 | Kvadrat Blue Dark | 1.4 |
+| Section divider | 64px | 700 | GEON Blue | 1.2 |
+| Slide title (H1) | 36-48px | 700 | GEON Blue Dark | 1.2 |
+| Slide subtitle (H2) | 24-28px | 600 | GEON Blue | 1.4 |
+| Body text | 18-20px | 400 | GEON Blue Dark | 1.4 |
+| Bullet points | 20px | 400 | GEON Blue Dark | 1.4 |
 | Captions | 12-14px | 500 | Kvadrat Grey | 1.4 |
 
 ### Colour Palette
 
 | Colour | Hex | RGB | Usage | Contrast |
 |--------|-----|-----|-------|----------|
-| Kvadrat Blue | #1e3a8a | 30, 58, 138 | Primary headings, branding | 8.2:1 ✅ |
-| Kvadrat Blue Light | #3b82f6 | 59, 130, 246 | Secondary accents | 3.1:1 ⚠️ |
-| Kvadrat Blue Dark | #1e293b | 30, 41, 59 | Primary body text | 12.3:1 ✅ |
+| GEON Blue | #1e3a8a | 30, 58, 138 | Primary headings, branding | 8.2:1 ✅ |
+| GEON Blue Light | #3b82f6 | 59, 130, 246 | Secondary accents | 3.1:1 ⚠️ |
+| GEON Blue Dark | #1e293b | 30, 41, 59 | Primary body text | 12.3:1 ✅ |
 | Kvadrat Grey | #64748b | 100, 116, 139 | Muted text | 4.7:1 ✅ |
 | Kvadrat Grey Light | #f1f5f9 | 241, 245, 249 | Backgrounds | N/A |
 | Accent Orange | #d97706 | 217, 119, 6 | Keyword banners | 3.3:1 ⚠️ |
@@ -336,7 +336,7 @@ python3 scripts/validate_presentation_guidelines.py --strict
 | Requirement | Status | Evidence |
 |-------------|--------|----------|
 | 16:9 aspect ratio (1280×720px) | ✅ | `SLIDE_WIDTH = Inches(13.3333)` |
-| Kvadrat brand colours | ✅ | `THEME_BLUE`, `THEME_BLUE_DARK`, etc. |
+| GEON brand colours | ✅ | `THEME_BLUE`, `THEME_BLUE_DARK`, etc. |
 | Minimum 18pt body text | ✅ | `Pt(20)` for bullet points |
 | WCAG AA colour contrast (4.5:1) | ✅ | All colours validated |
 | Maximum 20 words per bullet | ✅ | `limit_words(text, 20)` enforced |
@@ -367,7 +367,7 @@ python3 scripts/validate_presentation_guidelines.py --strict
 - Create GitHub issue with label `presentation` for assistance
 
 ### Updating Guidelines
-When Kvadrat brand guidelines change:
+When GEON brand guidelines change:
 1. Update colour constants in `generate_presentation.py`
 2. Update CSS variables in `templates/presentation-template.html`
 3. Regenerate presentations with `python3 generate_presentation.py --release`
@@ -389,7 +389,7 @@ When Kvadrat brand guidelines change:
 
 1. [PRESENTATION_DESIGN_GUIDELINES.md](docs/PRESENTATION_DESIGN_GUIDELINES.md) – Complete design standards
 2. [PRESENTATION_QUALITY_CHECKLIST.md](docs/PRESENTATION_QUALITY_CHECKLIST.md) – Validation checklist
-3. [BRAND_GUIDELINES.md](docs/archive/book-cover/source/BRAND_GUIDELINES.md) – Kvadrat brand identity
+3. [BRAND_GUIDELINES.md](docs/archive/book-cover/source/BRAND_GUIDELINES.md) – GEON brand identity
 4. [STYLE_GUIDE.md](docs/STYLE_GUIDE.md) – Editorial standards
 5. [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/) – Accessibility standards
 6. [Material Design Data Visualization](https://material.io/design/communication/data-visualization.html) – Best practices
@@ -399,4 +399,4 @@ When Kvadrat brand guidelines change:
 
 **Status:** ✅ Implementation Complete  
 **Last Updated:** 26 March 2026  
-**Next Review:** When Kvadrat brand guidelines update
+**Next Review:** When GEON brand guidelines update

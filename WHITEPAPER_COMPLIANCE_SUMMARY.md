@@ -21,7 +21,7 @@ The Architecture as Code whitepaper generation system is **fully compliant** wit
 **Coverage**:
 - ✅ Core design principles (Professional Authority, Reading Experience, Accessibility)
 - ✅ Typography standards (Inter + JetBrains Mono with proper weights)
-- ✅ Kvadrat brand colour palette with WCAG AA contrast verification
+- ✅ GEON brand colour palette with WCAG AA contrast verification
 - ✅ Document structure (Header, Overview, Highlight, Call-to-Action)
 - ✅ Code samples and syntax highlighting (Prism.js)
 - ✅ Responsive and print considerations
@@ -47,7 +47,7 @@ The Architecture as Code whitepaper generation system is **fully compliant** wit
 
 ### ✅ Professional Authority
 - **Clean Layout**: A4/Letter format (210mm × 297mm)
-- **Kvadrat Branding**: Complete colour palette implemented
+- **GEON Branding**: Complete colour palette implemented
 - **Academic Rigour**: Version metadata, build numbers, release dates visible
 - **Print-Ready**: Dedicated print media queries with optimised margins
 
@@ -79,10 +79,10 @@ The Architecture as Code whitepaper generation system is **fully compliant** wit
 | **Body** | 16px, weight 400, line-height 1.6 | ✅ 16px, 400, 1.6 | ✅ |
 | **Code** | 14px, JetBrains Mono | ✅ 14px, JetBrains Mono | ✅ |
 
-### Colour Palette (Kvadrat Brand)
+### Colour Palette (GEON Brand)
 | Colour | HSL Value | Contrast | Status |
 |--------|-----------|----------|--------|
-| **Kvadrat Blue** | hsl(221, 67%, 32%) | 7.84:1 (AAA) | ✅ |
+| **GEON Blue** | hsl(221, 67%, 32%) | 7.84:1 (AAA) | ✅ |
 | **Blue Light** | hsl(217, 91%, 60%) | 4.51:1 (AA) | ✅ |
 | **Blue Dark** | hsl(214, 32%, 18%) | 12.63:1 (AAA) | ✅ |
 | **Grey Muted** | hsl(215, 20%, 46%) | 4.54:1 (AA) | ✅ |
@@ -169,12 +169,12 @@ The Architecture as Code whitepaper generation system is **fully compliant** wit
 ### Cross-Reference Matrix
 | Guideline Document | Alignment Status | Notes |
 |--------------------|------------------|-------|
-| **PRESENTATION_DESIGN_GUIDELINES.md** | ✅ Fully Aligned | Same Kvadrat colour palette, typography system |
+| **PRESENTATION_DESIGN_GUIDELINES.md** | ✅ Fully Aligned | Same GEON colour palette, typography system |
 | **STYLE_GUIDE.md** | ✅ Fully Aligned | British English, consistent terminology |
 | **BOOK_REQUIREMENTS.md** | ✅ Fully Aligned | Release metadata, versioning structure |
 
 ### Brand Consistency
-- ✅ **Kvadrat Blue Palette**: Identical across presentations and whitepapers
+- ✅ **GEON Blue Palette**: Identical across presentations and whitepapers
 - ✅ **Typography**: Inter and JetBrains Mono used consistently
 - ✅ **Voice and Tone**: Professional, accessible, British English
 - ✅ **Versioning**: Unified approach to release metadata
@@ -264,7 +264,7 @@ The Architecture as Code whitepaper generation system demonstrates **complete co
 **Key Achievements**:
 1. ✅ Professional design principles implemented
 2. ✅ Modern typography system (Inter + JetBrains Mono)
-3. ✅ Kvadrat brand identity maintained
+3. ✅ GEON brand identity maintained
 4. ✅ WCAG AA accessibility compliance verified
 5. ✅ Semantic HTML5 structure throughout
 6. ✅ Responsive design with mobile optimization

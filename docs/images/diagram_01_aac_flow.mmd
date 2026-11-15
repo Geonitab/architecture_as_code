@@ -1,17 +1,17 @@
 graph TD
-    A[Requirements as Code]:::kv-primary --> B[Compliance as Code]:::kv-highlight
-    B --> C[Documentation as Code]:::kv-highlight
-    C --> D[Design as Code]:::kv-accent
-    D --> E[Coding]:::kv-accent
-    E --> F[CI/CD]:::kv-accent
-    F --> G[Infrastructure as Code]:::kv-primary
+    A[Requirements as Code]:::geon-primary --> B[Compliance as Code]:::geon-highlight
+    B --> C[Documentation as Code]:::geon-highlight
+    C --> D[Design as Code]:::geon-accent
+    D --> E[Coding]:::geon-accent
+    E --> F[CI/CD]:::geon-accent
+    F --> G[Infrastructure as Code]:::geon-primary
 
-    D -.-> H[Design Tokens]:::kv-pattern
+    D -.-> H[Design Tokens]:::geon-pattern
     H -.-> E
 
     G -.-> A
     F -.-> B
     
-    M[Management as Code]:::kv-highlight -.-> A
+    M[Management as Code]:::geon-highlight -.-> A
     M -.-> B
     G -.-> M

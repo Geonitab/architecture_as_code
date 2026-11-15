@@ -117,13 +117,13 @@ Its `variables` block selects the `book` document class, sets the page geometry,
 
 1. **Environment validation**: Confirms that Pandoc is available (installing it through the system package manager where possible) and installs the Eisvogel template together with the repository's `eisvogel-added.latex` and `eisvogel-title-page.latex` partials when they are missing.
 2. **Cover rendering**: Renders `templates/book-cover.svg` to `images/book-cover.png`.
-3. **Diagram conversion**: Converts `.mmd` files to PNG format with the Kvadrat Mermaid theme (`mermaid-kvadrat-theme.json`), adding a Puppeteer configuration file in Docker and CI mode.
+3. **Diagram conversion**: Converts `.mmd` files to PNG format with the Kvadrat Mermaid theme (`mermaid-geon-theme.json`), adding a Puppeteer configuration file in Docker and CI mode.
 4. **PDF generation**: Compiles all chapters into a single book.
 5. **Format variations**: Builds EPUB and DOCX with `--all-formats` or `--release`, using `pandoc-nonlatex.yaml`.
 
 ```bash
 # docs/build_book.sh (excerpt, simplified)
-MERMAID_THEME_FILE="mermaid-kvadrat-theme.json"
+MERMAID_THEME_FILE="mermaid-geon-theme.json"
 
 # Convert Mermaid diagrams with Kvadrat styling
 for mmd_file in images/*.mmd; do

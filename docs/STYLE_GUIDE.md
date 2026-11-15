@@ -44,14 +44,14 @@ The following table lists common conversions that must be applied during reviews
 
 ### Gantt Chart Best Practices
 When creating or updating Gantt chart diagrams:
-1. **Theme Configuration**: Always include the Kvadrat theme init block at the top of `.mmd` files:
+1. **Theme Configuration**: Always include the GEON theme init block at the top of `.mmd` files:
    ```mermaid
    %%{init: {'theme':'base', 'themeVariables': {...}}}%%
    ```
-2. **Colour Palette**: Use approved Kvadrat colours for consistency:
-   - Done tasks: `#1E3A8A` (Kvadrat Blue Dark) with white text `#F8FAFC`
-   - Active tasks: `#2563EB` (Kvadrat Blue) with white text `#F8FAFC`
-   - Future tasks: `#60A5FA` (Kvadrat Blue Light) with dark text `#0F172A`
+2. **Colour Palette**: Use approved GEON colours for consistency:
+   - Done tasks: `#1E3A8A` (GEON Blue Dark) with white text `#F8FAFC`
+   - Active tasks: `#2563EB` (GEON Blue) with white text `#F8FAFC`
+   - Future tasks: `#60A5FA` (GEON Blue Light) with dark text `#0F172A`
    - Backgrounds: `#E0F2FE` (Ice Blue) and `#F8FAFF` (Ice Blue Light)
 3. **Accessibility**: Ensure all text has sufficient contrast (WCAG AA minimum 4.5:1 for normal text)
 4. **Typography**: Use Inter font family matching the book's design system

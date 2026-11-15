@@ -1,15 +1,15 @@
 %% Diagram: Introduction to Architecture as Code — the shift from static documents and manual processes to version-controlled, automatable architecture artefacts
 flowchart TB
     subgraph Traditional["Traditional Architecture Practice"]
-        T1["Static Documents"]:::kv-muted
-        T2["Manual Processes"]:::kv-muted
-        T3["Tribal Knowledge"]:::kv-muted
+        T1["Static Documents"]:::geon-muted
+        T2["Manual Processes"]:::geon-muted
+        T3["Tribal Knowledge"]:::geon-muted
     end
     subgraph AaC["Architecture as Code"]
-        A1["Version-controlled\nArtefacts"]:::kv-primary
-        A2["Automated\nValidation"]:::kv-highlight
-        A3["Reproducible\nDeployments"]:::kv-accent
-        A4["Living\nDocumentation"]:::kv-accent
+        A1["Version-controlled\nArtefacts"]:::geon-primary
+        A2["Automated\nValidation"]:::geon-highlight
+        A3["Reproducible\nDeployments"]:::geon-accent
+        A4["Living\nDocumentation"]:::geon-accent
     end
     Traditional -->|"transform to"| AaC
     A1 --> A2 --> A3 --> A4

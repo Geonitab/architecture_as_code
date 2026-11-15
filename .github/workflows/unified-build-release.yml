@@ -1,91 +1,43 @@
----
+# Inlined from Geonitab/book-engine/.github/workflows/build-release.yml@d9576bb: this repository is public and cannot call the organisation's internal reusable workflows.
 name: Unified Build & Release
 
-# This unified workflow consolidates complete-release.yml, build-book-fast.yml,
-# and build-book.yml into a single optimized workflow that runs on a Docker-based build
-# environment with comprehensive deliverable generation (books,
-# presentations, whitepapers, websites).
-#
-# SYNTAX HIGHLIGHTING:
-# - HTML deliverables (whitepapers, presentations) use Prism.js via CDN for syntax highlighting
-# - PDF/EPUB/DOCX deliverables use Pandoc's built-in Skylighting engine for syntax highlighting
-# - Prism.js CSS and JavaScript are loaded from CDN in HTML templates (no installation needed)
-# - Pandoc syntax highlighting is configured via docs/pandoc.yaml (highlight-style: tango)
- 
 on:
   push:
     branches: [main]
-    paths:
-      # Book content and diagrams
-      - 'docs/**/*.md'
-      - 'docs/images/**/*.mmd'
-      # Generation and build scripts
-      - 'generate_book.py'
-      - 'generate_whitepapers.py'
-      - 'generate_presentation.py'
-      - 'presentation_deck.py'
-      - 'build_release.sh'
-      - 'docs/build_book.sh'
-      # Templates (includes Prism.js syntax highlighting configuration)
-      - 'templates/**/*.html'
-      - 'templates/**/*.latex'
-      # Pandoc configuration (includes syntax highlighting settings)
-      - 'docs/pandoc.yaml'
-      # Docker and workflow files
-      - 'Dockerfile.book-builder'
-      - '.github/workflows/unified-build-release.yml'
+    paths: ['docs/**', 'book.yaml', 'requirements.txt', 'templates/**', 'package.json', 'package-lock.json']
   pull_request:
     branches: [main]
-    paths:
-      - 'docs/**/*.md'
-      - 'docs/images/**/*.mmd'
-      - 'generate_book.py'
-      - 'generate_whitepapers.py'
-      - 'generate_presentation.py'
-      - 'presentation_deck.py'
-      - 'build_release.sh'
-      - 'docs/build_book.sh'
-      - 'templates/**/*.html'
-      - 'templates/**/*.latex'
-      - 'docs/pandoc.yaml'
-      - 'Dockerfile.book-builder'
-      - '.github/workflows/unified-build-release.yml'
+    paths: ['docs/**', 'book.yaml', 'requirements.txt', 'templates/**']
   workflow_dispatch:
     inputs:
-      build_type:
-        description: 'Build Environment Type'
-        required: false
-        default: 'both'
-        type: choice
-        options:
-          - 'traditional'
-          - 'docker'
-          - 'both'
       create_release:
         description: 'Create GitHub Release'
-        required: false
-        default: 'true'
         type: boolean
+        default: true
       deliverables:
-        description: 'Deliverables to Build'
-        required: false
-        default: 'all'
+        description: 'Deliverables to build'
         type: choice
-        options:
-          - 'all'
-          - 'book-only'
-          - 'presentations-only'
-          - 'whitepapers-only'
+        default: all
+        options: [all, book-only, presentations-only, whitepapers-only]
+
+permissions:
+  contents: write
 
 env:
   PANDOC_VERSION: "3.1.9"
   ARTIFACT_RETENTION_DAYS: 30
+
 
 jobs:
   # Determine build strategy based on inputs or defaults
   setup:
     name: 🔧 Setup Build Strategy
     runs-on: ubuntu-latest
+    env:
+      # Lets pip and git read the private repositories of the organisation when the secret GEONITAB_READ_TOKEN exists.
+      GIT_CONFIG_COUNT: "1"
+      GIT_CONFIG_KEY_0: url.${{ secrets.GEONITAB_READ_TOKEN && format('https://x-access-token:{0}@github.com/Geonitab/', secrets.GEONITAB_READ_TOKEN) || 'https://github.com/Geonitab/' }}.insteadOf
+      GIT_CONFIG_VALUE_0: https://github.com/Geonitab/
     timeout-minutes: 5
     outputs:
       run_docker: ${{ steps.strategy.outputs.run_docker }}
@@ -94,89 +46,64 @@ jobs:
       - name: 📋 Determine build strategy
         id: strategy
         run: |
-          echo "=== Determining Build Strategy ==="
-
-          # Extract workflow_dispatch inputs when available, otherwise fall back to defaults
-          BUILD_TYPE=$(python3 - <<'EOF'
-          import json
-          import os
-
-          event_path = os.environ.get('GITHUB_EVENT_PATH')
-          default = 'both'
-
-          try:
-              with open(event_path, 'r', encoding='utf-8') as handle:
-                  payload = json.load(handle)
-              print(payload.get('inputs', {}).get('build_type') or default)
-          except Exception:
-              print(default)
-          EOF
-          )
-
-          DELIVERABLES=$(python3 - <<'EOF'
-          import json
-          import os
-
-          event_path = os.environ.get('GITHUB_EVENT_PATH')
-          default = 'all'
-
-          try:
-              with open(event_path, 'r', encoding='utf-8') as handle:
-                  payload = json.load(handle)
-              print(payload.get('inputs', {}).get('deliverables') or default)
-          except Exception:
-              print(default)
-          EOF
-          )
-
-          case $BUILD_TYPE in
-            "traditional")
-              echo "run_docker=true" >> $GITHUB_OUTPUT
-              echo "⚠️ Traditional build option deprecated – running Docker-based build instead"
-              ;;
-            "docker")
-              echo "run_docker=true" >> $GITHUB_OUTPUT
-              echo "🐳 Build strategy: Docker environment"
-              ;;
-            "both"|*)
-              echo "run_docker=true" >> $GITHUB_OUTPUT
-              echo "🔄 Build strategy: Docker environment (unified)"
-              ;;
-          esac
-
-          echo "build_deliverables=$DELIVERABLES" >> $GITHUB_OUTPUT
-          echo "📦 Deliverables to build: $DELIVERABLES"
+          echo "run_docker=true" >> $GITHUB_OUTPUT
+          echo "build_deliverables=${{ inputs.deliverables || 'all' }}" >> $GITHUB_OUTPUT
 
   # Docker-optimized build (equivalent to build-book-fast.yml)
   docker-build:
     name: 🐳 Docker Optimized Build
     runs-on: ubuntu-latest
+    env:
+      # Lets pip and git read the private repositories of the organisation when the secret GEONITAB_READ_TOKEN exists.
+      GIT_CONFIG_COUNT: "1"
+      GIT_CONFIG_KEY_0: url.${{ secrets.GEONITAB_READ_TOKEN && format('https://x-access-token:{0}@github.com/Geonitab/', secrets.GEONITAB_READ_TOKEN) || 'https://github.com/Geonitab/' }}.insteadOf
+      GIT_CONFIG_VALUE_0: https://github.com/Geonitab/
     timeout-minutes: 60
     needs: setup
     if: needs.setup.outputs.run_docker == 'true'
 
     steps:
       - name: 📥 Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
 
+      - name: 📥 Checkout the book engine (Dockerfile)
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: ${{ 'Geonitab/book-engine' }}
+          ref: ${{ 'd9576bb98b10293e5fa8abf92c20855095143641' }}
+          token: ${{ secrets.GEONITAB_READ_TOKEN || github.token }}
+          path: .engine
+
+      - name: 📖 Read book.yaml
+        run: |
+          python3 - <<'PY' >> "$GITHUB_ENV"
+          import yaml
+          c = yaml.safe_load(open("book.yaml"))
+          print(f"SLUG={c['slug']}")
+          print(f"BOOK_TITLE={c['title']}")
+          name = c.get('series_name', 'The Transformed Architecture')
+          label = c.get('series_label') or (f"{name}, Book {c['series_position']}" if c.get('kind', 'book') == 'book' else f"A companion to {name}")
+          print(f"SERIES_LABEL={label}")
+          PY
+
       - name: 🐳 Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
 
       - name: 🐍 Set up Python (for content generation)
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: '3.12'
 
       - name: 📦 Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pyyaml
+          pip install -r requirements.txt
 
       - name: 🔧 Set up Node.js (for website build)
         if: ${{ hashFiles('package-lock.json') != '' }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '18'
           cache: 'npm'
@@ -187,10 +114,10 @@ jobs:
           echo "No package-lock.json detected – skipping Node.js setup for Docker build."
 
       - name: 📦 Build Docker image with cache
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6
         with:
           context: .
-          file: Dockerfile.book-builder
+          file: .engine/src/bookengine/data/Dockerfile.book-builder
           tags: unified-builder:latest
           load: true
           cache-from: type=gha
@@ -212,7 +139,7 @@ jobs:
       - name: 📝 Generate book content
         run: |
           echo "=== Generating book content ==="
-          python3 generate_book.py
+          bookengine generate-book
           echo "✅ Book content generated"
 
       - name: 🌐 Skip website build
@@ -243,29 +170,30 @@ jobs:
             bash -c "
               echo '=== Running Docker-based unified build ===' &&
               cd /workspace &&
+              export PYTHONPATH=/workspace/.engine/src &&
+              python3 -c 'import bookengine; print("bookengine", bookengine.__version__)' &&
+              (grep -v -e '^#' -e '^geon-book-engine' -e '^$' requirements.txt > /tmp/book-extras.txt; [ -s /tmp/book-extras.txt ] && python3 -m pip install -q -r /tmp/book-extras.txt || true) &&
 
               case '$DELIVERABLES' in
                 'book-only')
                   echo '📖 Building book formats only...' &&
                   echo '📝 Step 1: Generating EPUB content...' &&
-                  python3 generate_book.py --format epub --output dist/book.epub --all &&
+                  python3 -m bookengine generate-book --format epub --output dist/book.epub --all &&
                   test -s dist/book.epub &&
                   echo '📝 Step 2: Building book formats...' &&
-                  cd docs &&
-                  ./build_book.sh --release &&
-                  cd .. &&
+                  python3 -m bookengine build --release &&
                   echo '📝 Step 3: Verifying book files...' &&
-                  ls -la releases/book/architecture_as_code.pdf || { echo '❌ PDF missing from releases/book/ – aborting'; exit 1; }
+                  ls -la releases/book/${SLUG}.pdf || { echo '❌ PDF missing from releases/book/ – aborting'; exit 1; }
                   ;;
                 'presentations-only')
                   echo '🎤 Building presentations only...' &&
-                  python3 generate_presentation.py --release --create-pptx &&
+                  python3 -m bookengine presentation --release --create-pptx &&
                   echo '📝 Verifying presentation files...' &&
                   ls -la releases/presentation/ || echo '⚠️ No presentation files found'
                   ;;
                 'whitepapers-only')
                   echo '📄 Building whitepapers only...' &&
-                  python3 generate_whitepapers.py --release &&
+                  python3 -m bookengine whitepapers --release &&
                   echo '📝 Verifying whitepaper files...' &&
                   ls -la releases/whitepapers/ || echo '⚠️ No whitepaper files found'
                   ;;
@@ -277,23 +205,21 @@ jobs:
                   # Build book in all formats
                   echo '📖 Step 1: Building book formats...' &&
                   echo '📝 Generating EPUB content...' &&
-                  python3 generate_book.py --format epub --output dist/book.epub --all &&
+                  python3 -m bookengine generate-book --format epub --output dist/book.epub --all &&
                   test -s dist/book.epub &&
-                  cd docs &&
-                  ./build_book.sh --release &&
-                  cd .. &&
+                  python3 -m bookengine build --release &&
                   echo '📝 Verifying book files...' &&
-                  ls -la releases/book/architecture_as_code.pdf || { echo '❌ PDF missing from releases/book/ – aborting'; exit 1; } &&
+                  ls -la releases/book/${SLUG}.pdf || { echo '❌ PDF missing from releases/book/ – aborting'; exit 1; } &&
 
                   # Generate whitepapers
                   echo '📄 Step 2: Generating whitepapers...' &&
-                  python3 generate_whitepapers.py --release &&
+                  python3 -m bookengine whitepapers --release &&
                   echo '📝 Verifying whitepaper files...' &&
                   ls -la releases/whitepapers/ || echo '⚠️ No whitepaper files found' &&
 
                   # Generate presentations
                   echo '🎤 Step 3: Generating presentations...' &&
-                  python3 generate_presentation.py --release --create-pptx &&
+                  python3 -m bookengine presentation --release --create-pptx &&
                   python --version &&
                   python3 --version &&
                   echo '📝 Verifying presentation files...' &&
@@ -390,8 +316,8 @@ jobs:
           echo "🔍 Checking for expected key files:"
           
           # Check for book files
-          if [ -f "releases/book/architecture_as_code.pdf" ]; then
-            echo "✅ Book PDF found ($(ls -lh releases/book/architecture_as_code.pdf | awk '{print $5}'))"
+          if [ -f "releases/book/${SLUG}.pdf" ]; then
+            echo "✅ Book PDF found ($(ls -lh releases/book/${SLUG}.pdf | awk '{print $5}'))"
           else
             echo "❌ Book PDF not found"
           fi
@@ -427,8 +353,8 @@ jobs:
           echo "📚 Book formats:"
           if [ -d "releases/book" ]; then
             ls -la releases/book/ || echo "   No book files found"
-            if [ -f "releases/book/architecture_as_code.pdf" ]; then
-              echo "   📖 PDF size: $(ls -lh releases/book/architecture_as_code.pdf | awk '{print $5}')"
+            if [ -f "releases/book/${SLUG}.pdf" ]; then
+              echo "   📖 PDF size: $(ls -lh releases/book/${SLUG}.pdf | awk '{print $5}')"
             fi
           fi
 
@@ -462,7 +388,7 @@ jobs:
           echo "🐳 Docker-based build completed at: $(date)"
 
       - name: 📤 Upload docker build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: success()
         with:
           name: unified-docker-build
@@ -473,16 +399,43 @@ jobs:
   finalize:
     name: 📦 Finalize & Release
     runs-on: ubuntu-latest
+    env:
+      # Lets pip and git read the private repositories of the organisation when the secret GEONITAB_READ_TOKEN exists.
+      GIT_CONFIG_COUNT: "1"
+      GIT_CONFIG_KEY_0: url.${{ secrets.GEONITAB_READ_TOKEN && format('https://x-access-token:{0}@github.com/Geonitab/', secrets.GEONITAB_READ_TOKEN) || 'https://github.com/Geonitab/' }}.insteadOf
+      GIT_CONFIG_VALUE_0: https://github.com/Geonitab/
+    permissions:
+      contents: write  # creates the GitHub release
     timeout-minutes: 15
     needs: [setup, docker-build]
     if: always() && needs.docker-build.result == 'success'
 
     steps:
       - name: 📥 Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: 🐍 Set up Python (to read book.yaml)
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+
+      - name: 📦 PyYAML
+        run: pip install pyyaml
+
+      - name: 📖 Read book.yaml
+        run: |
+          python3 - <<'PY' >> "$GITHUB_ENV"
+          import yaml
+          c = yaml.safe_load(open("book.yaml"))
+          print(f"SLUG={c['slug']}")
+          print(f"BOOK_TITLE={c['title']}")
+          name = c.get('series_name', 'The Transformed Architecture')
+          label = c.get('series_label') or (f"{name}, Book {c['series_position']}" if c.get('kind', 'book') == 'book' else f"A companion to {name}")
+          print(f"SERIES_LABEL={label}")
+          PY
 
       - name: 📦 Download build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: unified-docker-build
           path: artifacts/unified-docker-build
@@ -532,7 +485,7 @@ jobs:
           done
 
       - name: 📤 Upload individual components
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: success()
         with:
           name: book-formats-unified
@@ -541,7 +494,7 @@ jobs:
           if-no-files-found: warn
 
       - name: 📤 Upload presentation materials
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: success()
         with:
           name: presentation-materials-unified
@@ -550,7 +503,7 @@ jobs:
           if-no-files-found: warn
 
       - name: 📤 Upload whitepapers
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: success()
         with:
           name: whitepapers-unified
@@ -559,7 +512,7 @@ jobs:
           if-no-files-found: warn
 
       - name: 📤 Upload website build
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: success()
         with:
           name: website-build-unified
@@ -572,27 +525,28 @@ jobs:
         run: |
           echo "=== Creating complete release archive ==="
           cd final-release
-          zip -r ../unified-release-archive.zip .
+          zip -r ../${SLUG}_release.zip .
           cd ..
           echo "✅ Complete release archive created"
-          ls -lh unified-release-archive.zip
+          ls -lh ${SLUG}_release.zip
 
       - name: 📤 Upload complete release archive
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: success()
         with:
           name: unified-release-archive
-          path: unified-release-archive.zip
+          path: ${{ env.SLUG }}_release.zip
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
 
       - name: 🚀 Create comprehensive GitHub Release
-        if: (github.ref == 'refs/heads/main' && github.event_name == 'push') || (github.event_name == 'workflow_dispatch' && github.event.inputs.create_release == 'true')
-        uses: softprops/action-gh-release@v2
+        # A comprehensive release lists every format as a required asset, so it is only created for full builds
+        if: (github.event_name != 'workflow_dispatch' || inputs.create_release) && (inputs.deliverables || 'all') == 'all' && ((github.ref == 'refs/heads/main' && github.event_name == 'push') || github.event_name == 'workflow_dispatch')
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2
         with:
           tag_name: v${{ github.run_number }}-unified
-          name: "Arkitektur som kod v${{ github.run_number }} - Unified Release"
+          name: "${{ env.BOOK_TITLE }} v${{ github.run_number }} - Unified Release"
           body: |
-            📚 **Arkitektur som kod - Unified Complete Release**
+            📚 **${{ env.BOOK_TITLE }} (${{ env.SERIES_LABEL }}) - Unified Complete Release**
 
             Generated from commit: ${{ github.sha }}
 
@@ -606,12 +560,12 @@ jobs:
             ### 📦 Complete Release Package Contents:
 
             #### 📖 Book Formats
-            - `architecture_as_code.pdf` - Complete PDF book
-            - `architecture_as_code.epub` - EPUB format for e-readers
-            - `architecture_as_code.docx` - Microsoft Word format
+            - `${{ env.SLUG }}.pdf` - Complete PDF book
+            - `${{ env.SLUG }}.epub` - EPUB format for e-readers
+            - `${{ env.SLUG }}.docx` - Microsoft Word format
 
             #### 🎤 Presentation Materials
-            - `architecture_as_code_presentation.pptx` - PowerPoint presentation
+            - `${{ env.SLUG }}_presentation.pptx` - PowerPoint presentation
             - Presentation outline and generation scripts
 
             #### 📄 Whitepapers
@@ -628,16 +582,16 @@ jobs:
 
             **📥 Download Options:**
             - Individual components from Assets below
-            - `unified-release-archive.zip` - All deliverables in one archive
+            - `${{ env.SLUG }}_release.zip` - All deliverables in one archive
 
             🎯 **This unified release includes ALL project deliverables with optimized build performance!**
           files: |
-            final-release/book/architecture_as_code.pdf
-            final-release/book/architecture_as_code.epub
-            final-release/book/architecture_as_code.docx
-            final-release/presentation/architecture_as_code_presentation.pptx
+            final-release/book/${{ env.SLUG }}.pdf
+            final-release/book/${{ env.SLUG }}.epub
+            final-release/book/${{ env.SLUG }}.docx
+            final-release/presentation/${{ env.SLUG }}_presentation.pptx
             final-release/whitepapers/whitepapers_combined.pdf
-            unified-release-archive.zip
+            ${{ env.SLUG }}_release.zip
           fail_on_unmatched_files: true
           draft: false
           prerelease: false

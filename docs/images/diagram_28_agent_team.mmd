@@ -1,20 +1,20 @@
 %% Team collaboration flow for AI agents supporting Architecture as Code initiatives
 flowchart TD
-    PO[Project Owner]:::kv-highlight
-    PM[Project Manager]:::kv-primary
+    PO[Project Owner]:::geon-highlight
+    PM[Project Manager]:::geon-primary
     
     subgraph "Design Team"
-        ARCH[Architect]:::kv-accent
-        DES[Designer]:::kv-accent
+        ARCH[Architect]:::geon-accent
+        DES[Designer]:::geon-accent
     end
     
     subgraph "Development Team"
-        DEV[Developer]:::kv-accent
-        QC[Quality Control]:::kv-highlight
+        DEV[Developer]:::geon-accent
+        QC[Quality Control]:::geon-highlight
     end
     
     subgraph "Content Team"
-        ED[Editor]:::kv-muted
+        ED[Editor]:::geon-muted
     end
 
     PO --> PM

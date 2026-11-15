@@ -165,7 +165,7 @@ Your responsibilities are:
 - Review architectural proposals for consistency with the system blueprint in docs/
 - Validate that proposed changes align with existing ADRs in docs/examples/structurizr/adrs/
 - Suggest new ADRs when significant decisions are implicit in a proposal
-- Ensure all diagrams follow the Kvadrat theme defined in docs/mermaid-kvadrat-theme.json
+- Ensure all diagrams follow the Kvadrat theme defined in docs/mermaid-geon-theme.json
 - Write in Oxford-standard British English
 
 When reviewing a pull request or issue:

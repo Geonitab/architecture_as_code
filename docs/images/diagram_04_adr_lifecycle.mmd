@@ -1,15 +1,15 @@
 graph TD
-    A[ADR Created]:::kv-primary --> B[Status: Proposed]:::kv-highlight
-    B --> C{Review Process}:::kv-decision
-    C -->|Approved| D[Status: Accepted]:::kv-accent
-    C -->|Not Approved| E[Revision Needed]:::kv-muted
+    A[ADR Created]:::geon-primary --> B[Status: Proposed]:::geon-highlight
+    B --> C{Review Process}:::geon-decision
+    C -->|Approved| D[Status: Accepted]:::geon-accent
+    C -->|Not Approved| E[Revision Needed]:::geon-muted
     E --> B
-    D --> F[Implementation]:::kv-accent
-    F --> G[Monitoring]:::kv-highlight
-    G --> H{Is the Decision Working?}:::kv-decision
-    H -->|Yes| I[Continued Use]:::kv-accent
-    H -->|No| J[Status: Deprecated]:::kv-muted
-    J --> K[New ADR Required]:::kv-pattern
+    D --> F[Implementation]:::geon-accent
+    F --> G[Monitoring]:::geon-highlight
+    G --> H{Is the Decision Working?}:::geon-decision
+    H -->|Yes| I[Continued Use]:::geon-accent
+    H -->|No| J[Status: Deprecated]:::geon-muted
+    J --> K[New ADR Required]:::geon-pattern
 
-    classDef kv-decision fill:#1E3A8A,stroke:#0F172A,color:#F8FAFC,stroke-width:3px
-    class C,H kv-decision
+    classDef geon-decision fill:#1E3A8A,stroke:#0F172A,color:#F8FAFC,stroke-width:3px
+    class C,H geon-decision

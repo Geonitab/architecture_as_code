@@ -9,7 +9,7 @@ import tempfile
 from pathlib import Path
 from typing import Sequence
 
-from scripts.navigation import get_book_build_files
+from bookengine.scripts.navigation import get_book_build_files
 
 REPO_ROOT = Path(__file__).resolve().parent
 DOCS_DIR = REPO_ROOT / "docs"

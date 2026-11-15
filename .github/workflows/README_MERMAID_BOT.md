@@ -70,17 +70,17 @@ The bot follows these naming patterns:
 
 ## Styling
 
-The project uses custom Mermaid styling with Kvadrat theme classes:
-- `:::kv-primary` - Primary elements
-- `:::kv-highlight` - Highlighted elements
-- `:::kv-accent` - Accent elements
-- `:::kv-pattern` - Pattern elements
+The project uses custom Mermaid styling with GEON theme classes:
+- `:::geon-primary` - Primary elements
+- `:::geon-highlight` - Highlighted elements
+- `:::geon-accent` - Accent elements
+- `:::geon-pattern` - Pattern elements
 
 Example:
 ```mermaid
 graph TD
-    A[Requirements as Code]:::kv-primary --> B[Compliance as Code]:::kv-highlight
-    B --> C[Documentation as Code]:::kv-highlight
+    A[Requirements as Code]:::geon-primary --> B[Compliance as Code]:::geon-highlight
+    B --> C[Documentation as Code]:::geon-highlight
 ```
 
 ## Supported Diagram Types
