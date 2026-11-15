@@ -1,4 +1,4 @@
-# Kvadrat Brand Guidelines
+# GEON Brand Guidelines
 ## Grafisk profil for Kodarkitektur Bokverkstad
 
 ### Overview
@@ -24,15 +24,15 @@ This document defines The kompletta grafiska profilen for all Kvadrat-publikatio
 
 ### Primära färger
 ```css
---kvadrat-blue: hsl(221, 67%, 32%)        /* #1e3a8a */
---kvadrat-blue-light: hsl(217, 91%, 60%)  /* #3b82f6 */
---kvadrat-blue-dark: hsl(214, 32%, 18%)   /* #1e293b */
+--geon-blue: hsl(221, 67%, 32%)        /* #1e3a8a */
+--geon-blue-light: hsl(217, 91%, 60%)  /* #3b82f6 */
+--geon-blue-dark: hsl(214, 32%, 18%)   /* #1e293b */
 ```
 
 ### Sekunwherea färger
 ```css
---kvadrat-gray: hsl(215, 20%, 46%)        /* #64748b */
---kvadrat-gray-light: hsl(214, 32%, 97%)  /* #f1f5f9 */
+--geon-gray: hsl(215, 20%, 46%)        /* #64748b */
+--geon-gray-light: hsl(214, 32%, 97%)  /* #f1f5f9 */
 --white: hsl(0, 0%, 100%)                 /* #ffffff */
 ```
 
@@ -135,7 +135,7 @@ background: linear-gradient(135deg, hsl(221, 67%, 32%, 0.05), hsl(217, 91%, 60%,
 - **Format**: A4 (210x297mm)
 - **Marginaler**: 25mm at all sidor
 - **Header**: Kapiteltitel and sidnummer
-- **Footer**: Kvadrat branding
+- **Footer**: GEON branding
 - **Färger**: Optimerade for both skärm and print
 
 ### Whitepapers
@@ -199,7 +199,7 @@ background: linear-gradient(135deg, hsl(221, 67%, 32%, 0.05), hsl(217, 91%, 60%,
 ### Whitepapers
 - [ ] Template HTML/CSS skapad
 - [ ] Professional layout implemented
-- [ ] Kvadrat branding konsekvent
+- [ ] GEON branding konsekvent
 - [ ] Print-optimerad styling
 
 ## Kontakt for brand guidelines

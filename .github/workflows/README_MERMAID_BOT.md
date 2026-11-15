@@ -70,7 +70,7 @@ The bot follows these naming patterns:
 
 ## Styling
 
-The project uses custom Mermaid styling with Kvadrat theme classes:
+The project uses custom Mermaid styling with GEON theme classes:
 - `:::kv-primary` - Primary elements
 - `:::kv-highlight` - Highlighted elements
 - `:::kv-accent` - Accent elements

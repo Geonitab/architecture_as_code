@@ -2,13 +2,13 @@
 
 ## Purpose
 
-This guide documents the standards for creating brand-compliant diagrams for the Architecture as Code book. All diagrams must follow the Kvadrat brand guidelines and maintain professional, consistent visual presentation throughout the publication.
+This guide documents the standards for creating brand-compliant diagrams for the Architecture as Code book. All diagrams must follow the GEON brand guidelines and maintain professional, consistent visual presentation throughout the publication.
 
 ## Brand Compliance Overview
 
 All diagrams must adhere to:
-- **Kvadrat Brand Guidelines**: Professional, corporate aesthetic without decorative elements
-- **Colour Palette**: Use only defined Kvadrat blue shades
+- **GEON Brand Guidelines**: Professional, corporate aesthetic without decorative elements
+- **Colour Palette**: Use only defined GEON blue shades
 - **Typography**: Inter font family with appropriate sizing
 - **Language**: British English spelling and grammar
 - **Professionalism**: Clear, descriptive text without emojis or informal language
@@ -17,13 +17,13 @@ For detailed brand requirements, see `docs/archive/book-cover/source/BRAND_GUIDE
 
 ## Colour Palette
 
-All diagrams use the Kvadrat blue colour palette defined in `docs/mermaid-kvadrat-theme.json`. Apply CSS classes to diagram elements using the `:::kv-*` syntax:
+All diagrams use the GEON blue colour palette defined in `docs/mermaid-kvadrat-theme.json`. Apply CSS classes to diagram elements using the `:::kv-*` syntax:
 
 ### Available Colour Classes
 
 | Class | Colour | Hex Code | Usage |
 |-------|--------|----------|-------|
-| `:::kv-primary` | Kvadrat Blue (Dark) | #1E3A8A | Primary elements, strategic components |
+| `:::kv-primary` | GEON Blue (Dark) | #1E3A8A | Primary elements, strategic components |
 | `:::kv-accent` | Blue (Medium) | #2563EB | Secondary elements, supporting components |
 | `:::kv-highlight` | Light Blue | #3B82F6 | Emphasis elements, callouts |
 | `:::kv-muted` | Ice Blue | #E0F2FE | Background, deprecated elements |
@@ -269,7 +269,7 @@ python3 generate_book.py && docs/build_book.sh
 
 ### Problem: Colours Not Applying
 
-**Symptom**: Nodes appear in default Mermaid colours instead of Kvadrat blue shades
+**Symptom**: Nodes appear in default Mermaid colours instead of GEON blue shades
 
 **Solution**: 
 - Check CSS class syntax: `[Label]:::kv-primary` (note the triple colons)
@@ -297,7 +297,7 @@ python3 generate_book.py && docs/build_book.sh
 
 ### Problem: Theme Not Loading
 
-**Symptom**: Diagrams render with default theme instead of Kvadrat theme
+**Symptom**: Diagrams render with default theme instead of GEON theme
 
 **Solution**:
 - Ensure `mmdc` command includes `-t docs/mermaid-kvadrat-theme.json` parameter
@@ -323,7 +323,7 @@ export PUPPETEER_EXECUTABLE_PATH=$(which chromium)
 2. **Create**: Write Mermaid syntax in `.mmd` file following naming convention
 3. **Style**: Apply appropriate `:::kv-*` classes to all important nodes
 4. **Validate**: Run validation checks (spelling, emojis, syntax)
-5. **Render**: Generate PNG using `mmdc` with Kvadrat theme
+5. **Render**: Generate PNG using `mmdc` with GEON theme
 6. **Review**: Verify rendered PNG matches brand guidelines
 7. **Commit**: Add both `.mmd` source and `.png` output to version control
 8. **Test**: Run full book build to ensure diagram appears correctly
@@ -406,7 +406,7 @@ ls -1 *.png | wc -l
 
 Before considering a diagram complete, verify:
 
-- [ ] Diagram uses only Kvadrat colour palette (`:::kv-*` classes)
+- [ ] Diagram uses only GEON colour palette (`:::kv-*` classes)
 - [ ] All text uses British English spelling
 - [ ] No emojis in titles, labels, or annotations
 - [ ] Title is clear, professional, and descriptive
@@ -439,7 +439,7 @@ If you encounter issues not covered in this guide:
 ## Version History
 
 - **v1.0** (2025-11-05): Initial diagram style guide creation
-  - Documented Kvadrat colour palette and CSS classes
+  - Documented GEON colour palette and CSS classes
   - Added examples for all diagram types
   - Defined validation process and quality checklist
   - Created troubleshooting section

@@ -25,7 +25,7 @@ If you modify a `.mmd` file, the PNG must be regenerated before committing.
 
 ### Theme Configuration
 
-Always include the Kvadrat theme init block at the top of `.mmd` files:
+Always include the GEON theme init block at the top of `.mmd` files:
 
 ```
 %%{init: {'theme':'base', 'themeVariables': {

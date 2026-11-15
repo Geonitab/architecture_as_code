@@ -144,7 +144,7 @@ python3 generate_presentation.py --create-pptx --release
 **Presentation Design Guidelines**:
 - All presentations must follow [PRESENTATION_DESIGN_GUIDELINES.md](docs/PRESENTATION_DESIGN_GUIDELINES.md)
 - 16:9 aspect ratio (1280×720px or 1920×1080px)
-- Kvadrat brand colours and typography (Inter font family)
+- GEON brand colours and typography (Inter font family)
 - Minimum 18pt body text for readability
 - WCAG AA colour contrast (4.5:1 minimum)
 - Hero layout (full-width diagram) or Side layout (50/50 split)
@@ -154,7 +154,7 @@ python3 generate_presentation.py --create-pptx --release
 **Whitepaper Design Guidelines**:
 - All whitepapers must follow [WHITEPAPER_DESIGN_GUIDELINES.md](docs/WHITEPAPER_DESIGN_GUIDELINES.md)
 - A4/Letter format (210mm × 297mm) optimised for screen and print
-- Kvadrat brand colours and typography (Inter and JetBrains Mono fonts)
+- GEON brand colours and typography (Inter and JetBrains Mono fonts)
 - WCAG AA accessibility compliance (4.5:1 minimum contrast)
 - Semantic HTML5 with proper heading hierarchy
 - Responsive design with mobile breakpoints (min-width: 320px)
@@ -170,7 +170,7 @@ python3 generate_presentation.py --create-pptx --release
 **Validation**:
 - Run `--validate-diagrams` to check that all chapters have diagrams
 - Verify diagram type coverage (flowcharts, sequence diagrams, etc.)
-- Ensure all Mermaid `.mmd` files include Kvadrat theme configuration
+- Ensure all Mermaid `.mmd` files include GEON theme configuration
 
 ### Whitepaper Generation
 
@@ -187,7 +187,7 @@ python3 generate_whitepapers.py --release
 **Whitepaper Design Guidelines**:
 - All whitepapers must follow [WHITEPAPER_DESIGN_GUIDELINES.md](docs/WHITEPAPER_DESIGN_GUIDELINES.md)
 - A4/Letter format (210mm × 297mm) optimised for screen and print
-- Kvadrat brand colours and typography (Inter and JetBrains Mono fonts)
+- GEON brand colours and typography (Inter and JetBrains Mono fonts)
 - WCAG AA accessibility compliance (4.5:1 minimum contrast)
 - Semantic HTML5 with proper heading hierarchy
 - Responsive design with mobile breakpoints (min-width: 320px)

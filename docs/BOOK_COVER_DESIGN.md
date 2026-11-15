@@ -1,14 +1,14 @@
 # Book Cover design - "Architecture as Code" {#book-cover-design}
 
 ## Overview
-Professional book cover design for Kvadrat's "Architecture as Code" publication. The design follows Kvadrat's brand guidelines and incorporates modern visual elements that reflect the theme of code architecture.
+Professional book cover design for GEON's "Architecture as Code" publication. The design follows GEON's brand guidelines and incorporates modern visual elements that reflect the theme of code architecture.
 
 ## Active Cover Template
 
 ### Primary Design (Vector Format)
 **File:** `templates/book-cover.svg`
 - Infinitely scalable SVG format
-- Modern gradient background (Kvadrat Blue to Dark Blue)
+- Modern gradient background (GEON Blue to Dark Blue)
 - Advanced code architecture visual elements
 - Professional typography with highlighted "code" text
 - Perfect for editing in vector graphics software
@@ -61,7 +61,7 @@ The design is available in multiple high-resolution formats:
 - **Resolution**: 300 DPI for print, 150 DPI for screen
 
 ### Brand Compliance
-The design strictly follows Kvadrat Brand Guidelines:
+The design strictly follows GEON Brand Guidelines:
 
 #### Colour Palette
 ```css
@@ -142,7 +142,7 @@ exports/book-cover/
 ## Quality Assurance
 
 ### Brand Guidelines Compliance
-- ✅ Kvadrat colour palette strictly followed
+- ✅ GEON colour palette strictly followed
 - ✅ Typography hierarchy maintained
 - ✅ Logo placement and sizing correct
 - ✅ Professional aesthetic aligned with brand
@@ -168,7 +168,7 @@ exports/book-cover/
 4. Verify the cover appears correctly in the generated PDF and EPUB
 
 ### Brand Updates
-If Kvadrat brand guidelines change:
+If GEON brand guidelines change:
 1. Update the SVG file in `templates/book-cover.svg`
 2. Update source files in `exports/book-cover/source/` if needed
 3. Regenerate the book to verify changes
@@ -185,5 +185,5 @@ For questions about the design or technical implementation:
 
 **design Version**: 1.0  
 **Created**: oktober 2025
-**Brand Guidelines**: Kvadrat v1.0  
+**Brand Guidelines**: GEON v1.0  
 **Formats**: HTML/CSS, SVG, PDF, PNG, JPEG

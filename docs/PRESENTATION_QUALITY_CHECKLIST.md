@@ -15,7 +15,7 @@ This checklist ensures that all generated presentations meet the standards defin
 - [ ] Front matter and part introductions are complete
 
 ### Diagram Readiness
-- [ ] All Mermaid `.mmd` files include Kvadrat theme configuration
+- [ ] All Mermaid `.mmd` files include GEON theme configuration
 - [ ] Diagrams are rendered to PNG format in `docs/images/`
 - [ ] Each chapter has at least one diagram (run `--validate-diagrams`)
 - [ ] Diagram types are balanced (flowcharts, sequence, class diagrams present)
@@ -42,16 +42,16 @@ python3 scripts/validate_presentation_guidelines.py --report reports/presentatio
 #### Typography
 - [ ] Title slide main title: 72px, font-weight 800, white colour
 - [ ] Title slide subtitle: 32px, font-weight 400, white 90% opacity
-- [ ] Section divider titles: 64px, font-weight 700, Kvadrat Blue
-- [ ] Slide titles (H1): 36-48px, font-weight 700, Kvadrat Blue Dark
-- [ ] Body text: 18-20px minimum, font-weight 400, Kvadrat Blue Dark
+- [ ] Section divider titles: 64px, font-weight 700, GEON Blue
+- [ ] Slide titles (H1): 36-48px, font-weight 700, GEON Blue Dark
+- [ ] Body text: 18-20px minimum, font-weight 400, GEON Blue Dark
 - [ ] Captions: 12-14px, font-weight 500, Kvadrat Grey
 - [ ] Line height: 1.4 for body text, 1.2 for headings
 - [ ] Font family: Inter (primary), JetBrains Mono (code)
 
 #### Colour Usage
-- [ ] Kvadrat Blue (#1e3a8a) used for primary headings and branding
-- [ ] Kvadrat Blue Dark (#1e293b) used for primary body text
+- [ ] GEON Blue (#1e3a8a) used for primary headings and branding
+- [ ] GEON Blue Dark (#1e293b) used for primary body text
 - [ ] Kvadrat Grey (#64748b) used for muted text and captions
 - [ ] Accent Orange (#d97706) used for keyword banners
 - [ ] White (#ffffff) used for inverted text on dark backgrounds
@@ -184,7 +184,7 @@ python3 scripts/validate_presentation_guidelines.py --report reports/presentatio
 - [ ] Regenerated from source after updates
 
 ### Brand Guideline Alignment
-- [ ] Reviewed against latest Kvadrat brand guidelines
+- [ ] Reviewed against latest GEON brand guidelines
 - [ ] Colour constants updated in `generate_presentation.py` if changed
 - [ ] Regenerated all presentations with `--release` flag
 - [ ] Sample slides reviewed for consistency
@@ -234,4 +234,4 @@ python3 scripts/validate_presentation_guidelines.py --strict
 **Related Documentation:**
 - [PRESENTATION_DESIGN_GUIDELINES.md](PRESENTATION_DESIGN_GUIDELINES.md)
 - [STYLE_GUIDE.md](STYLE_GUIDE.md)
-- [Kvadrat Brand Guidelines](archive/book-cover/source/BRAND_GUIDELINES.md)
+- [GEON Brand Guidelines](archive/book-cover/source/BRAND_GUIDELINES.md)

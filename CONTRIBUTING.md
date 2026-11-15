@@ -218,7 +218,7 @@ Mermaid diagrams are the primary diagramming format. Both the `.mmd` source and 
 
 ### Gantt chart colour palette
 
-When creating Gantt charts, use the Kvadrat colour palette defined in `docs/STYLE_GUIDE.md`:
+When creating Gantt charts, use the GEON colour palette defined in `docs/STYLE_GUIDE.md`:
 
 - Done tasks: `#1E3A8A` with white text `#F8FAFC`
 - Active tasks: `#2563EB` with white text `#F8FAFC`
@@ -459,7 +459,7 @@ Complete this checklist before marking a PR as ready for review.
 - [ ] Every new or modified `.mmd` file has a corresponding regenerated `.png`
 - [ ] `bookengine run check_mermaid_diagrams` passes with no errors
 - [ ] Diagram alt text is descriptive and in British English
-- [ ] Diagrams use the approved Kvadrat colour palette
+- [ ] Diagrams use the approved GEON colour palette
 
 ### Structure and metadata
 
