@@ -14,5 +14,5 @@ permissions:
 
 jobs:
   diagrams:
-    uses: Geonitab/book-engine/.github/workflows/verify-diagrams.yml@80f40876d712d008e3ff75a6526961f22ff6f063
+    uses: Geonitab/book-engine/.github/workflows/verify-diagrams.yml@60c637e8fdf974487bb99e92291210a80c80f7e7
     secrets: inherit
