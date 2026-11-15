@@ -18,7 +18,8 @@ concurrency:
 
 jobs:
   scan:
-    if: github.event.pull_request.head.repo.full_name == github.repository
+    # Dependabot runs get no repository secrets, so the reusable workflow cannot run for them
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]'
     uses: Geonitab/Internal/.github/workflows/claude-pr-followups-reusable.yml@main
     with:
       pr_number: ${{ github.event.pull_request.number }}
