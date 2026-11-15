@@ -1,2 +1,2 @@
 # The publishing engine (scripts, tests, build, templates). Pin the version this book is built with.
-geon-book-engine @ git+https://github.com/Geonitab/book-engine@81ca5e6a978294cf622a0f7457f5a0446782644c
+geon-book-engine @ git+https://github.com/Geonitab/book-engine@d10efab9fe08b48dac997fded2214b26a30b7566
