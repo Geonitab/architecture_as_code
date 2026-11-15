@@ -15,3 +15,4 @@ permissions:
 jobs:
   diagrams:
     uses: Geonitab/book-engine/.github/workflows/verify-diagrams.yml@claude/book-engine-repo-structure-r259i9
+    secrets: inherit

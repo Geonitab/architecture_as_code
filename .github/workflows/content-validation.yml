@@ -16,3 +16,4 @@ permissions:
 jobs:
   validate:
     uses: Geonitab/book-engine/.github/workflows/validate-content.yml@claude/book-engine-repo-structure-r259i9
+    secrets: inherit
