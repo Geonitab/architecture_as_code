@@ -397,7 +397,7 @@ jobs:
           echo "🐳 Docker-based build completed at: $(date)"
 
       - name: 📤 Upload docker build artifacts
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: success()
         with:
           name: unified-docker-build
@@ -515,7 +515,7 @@ jobs:
             --repository "${{ github.repository }}" --run-id "${{ github.run_id }}"
 
       - name: 📤 Upload individual components
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: success()
         with:
           name: book-formats-unified
@@ -524,7 +524,7 @@ jobs:
           if-no-files-found: warn
 
       - name: 📤 Upload presentation materials
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: success()
         with:
           name: presentation-materials-unified
@@ -533,7 +533,7 @@ jobs:
           if-no-files-found: warn
 
       - name: 📤 Upload whitepapers
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: success()
         with:
           name: whitepapers-unified
@@ -542,7 +542,7 @@ jobs:
           if-no-files-found: warn
 
       - name: 📤 Upload website build
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: success()
         with:
           name: website-build-unified
@@ -561,7 +561,7 @@ jobs:
           ls -lh ${SLUG}_release.zip
 
       - name: 📤 Upload complete release archive
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: success()
         with:
           name: unified-release-archive
