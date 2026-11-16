@@ -1,4 +1,4 @@
-# Inlined from Geonitab/book-engine/.github/workflows/build-release.yml@d9576bb: this repository is public and cannot call the organisation's internal reusable workflows.
+# Inlined from Geonitab/book-engine/.github/workflows/build-release.yml@d6293e8: this repository is public and cannot call the organisation's internal reusable workflows.
 name: Unified Build & Release
 
 on:
@@ -18,7 +18,7 @@ on:
         description: 'Deliverables to build'
         type: choice
         default: all
-        options: [all, book-only, presentations-only, whitepapers-only]
+        options: [all, book-only, presentations-only, whitepapers-only, posters-only]
 
 permissions:
   contents: write
@@ -72,7 +72,7 @@ jobs:
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           repository: ${{ 'Geonitab/book-engine' }}
-          ref: ${{ 'd9576bb98b10293e5fa8abf92c20855095143641' }}
+          ref: ${{ 'd6293e87ac9be2d8a4e6c0df15bf7b5e48572a0a' }}
           token: ${{ secrets.GEONITAB_READ_TOKEN || github.token }}
           path: .engine
 
@@ -200,6 +200,11 @@ jobs:
                 'website-only')
                   echo '🌐 Skipping website build (no frontend available)...'
                   ;;
+                'posters-only')
+                  echo '🖼️ Building the poster only...' &&
+                  python3 -m bookengine posters --release --strict &&
+                  ls -la releases/posters/
+                  ;;
                 'all'|*)
                   echo '📦 Building all deliverables...' &&
                   # Build book in all formats
@@ -224,6 +229,10 @@ jobs:
                   python3 --version &&
                   echo '📝 Verifying presentation files...' &&
                   ls -la releases/presentation/ || echo '⚠️ No presentation files found'
+                  # The poster is an extra: a poster that cannot be rendered must not stop the release
+                  echo '🖼️ Step 4: Generating the poster...'
+                  python3 -m bookengine posters --release || echo '⚠️ The poster could not be generated; the release goes on without it'
+                  ls -la releases/posters/ 2>/dev/null || true
                   ;;
               esac &&
 
@@ -484,6 +493,27 @@ jobs:
             fi
           done
 
+      # The release carries its own interface: release.json (commit, engine, chapters and their hashes, assets) and
+      # the whitepapers as a self-contained zip. The sites and courses that are derived from the book read these
+      # instead of rebuilding the book (see src/bookengine/scripts/release_manifest.py).
+      - name: 📥 Checkout the book engine (release scripts)
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: ${{ 'Geonitab/book-engine' }}
+          ref: ${{ 'd6293e87ac9be2d8a4e6c0df15bf7b5e48572a0a' }}
+          token: ${{ secrets.GEONITAB_READ_TOKEN || github.token }}
+          path: .engine
+
+      - name: 🧾 Pack the whitepapers and write release.json
+        run: |
+          set -e
+          scripts=.engine/src/bookengine/scripts
+          python3 "$scripts/pack_whitepapers.py" --whitepapers-dir final-release/whitepapers --book-root . \
+            --out "final-release/${SLUG}_whitepapers.zip"
+          python3 "$scripts/release_manifest.py" --book-root . --release-dir final-release --out final-release/release.json \
+            --tag "v${{ github.run_number }}-unified" --commit "${{ github.sha }}" --ref "${{ github.ref_name }}" \
+            --repository "${{ github.repository }}" --run-id "${{ github.run_id }}"
+
       - name: 📤 Upload individual components
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: success()
@@ -571,6 +601,14 @@ jobs:
             #### 📄 Whitepapers
             - Individual HTML whitepapers for each chapter
             - `whitepapers_combined.pdf` - All whitepapers in single PDF
+            - `${{ env.SLUG }}_whitepapers.zip` - The whitepapers as self-contained HTML with their figures
+
+            #### 🖼️ Poster
+            - `${{ env.SLUG }}_poster.pdf` - The book on one A2 sheet (print)
+            - `${{ env.SLUG }}_poster.png` - The same, as an image
+
+            #### 🧾 Release manifest
+            - `release.json` - commit, engine, chapters with SHA-256 and the assets of this release
 
             **🛠️ Build Information:**
             - Built with unified workflow (replaces 3 separate workflows)
@@ -591,9 +629,21 @@ jobs:
             final-release/book/${{ env.SLUG }}.docx
             final-release/presentation/${{ env.SLUG }}_presentation.pptx
             final-release/whitepapers/whitepapers_combined.pdf
+            final-release/${{ env.SLUG }}_whitepapers.zip
+            final-release/release.json
             ${{ env.SLUG }}_release.zip
           fail_on_unmatched_files: true
           draft: false
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # The poster is added after the release exists, so that a poster that could not be rendered never stops the release.
+      - name: 🖼️ Add the poster to the release
+        if: (github.event_name != 'workflow_dispatch' || inputs.create_release) && (inputs.deliverables || 'all') == 'all' && ((github.ref == 'refs/heads/main' && github.event_name == 'push') || github.event_name == 'workflow_dispatch') && hashFiles('final-release/posters/*.pdf') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload "v${{ github.run_number }}-unified" \
+            "final-release/posters/${SLUG}_poster.pdf" "final-release/posters/${SLUG}_poster.png" \
+            --clobber --repo "${{ github.repository }}"
