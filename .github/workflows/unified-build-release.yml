@@ -64,12 +64,12 @@ jobs:
 
     steps:
       - name: 📥 Checkout repository
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
       - name: 📥 Checkout the book engine (Dockerfile)
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: ${{ 'Geonitab/book-engine' }}
           ref: ${{ 'eab7694fb0ecd50eae6f5e46d8740e6acfff5588' }}
@@ -421,7 +421,7 @@ jobs:
 
     steps:
       - name: 📥 Checkout repository
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: 🐍 Set up Python (to read book.yaml)
         uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
@@ -497,7 +497,7 @@ jobs:
       # the whitepapers as a self-contained zip. The sites and courses that are derived from the book read these
       # instead of rebuilding the book (see src/bookengine/scripts/release_manifest.py).
       - name: 📥 Checkout the book engine (release scripts)
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: ${{ 'Geonitab/book-engine' }}
           ref: ${{ 'eab7694fb0ecd50eae6f5e46d8740e6acfff5588' }}

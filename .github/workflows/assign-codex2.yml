@@ -30,7 +30,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           persist-credentials: true
@@ -232,7 +232,7 @@ jobs:
 
     steps:
       - name: Checkout PR head
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: refs/pull/${{ github.event.pull_request.number }}/head
           fetch-depth: 0
