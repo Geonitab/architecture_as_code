@@ -72,7 +72,7 @@ jobs:
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           repository: ${{ 'Geonitab/book-engine' }}
-          ref: ${{ 'eab7694fb0ecd50eae6f5e46d8740e6acfff5588' }}
+          ref: ${{ '21b76d98bfbd33a3ef8d3297266e0023e71a49d0' }}
           token: ${{ secrets.GEONITAB_READ_TOKEN || github.token }}
           path: .engine
 
@@ -500,7 +500,7 @@ jobs:
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           repository: ${{ 'Geonitab/book-engine' }}
-          ref: ${{ 'eab7694fb0ecd50eae6f5e46d8740e6acfff5588' }}
+          ref: ${{ '21b76d98bfbd33a3ef8d3297266e0023e71a49d0' }}
           token: ${{ secrets.GEONITAB_READ_TOKEN || github.token }}
           path: .engine
 
