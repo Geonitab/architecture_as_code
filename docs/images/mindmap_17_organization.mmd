@@ -1,17 +1,9 @@
-graph TD
-    ROOT(["Organisational Change"]):::geon-primary
-    ROOT --> CF["Cultural Foundations"]:::geon-accent
-    ROOT --> CT["Cross-functional Teams"]:::geon-accent
-    ROOT --> CD["Capability Development"]:::geon-accent
-    ROOT --> RE["Role Evolution"]:::geon-accent
-    ROOT --> CM["Change Management"]:::geon-accent
-    CF --> CF1["Psychological Safety"]:::geon-highlight
-    CF --> CF2["Shared Ownership"]:::geon-highlight
-    CT --> CT1["Balanced Composition"]:::geon-highlight
-    CT --> CT2["Autonomy & Accountability"]:::geon-highlight
-    CD --> CD1["Learning Paths"]:::geon-highlight
-    CD --> CD2["Communities of Practice"]:::geon-highlight
-    RE --> RE1["Leadership & Technical"]:::geon-highlight
-    RE --> RE2["T-shaped Skills"]:::geon-highlight
-    CM --> CM1["Co-design Approach"]:::geon-highlight
-    CM --> CM2["Evidence-based Iteration"]:::geon-highlight
+flowchart TB
+    B0["Cultural Foundations"]:::geon-accent --> L0["Psychological Safety<br/>Shared Ownership"]:::geon-highlight
+    B1["Cross-functional Teams"]:::geon-accent --> L1["Balanced Composition<br/>Autonomy, Accountability"]:::geon-highlight
+    B2["Capability Development"]:::geon-accent --> L2["Learning Paths<br/>Communities of Practice"]:::geon-highlight
+    B3["Role Evolution"]:::geon-accent --> L3["Leadership & Technical<br/>T-shaped Skills"]:::geon-highlight
+    B4["Change Management"]:::geon-accent --> L4["Co-design Approach<br/>Evidence-based Iteration"]:::geon-highlight
+    L0 ~~~ B2
+    L2 ~~~ B4
+    L1 ~~~ B3

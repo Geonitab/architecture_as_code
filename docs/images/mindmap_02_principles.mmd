@@ -1,14 +1,10 @@
-graph TD
-    ROOT(["Fundamental Principles"]):::geon-primary
-    ROOT --> DA["Declarative Architecture"]:::geon-accent
-    ROOT --> HC["Holistic Codification"]:::geon-accent
-    ROOT --> IP["Immutable Patterns"]:::geon-accent
-    ROOT --> T["Testability"]:::geon-accent
-    DA --> DA1["Desired System State"]:::geon-highlight
-    DA --> DA2["Benefits"]:::geon-highlight
-    HC --> HC1["Broad Scope"]:::geon-highlight
-    HC --> HC2["Integration"]:::geon-highlight
-    IP --> IP1["Core Principles"]:::geon-highlight
-    IP --> IP2["Advantages"]:::geon-highlight
-    T --> T1["Testing Scope"]:::geon-highlight
-    T --> T2["Tooling"]:::geon-highlight
+flowchart LR
+    ROOT(["Fundamental principles"]):::geon-primary
+    DA["Declarative architecture<br/>state, benefits"]:::geon-accent
+    HC["Holistic codification<br/>scope, integration"]:::geon-accent
+    IP["Immutable patterns<br/>principles, advantages"]:::geon-accent
+    T["Testability<br/>testing scope, tooling"]:::geon-accent
+    ROOT --> DA
+    ROOT --> HC
+    ROOT --> IP
+    ROOT --> T

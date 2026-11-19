@@ -1,17 +1,23 @@
-graph TD
+flowchart LR
     ROOT(["Governance & Policy"]):::geon-primary
-    ROOT --> GF["Governance Frameworks"]:::geon-accent
-    ROOT --> PAC["Policy-as-code"]:::geon-accent
-    ROOT --> SUS["Sustainability"]:::geon-accent
-    GF --> GF1["Developer Autonomy"]:::geon-highlight
-    GF --> GF2["Organisational Control"]:::geon-highlight
-    GF --> GF3["Automated Enforcement"]:::geon-highlight
-    GF --> GF4["Exception Handling"]:::geon-highlight
-    PAC --> PAC1["Codified Policies"]:::geon-highlight
-    PAC --> PAC2["Version Controlled"]:::geon-highlight
-    PAC --> PAC3["Automated Enforcement"]:::geon-highlight
-    PAC --> PAC4["Transparency"]:::geon-highlight
-    SUS --> SUS1["Environmental Consciousness"]:::geon-highlight
-    SUS --> SUS2["Collaborative Development"]:::geon-highlight
-    SUS --> SUS3["Sustainability Patterns"]:::geon-highlight
-    SUS --> SUS4["Long-term Viability"]:::geon-highlight
+    subgraph GF["Governance Frameworks"]
+        direction TB
+        GF1["Developer autonomy<br/>Organisational control"]:::geon-highlight
+        GF2["Automated enforcement<br/>Exception handling"]:::geon-highlight
+        GF1 ~~~ GF2
+    end
+    subgraph PAC["Policy-as-code"]
+        direction TB
+        PAC1["Codified policies<br/>Version controlled"]:::geon-highlight
+        PAC2["Automated enforcement<br/>Transparency"]:::geon-highlight
+        PAC1 ~~~ PAC2
+    end
+    subgraph SUS["Sustainability"]
+        direction TB
+        SUS1["Environmental consciousness<br/>Collaboration"]:::geon-highlight
+        SUS2["Sustainability patterns<br/>Long-term viability"]:::geon-highlight
+        SUS1 ~~~ SUS2
+    end
+    ROOT --> GF
+    ROOT --> PAC
+    ROOT --> SUS

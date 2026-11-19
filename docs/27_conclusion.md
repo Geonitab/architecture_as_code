@@ -26,7 +26,7 @@ matched by organisational investment in skills, culture, and operating models so
 
 ![Architecture as Code – Technical Structure](images/diagram_27_technical_structure.png)
 
-*Figure 27.1 – The technical structure of an Architecture as Code platform, showing the layered relationship between declarative definitions, automation pipelines, and governance controls.*
+*Figure 27.1 – The technical structure of an Architecture as Code platform, showing the layered relationship between declarative definitions (for example Structurizr, Terraform, Mermaid and Markdown), automation pipelines, and governance controls (for example OPA or Sentinel policies, audit trails and compliance reports).*
 
 ## 27.2 Embedding continuous improvement
 
@@ -46,7 +46,7 @@ optimisation. By regularly reviewing feedback loops, teams maintain momentum and
 
 ![Architecture as Code – Build Pipeline](images/diagram_27b_build_pipeline.png)
 
-*Figure 27.2 – The Architecture as Code build pipeline, illustrating how architectural definitions flow through validation, testing, and deployment stages to produce governed, auditable outcomes.*
+*Figure 27.2 – The Architecture as Code build pipeline, illustrating how architectural definitions flow through validation, testing, and deployment stages to produce governed, auditable outcomes. The build environment comprises Python 3.12, Pandoc 3.1.9 with XeLaTeX and TeXLive, and Chrome with Mermaid CLI; the outputs are the PDF and EPUB books, HTML pages and presentations.*
 
 ## 27.3 European context and opportunities
 
@@ -125,7 +125,7 @@ The open-source and source-available ecosystem that underpins this discipline—
 
 ![Architecture as Code – Source Materials](images/diagram_27a_source_materials.png)
 
-*Figure 27.3 – Source materials and intellectual lineage underpinning the Architecture as Code approach presented in this book.*
+*Figure 27.3 – Source materials (Markdown chapters, Mermaid diagrams, Python scripts and configuration) flow into the Git repository and its GitHub Actions workflows.*
 
 ## Sources
 

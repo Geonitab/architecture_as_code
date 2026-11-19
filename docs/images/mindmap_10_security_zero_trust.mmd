@@ -1,12 +1,9 @@
-graph TD
+flowchart TB
     ROOT(["Zero Trust Architecture"]):::geon-primary
     ROOT --> CP["Core Principles"]:::geon-accent
     ROOT --> IMP["Implementation"]:::geon-accent
-    CP --> CP1["Never Trust, Always Verify"]:::geon-highlight
-    CP --> CP2["Continuous Validation"]:::geon-highlight
-    CP --> CP3["Granular Access Control"]:::geon-highlight
-    CP --> CP4["Least Privilege"]:::geon-highlight
-    IMP --> IMP1["Network Segmentation"]:::geon-highlight
-    IMP --> IMP2["Service Mesh Policies"]:::geon-highlight
-    IMP --> IMP3["IAM Configurations"]:::geon-highlight
-    IMP --> IMP4["Trust as Code"]:::geon-highlight
+    CP --> A1["Never Trust, Always Verify"]:::geon-highlight
+    A1 ~~~ A2["Continuous Validation<br/>Granular Access Control"]:::geon-highlight
+    A2 ~~~ A3["Least Privilege"]:::geon-highlight
+    IMP --> B1["Network Segmentation<br/>Service Mesh Policies"]:::geon-highlight
+    B1 ~~~ B2["IAM Configurations<br/>Trust as Code"]:::geon-highlight

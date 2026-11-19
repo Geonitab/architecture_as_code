@@ -1,12 +1,9 @@
 flowchart TB
-    Vision["Architecture Vision"]:::geon-primary --> Governance["Platform Governance"]:::geon-accent
-    Governance --> PlatformTeam["Platform Team\n(Enablement)"]:::geon-highlight
-    PlatformTeam --> SharedServices["Shared Services\n(CI/CD, Security, Observability)"]:::geon-accent
-    SharedServices --> ProductTeams["Product Teams\n(Cross-functional)"]:::geon-primary
-    ProductTeams --> Feedback["Feedback & Metrics"]:::geon-muted
+    Vision["Architecture vision"]:::geon-primary --> Governance["Platform governance"]:::geon-accent
+    Governance --> PlatformTeam["Platform team<br/>(enablement)"]:::geon-highlight
+    PlatformTeam --> SharedServices["Shared services"]:::geon-accent
+    SharedServices --> ProductTeams["Product teams"]:::geon-primary
+    ProductTeams --> Feedback["Feedback and metrics"]:::geon-muted
     Feedback --> Governance
-    Communities["Communities of Practice"]:::geon-pattern --> PlatformTeam
+    Communities["Communities of practice"]:::geon-pattern --> PlatformTeam
     Communities --> ProductTeams
-    Communities --> Leadership["Leadership & People Ops"]:::geon-outline
-    Leadership --> Governance
-    Leadership --> PlatformTeam

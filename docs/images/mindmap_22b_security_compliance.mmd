@@ -1,15 +1,23 @@
-graph TD
+flowchart LR
     ROOT(["Security & Compliance"]):::geon-primary
-    ROOT --> SD["Security-first Design"]:::geon-accent
-    ROOT --> RR["Regional Regulatory"]:::geon-accent
-    ROOT --> SM["Secret Management"]:::geon-accent
-    SD --> SD1["Defence-in-depth"]:::geon-highlight
-    SD --> SD2["Least Privilege"]:::geon-highlight
-    SD --> SD3["Zero-trust Architecture"]:::geon-highlight
-    RR --> RR1["GDPR Compliance"]:::geon-highlight
-    RR --> RR2["Data Residency"]:::geon-highlight
-    RR --> RR3["Encryption Requirements"]:::geon-highlight
-    RR --> RR4["Audit Logging"]:::geon-highlight
-    SM --> SM1["Automated Rotation"]:::geon-highlight
-    SM --> SM2["Audit Trails"]:::geon-highlight
-    SM --> SM3["Lifecycle Management"]:::geon-highlight
+    subgraph SD["Security-first Design"]
+        direction TB
+        SD1["Defence-in-depth<br/>Least privilege"]:::geon-highlight
+        SD2["Zero-trust architecture"]:::geon-highlight
+        SD1 ~~~ SD2
+    end
+    subgraph RR["Regional Regulatory"]
+        direction TB
+        RR1["GDPR compliance<br/>Data residency"]:::geon-highlight
+        RR2["Encryption<br/>Audit logging"]:::geon-highlight
+        RR1 ~~~ RR2
+    end
+    subgraph SM["Secret Management"]
+        direction TB
+        SM1["Automated rotation<br/>Audit trails"]:::geon-highlight
+        SM2["Lifecycle management"]:::geon-highlight
+        SM1 ~~~ SM2
+    end
+    ROOT --> SD
+    ROOT --> RR
+    ROOT --> SM

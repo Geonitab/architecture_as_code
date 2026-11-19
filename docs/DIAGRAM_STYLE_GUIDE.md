@@ -443,3 +443,13 @@ If you encounter issues not covered in this guide:
   - Added examples for all diagram types
   - Defined validation process and quality checklist
   - Created troubleshooting section
+
+## Readability check
+
+A diagram is shown at about 800 px wide, so a picture 2,768 px wide keeps only a third of its text size. The limits below are checked by `bookengine run validate_diagram_readability` (listed under `checks:` in `book.yaml` and run by `.github/workflows/verify-diagram-readability.yml`); a diagram outside them fails the build.
+
+- Flowcharts run top to bottom (`flowchart TB`): at most three boxes side by side, no long left-to-right chain, no diamonds (write a decision as a rounded box ending in a question mark).
+- At most 10 boxes (12 is the hard limit).
+- Every label at most 7 words and 45 characters, two lines at most; edge labels one or two words. Details (instruments, thresholds, dates, versions) go in the caption under the figure.
+- The rendered PNG is at most 1,800 px wide and no wider than 1.8 : 1.
+- Open the rendered PNG at 800 px wide and read every label before you commit.

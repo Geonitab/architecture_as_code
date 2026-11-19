@@ -4,7 +4,7 @@ This book represents the culmination of extensive experience in architecture, in
 
 ![Gunnar Nordqvist - Chief Architect](images/diagram_29_author_profile.png)
 
-*An overview of the expertise and experience that shaped this comprehensive guide to Architecture as Code and Infrastructure as Code.*
+*An overview of the expertise and experience that shaped this comprehensive guide to Architecture as Code and Infrastructure as Code. Expertise: solution and enterprise architecture, IaC and AaC, security, cloud and DevOps. Experience: Kvadrat AB, as IT architect and technical project manager.*
 
 ## Gunnar Nordqvist
 

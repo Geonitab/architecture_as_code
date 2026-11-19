@@ -1,15 +1,20 @@
-graph TD
-    ROOT(["Capability & Role Development"]):::geon-primary
-    ROOT --> LP["Learning Paths"]:::geon-accent
-    ROOT --> KE["Knowledge Enablers"]:::geon-accent
-    ROOT --> RE["Role Evolution"]:::geon-accent
-    LP --> LP1["Micro-learning Series"]:::geon-highlight
-    LP --> LP2["Mentoring & Pairing"]:::geon-highlight
-    LP --> LP3["Practice Communities"]:::geon-highlight
-    LP --> LP4["Certification Support"]:::geon-highlight
-    KE --> KE1["Self-service Playbooks"]:::geon-highlight
-    KE --> KE2["Experimentation Budgets"]:::geon-highlight
-    KE --> KE3["Rotational Programmes"]:::geon-highlight
-    RE --> RE1["Servant Leadership"]:::geon-highlight
-    RE --> RE2["Dual Career Tracks"]:::geon-highlight
-    RE --> RE3["Integrated Security"]:::geon-highlight
+flowchart TB
+    subgraph ROOT["Capability & Role Development"]
+        direction TB
+        B0["Learning Paths"]:::geon-accent
+        L0_0["Micro-learning Series<br/>Mentoring & Pairing"]:::geon-highlight
+        B0 --> L0_0
+        L0_1["Practice Communities<br/>Certification Support"]:::geon-highlight
+        L0_0 ~~~ L0_1
+        B1["Knowledge Enablers"]:::geon-accent
+        L1_0["Self-service Playbooks"]:::geon-highlight
+        B1 --> L1_0
+        L1_1["Experimentation Budgets<br/>Rotational Programmes"]:::geon-highlight
+        L1_0 ~~~ L1_1
+        B2["Role Evolution"]:::geon-accent
+        L2_0["Servant Leadership<br/>Dual Career Tracks"]:::geon-highlight
+        B2 --> L2_0
+        L2_1["Integrated Security"]:::geon-highlight
+        L2_0 ~~~ L2_1
+        L0_1 ~~~ B2
+    end

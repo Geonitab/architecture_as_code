@@ -25,7 +25,7 @@ Figure 17.1 summarises the journey from siloed functions towards integrated, pro
 
 ![Figure 17.1 – Stages of organisational transformation for Architecture as Code](images/diagram_17_transformation_journey.png)
 
-*The transformation journey illustrates how organisations evolve from isolated teams to collaborative, outcome-focused delivery groups once Architecture as Code principles are embedded. Each stage represents measurable progress in automation maturity, team integration, and delivery velocity, allowing leaders to calibrate investments and expectations accordingly.*
+*The transformation journey (siloed functions, basic collaboration, cross-functional teams, product-aligned teams) illustrates how organisations evolve from isolated teams to collaborative, outcome-focused delivery groups once Architecture as Code principles are embedded. Each stage represents measurable progress in automation maturity, team integration, and delivery velocity, allowing leaders to calibrate investments and expectations accordingly.*
 
 ## Building a DevOps Culture
 

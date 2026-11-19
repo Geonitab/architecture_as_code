@@ -1,10 +1,16 @@
-graph TD
-    Start([Issue labelled 'mermaid' or 'diagram']):::geon-primary --> Workflow[Bot workflow starts]:::geon-accent
-    Workflow --> Draft["Claude drafts the .mmd file<br/>with theme and British English"]:::geon-accent
-    Draft --> Validate{Syntax valid?}:::geon-highlight
-    Validate -->|No| Draft
-    Validate -->|Yes| PR[Pull request opened]:::geon-primary
-    PR --> Approve{Approved?}:::geon-highlight
-    Approve -->|No| Draft
-    Approve -->|Yes| Merge[Merged to main]:::geon-primary
-    Merge --> Build[Build converts .mmd to .png]:::geon-accent
+flowchart TB
+    Start(["Issue labelled mermaid or diagram"]):::geon-primary
+    Draft["Claude drafts<br/>the .mmd file"]:::geon-accent
+    Validate("Syntax valid?"):::geon-highlight
+    PR["Pull request opened"]:::geon-primary
+    Approve("Approved?"):::geon-highlight
+    Merge["Merged to main"]:::geon-primary
+    Build["Build converts .mmd to .png"]:::geon-accent
+    Start --> Draft
+    Draft --> Validate
+    Validate -->|"No"| Draft
+    Validate -->|"Yes"| PR
+    PR --> Approve
+    Approve -->|"No"| Draft
+    Approve -->|"Yes"| Merge
+    Merge --> Build

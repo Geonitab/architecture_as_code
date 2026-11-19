@@ -1,14 +1,23 @@
-graph TD
+flowchart LR
     ROOT(["Global Best Practices"]):::geon-primary
-    ROOT --> CC["Cross-cultural"]:::geon-accent
-    ROOT --> OS["Open Source"]:::geon-accent
-    ROOT --> CI["Continuous Improvement"]:::geon-accent
-    CC --> CC1["Global Collaboration"]:::geon-highlight
-    CC --> CC2["Technical Consistency"]:::geon-highlight
-    CC --> CC3["Local Adaptation"]:::geon-highlight
-    OS --> OS1["Community Contribution"]:::geon-highlight
-    OS --> OS2["Knowledge Sharing"]:::geon-highlight
-    OS --> OS3["Sustainable Practices"]:::geon-highlight
-    CI --> CI1["Feedback Loops"]:::geon-highlight
-    CI --> CI2["Iterative Refinement"]:::geon-highlight
-    CI --> CI3["Learning Culture"]:::geon-highlight
+    subgraph CC["Cross-cultural"]
+        direction TB
+        CC1["Global collaboration<br/>Technical consistency"]:::geon-highlight
+        CC2["Local adaptation"]:::geon-highlight
+        CC1 ~~~ CC2
+    end
+    subgraph OS["Open Source"]
+        direction TB
+        OS1["Community contribution<br/>Knowledge sharing"]:::geon-highlight
+        OS2["Sustainable practices"]:::geon-highlight
+        OS1 ~~~ OS2
+    end
+    subgraph CI["Continuous Improvement"]
+        direction TB
+        CI1["Feedback loops<br/>Iterative refinement"]:::geon-highlight
+        CI2["Learning culture"]:::geon-highlight
+        CI1 ~~~ CI2
+    end
+    ROOT --> CC
+    ROOT --> OS
+    ROOT --> CI

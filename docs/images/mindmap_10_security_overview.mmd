@@ -1,14 +1,10 @@
-graph TD
-    ROOT(["Security in Architecture as Code"]):::geon-primary
-    ROOT --> TM["Threat Modelling"]:::geon-accent
-    ROOT --> ZT["Zero Trust Architecture"]:::geon-accent
-    ROOT --> PC["Policy as Code"]:::geon-accent
-    ROOT --> RA["Risk Assessment"]:::geon-accent
-    TM --> TM1["Threat Landscape"]:::geon-highlight
-    TM --> TM2["STRIDE Methodology"]:::geon-highlight
-    ZT --> ZT1["Core Principles"]:::geon-highlight
-    ZT --> ZT2["Implementation"]:::geon-highlight
-    PC --> PC1["Automated Governance"]:::geon-highlight
-    PC --> PC2["Compliance Automation"]:::geon-highlight
-    RA --> RA1["Continuous Evaluation"]:::geon-highlight
-    RA --> RA2["Regulatory Compliance"]:::geon-highlight
+flowchart LR
+    ROOT(["Security in<br/>Architecture as Code"]):::geon-primary
+    TM["Threat modelling<br/>landscape, STRIDE"]:::geon-accent
+    ZT["Zero Trust<br/>principles, rollout"]:::geon-accent
+    PC["Policy as Code<br/>governance, automation"]:::geon-accent
+    RA["Risk assessment<br/>evaluation, regulation"]:::geon-accent
+    ROOT --> TM
+    ROOT --> ZT
+    ROOT --> PC
+    ROOT --> RA

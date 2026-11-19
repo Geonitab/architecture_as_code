@@ -1,4 +1,6 @@
-graph LR
-    A[Traditional Architecture]:::geon-muted --> B[Manual Processes]:::geon-muted
-    C[Architecture as Code]:::geon-primary --> D[Automated Processes]:::geon-accent
-    E[Infrastructure as Code]:::geon-highlight --> F[Practical Example]:::geon-accent
+flowchart TB
+    A["Traditional architecture"]:::geon-muted --> B["Manual processes"]:::geon-muted
+    C["Architecture as Code"]:::geon-primary --> D["Automated processes"]:::geon-accent
+    E["Infrastructure as Code"]:::geon-highlight --> F["Practical example"]:::geon-accent
+    B ~~~ C
+    D ~~~ E

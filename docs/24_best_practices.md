@@ -194,7 +194,7 @@ Strategic partnerships with academic institutions, industry consortia, and civic
 
 ![Figure 24.6 – Continuous improvement feedback loops](images/diagram_22_continuous_improvement.png)
 
-*Figure 24.6 shows how insight, experimentation, and delivery reinforce one another to sustain long-term improvement.*
+*Figure 24.6 shows how experience, learning, adaptation, maturity and automation feed one another in a continuing loop of improvement.*
 
 Continuous improvement is the connective tissue that keeps Architecture as Code programmes relevant. Feedback loops capture production telemetry, customer sentiment, regulatory changes, and retrospective findings. Improvement backlogs convert those signals into incremental experiments, each evaluated against hypothesis-driven success criteria. Innovation thrives when metrics balance reliability, speed, sustainability, and equity outcomes.
 

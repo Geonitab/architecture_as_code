@@ -1,15 +1,23 @@
-graph TD
+flowchart LR
     ROOT(["Code Organisation"]):::geon-primary
-    ROOT --> RS["Repository Structure"]:::geon-accent
-    ROOT --> MD["Module Design"]:::geon-accent
-    ROOT --> VER["Versioning"]:::geon-accent
-    RS --> RS1["Shared Modules"]:::geon-highlight
-    RS --> RS2["Environment Configs"]:::geon-highlight
-    RS --> RS3["Application Infra"]:::geon-highlight
-    MD --> MD1["Reusability Principles"]:::geon-highlight
-    MD --> MD2["Composability"]:::geon-highlight
-    MD --> MD3["Clear Interfaces"]:::geon-highlight
-    MD --> MD4["Documentation"]:::geon-highlight
-    VER --> VER1["Semantic Versioning"]:::geon-highlight
-    VER --> VER2["Immutable Releases"]:::geon-highlight
-    VER --> VER3["Upgrade Paths"]:::geon-highlight
+    subgraph RS["Repository Structure"]
+        direction TB
+        RS1["Shared modules<br/>Environment configs"]:::geon-highlight
+        RS2["Application infrastructure"]:::geon-highlight
+        RS1 ~~~ RS2
+    end
+    subgraph MD["Module Design"]
+        direction TB
+        MD1["Reusability principles<br/>Composability"]:::geon-highlight
+        MD2["Clear interfaces<br/>Documentation"]:::geon-highlight
+        MD1 ~~~ MD2
+    end
+    subgraph VER["Versioning"]
+        direction TB
+        VER1["Semantic versioning<br/>Immutable releases"]:::geon-highlight
+        VER2["Upgrade paths"]:::geon-highlight
+        VER1 ~~~ VER2
+    end
+    ROOT --> RS
+    ROOT --> MD
+    ROOT --> VER
