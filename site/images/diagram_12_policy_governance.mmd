@@ -1,0 +1,9 @@
+%% Diagram: Policy-Driven Compliance Control Tower
+flowchart TD
+    S1[Regulatory goals and risk appetite]:::geon-primary --> A1[Policy as Code]:::geon-highlight
+    A1 --> A2[Compliance pipeline]:::geon-accent
+    A2 --> O1[Dashboards]:::geon-primary
+    A2 --> O2[Exceptions]:::geon-pattern
+    A2 --> O3[Regulator reporting]:::geon-muted
+    O2 -.-> A2
+    O3 -.-> S1

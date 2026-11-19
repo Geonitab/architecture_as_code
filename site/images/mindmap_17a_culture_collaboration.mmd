@@ -1,0 +1,20 @@
+flowchart TB
+    subgraph ROOT["Culture & Collaboration"]
+        direction TB
+        B0["Cultural Foundations"]:::geon-accent
+        L0_0["Psychological Safety<br/>Shared Ownership"]:::geon-highlight
+        B0 --> L0_0
+        L0_1["Transparent Communication<br/>Blameless Learning"]:::geon-highlight
+        L0_0 ~~~ L0_1
+        B1["Cross-functional Teams"]:::geon-accent
+        L1_0["Software Engineering<br/>Platform Operations"]:::geon-highlight
+        B1 --> L1_0
+        L1_1["Security & Product"]:::geon-highlight
+        L1_0 ~~~ L1_1
+        B2["Decision Principles"]:::geon-accent
+        L2_0["Delegated Authority<br/>Lightweight Governance"]:::geon-highlight
+        B2 --> L2_0
+        L2_1["Service Objectives"]:::geon-highlight
+        L2_0 ~~~ L2_1
+        L0_1 ~~~ B2
+    end

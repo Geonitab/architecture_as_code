@@ -1,0 +1,12 @@
+%% Diagram: Compliance Automation Lifecycle
+flowchart TD
+    A[Regulatory Intelligence\nUpdates]:::geon-primary --> B[Policy as Code\nTemplates]:::geon-highlight
+    B --> C[Automated\nControls]:::geon-accent
+    C --> D[Continuous\nMonitoring]:::geon-accent
+    D --> E[Evidence\nCollection]:::geon-highlight
+    E --> F[Compliance\nDashboards]:::geon-primary
+    F --> G[Executive\nGovernance]:::geon-outline
+    G --> H[Audit\nFeedback]:::geon-muted
+    H --> B
+    C --> I[Remediation\nPlaybooks]:::geon-pattern
+    I --> C

@@ -1,0 +1,22 @@
+flowchart TB
+    subgraph G0["Communication Layer"]
+        direction LR
+        N00["Narratives<br/>Around Rules"]:::geon-highlight
+        N01["Why and How<br/>Explanations"]:::geon-highlight
+        N02["Relationship<br/>Mapping"]:::geon-highlight
+    end
+    subgraph G1["Toolchain Integration"]
+        direction LR
+        N10["Markdown Files"]:::geon-highlight
+        N11["Static Site<br/>Generators"]:::geon-highlight
+        N12["CI/CD Publishing"]:::geon-highlight
+    end
+    subgraph G2["Feedback Loops"]
+        direction LR
+        N20["Pull Request<br/>Reviews"]:::geon-highlight
+        N21["Collective<br/>Ownership"]:::geon-highlight
+        N22["Structured<br/>Discussion"]:::geon-highlight
+    end
+
+    N01 ~~~ N11
+    N11 ~~~ N21

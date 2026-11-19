@@ -1,0 +1,6 @@
+%% Example Mermaid diagram referenced in Chapter 22
+%% Maintains the textual source for the rendered image.
+graph TB
+    User[Customer]:::geon-primary -->|Pays| API[Payment API]:::geon-accent
+    API -->|Stores| DB[(Payment Database)]:::geon-highlight
+    API -->|Publishes| Queue[Message Queue]:::geon-muted

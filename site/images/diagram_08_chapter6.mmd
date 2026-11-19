@@ -1,0 +1,6 @@
+flowchart TB
+    A["Architecture repository"]:::geon-primary --> B["CI/CD pipeline"]:::geon-highlight
+    B --> C["Validation per domain"]:::geon-accent
+    C --> G["Integrated deployment"]:::geon-primary
+    G --> H["Monitoring and feedback"]:::geon-muted
+    H --> A

@@ -1,0 +1,9 @@
+%% Diagram: Version control and code structure for Architecture as Code — repository organisation, branching strategies and the collaborative review workflow
+flowchart TD
+    A["Repository\nStructure"]:::geon-primary --> B["Feature\nBranch"]:::geon-highlight
+    B --> C["Pull Request &\nCode Review"]:::geon-accent
+    C --> D["Automated\nValidation"]:::geon-highlight
+    D -->|"approved"| E["Merge to Main"]:::geon-accent
+    E --> F["Tagged\nRelease"]:::geon-primary
+    F --> G["Immutable\nChange History"]:::geon-muted
+    G -->|"informs"| A

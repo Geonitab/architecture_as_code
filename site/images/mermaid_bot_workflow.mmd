@@ -1,0 +1,16 @@
+flowchart TB
+    Start(["Issue labelled mermaid or diagram"]):::geon-primary
+    Draft["Claude drafts<br/>the .mmd file"]:::geon-accent
+    Validate("Syntax valid?"):::geon-highlight
+    PR["Pull request opened"]:::geon-primary
+    Approve("Approved?"):::geon-highlight
+    Merge["Merged to main"]:::geon-primary
+    Build["Build converts .mmd to .png"]:::geon-accent
+    Start --> Draft
+    Draft --> Validate
+    Validate -->|"No"| Draft
+    Validate -->|"Yes"| PR
+    PR --> Approve
+    Approve -->|"No"| Draft
+    Approve -->|"Yes"| Merge
+    Merge --> Build

@@ -1,0 +1,22 @@
+%% Management contributions embedded in DevOps loop
+flowchart TD
+    A[Plan]:::geon-primary --> B[Code]:::geon-primary
+    B --> C[Build]:::geon-primary
+    C --> D[Test]:::geon-primary
+    D --> E[Release]:::geon-primary
+    E --> F[Deploy]:::geon-primary
+    F --> G[Operate]:::geon-primary
+    G --> H[Observe]:::geon-primary
+    H --> A
+
+    subgraph Management Contributions
+        MA[Strategic Objectives]:::geon-highlight
+        MB[Policy Automation]:::geon-highlight
+        MC[Operational Dashboards]:::geon-highlight
+    end
+
+    A -. consumes .-> MA
+    B -. references .-> MB
+    F -. enforces .-> MB
+    G -. monitors .-> MC
+    H -. updates .-> MA

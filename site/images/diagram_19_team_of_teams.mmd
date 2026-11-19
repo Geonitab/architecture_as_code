@@ -1,0 +1,14 @@
+%% Team-of-teams leadership structure
+flowchart TB
+    Blueprint["Squad<br/>blueprint"]:::geon-primary
+    Dependencies["Dependency<br/>map"]:::geon-highlight
+    Nexus["Nexus<br/>governance"]:::geon-primary
+    Shared["Shared services<br/>agreements"]:::geon-accent
+    Support["Support<br/>automation"]:::geon-muted
+    Dashboard["Organisation<br/>dashboard"]:::geon-pattern
+
+    Blueprint --> Nexus
+    Dependencies --> Nexus
+    Blueprint --> Shared
+    Shared --> Support
+    Nexus --> Dashboard

@@ -1,0 +1,15 @@
+%% Issue and discussion lifecycle for management topics
+graph TB
+    Topic[Topic raised]:::geon-primary
+    Template[Issue template applied]:::geon-highlight
+    Analysis[Cross-functional analysis]:::geon-accent
+    Decision[Decision logged in PR]:::geon-accent
+    FollowUp[Automated follow-up]:::geon-highlight
+    Archive[Historical record]:::geon-muted
+
+    Topic --> Template
+    Template --> Analysis
+    Analysis --> Decision
+    Decision --> FollowUp
+    Decision --> Archive
+    FollowUp --> Archive

@@ -1,0 +1,9 @@
+%% Diagram: Migration from traditional infrastructure to Architecture as Code — discovery and audit through phased migration, parallel running and legacy decommission to continuous optimisation
+flowchart TD
+    A["Current State\nAudit"]:::geon-primary -->|"assess"| B["Migration\nRoadmap"]:::geon-highlight
+    B -->|"pilot"| C["Proof of\nConcept"]:::geon-accent
+    C -->|"iterate"| D["Phased\nMigration"]:::geon-accent
+    D -->|"validate"| E["Parallel\nRunning"]:::geon-highlight
+    E -->|"confirm"| F["Legacy\nDecommission"]:::geon-primary
+    F --> G["Continuous\nOptimisation"]:::geon-muted
+    G -->|"next wave"| B

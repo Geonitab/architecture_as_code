@@ -1,0 +1,14 @@
+flowchart LR
+    ROOT(["Risk<br/>assessment"]):::geon-primary
+    CE["Continuous<br/>evaluation"]:::geon-accent
+    RC["Regulatory<br/>compliance"]:::geon-accent
+    CE1["Blast radius,<br/>impact assessment"]:::geon-highlight
+    CE2["Dependency analysis,<br/>dynamic risk scoring"]:::geon-highlight
+    RC1["Data protection<br/>by design, audit trails"]:::geon-highlight
+    RC2["Compliance as code,<br/>requirements"]:::geon-highlight
+    ROOT --> CE
+    ROOT --> RC
+    CE --> CE1
+    CE --> CE2
+    RC --> RC1
+    RC --> RC2

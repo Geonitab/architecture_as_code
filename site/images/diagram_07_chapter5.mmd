@@ -1,0 +1,10 @@
+%% Diagram: Automation, DevOps and CI/CD for Infrastructure as Code — code commit triggers a fully automated pipeline from lint and test through security scanning to production deployment and feedback
+flowchart TD
+    A["Code\nCommit"]:::geon-primary -->|"triggers"| B["Lint &\nValidate"]:::geon-highlight
+    B --> C["Unit\nTests"]:::geon-accent
+    C --> D["Integration\nTests"]:::geon-accent
+    D --> E["Security\nScan"]:::geon-highlight
+    E -->|"all gates pass"| F["Staging\nDeploy"]:::geon-primary
+    F -->|"smoke tests"| G["Production\nDeploy"]:::geon-primary
+    G --> H["Monitoring\n& Alerts"]:::geon-muted
+    H -->|"feedback loop"| A

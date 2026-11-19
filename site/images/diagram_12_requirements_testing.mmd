@@ -1,0 +1,47 @@
+requirementDiagram
+
+    requirement business_req {
+        id: 1
+        text: "Secure cloud infrastructure"
+        risk: high
+        verifymethod: test
+    }
+
+    requirement compliance_req {
+        id: 2
+        text: "GDPR compliance"
+        risk: high
+        verifymethod: analysis
+    }
+
+    functionalRequirement security_config {
+        id: 1.1
+        text: "Encryption & segmentation"
+        risk: high
+        verifymethod: test
+    }
+
+    functionalRequirement data_protection {
+        id: 2.1
+        text: "Data minimisation"
+        risk: high
+        verifymethod: inspection
+    }
+
+    element terraform_config {
+        type: "Infrastructure code"
+    }
+
+    element tests {
+        type: "Test & compliance tools"
+    }
+
+    business_req - contains -> security_config
+    compliance_req - contains -> data_protection
+
+    security_config - satisfies -> terraform_config
+    data_protection - satisfies -> terraform_config
+
+    security_config - verifies -> tests
+    data_protection - verifies -> tests
+

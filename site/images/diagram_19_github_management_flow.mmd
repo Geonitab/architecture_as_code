@@ -1,0 +1,17 @@
+%% GitHub workflow for management artefacts
+flowchart TB
+    Repo[Management repository]:::geon-primary
+    Issues[Issue templates]:::geon-highlight
+    Discussions[Discussions]:::geon-highlight
+    PRs[Pull requests]:::geon-accent
+    Actions[GitHub Actions]:::geon-accent
+    Portal[Management portal]:::geon-primary
+    Alerts[Notifications]:::geon-pattern
+
+    Repo --> Issues
+    Repo --> Discussions
+    Issues --> PRs
+    Discussions --> PRs
+    PRs --> Actions
+    Actions --> Portal
+    Actions --> Alerts

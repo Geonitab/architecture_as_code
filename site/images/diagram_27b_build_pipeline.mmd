@@ -1,0 +1,20 @@
+flowchart TB
+    subgraph ENV["Build environment"]
+        PYTHON["Python 3.12"]:::geon-accent
+        PANDOC["Pandoc 3.1.9<br/>XeLaTeX + TeXLive"]:::geon-accent
+        CHROME["Chrome<br/>Mermaid CLI"]:::geon-accent
+    end
+    GEN["Content generation"]:::geon-highlight
+    CONV["Diagram conversion"]:::geon-highlight
+    BUILD["PDF build"]:::geon-highlight
+    VAL["Validation"]:::geon-highlight
+    PDF["Output:<br/>PDF and EPUB books"]:::geon-primary
+    HTML["Output:<br/>HTML, presentations"]:::geon-primary
+    PYTHON --> GEN
+    CHROME --> CONV
+    PANDOC --> BUILD
+    GEN --> VAL
+    CONV --> BUILD
+    BUILD --> VAL
+    VAL --> PDF
+    VAL --> HTML

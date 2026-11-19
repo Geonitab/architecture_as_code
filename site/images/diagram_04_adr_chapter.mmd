@@ -1,0 +1,11 @@
+graph TD
+    A[Problem]:::geon-primary --> B[Context and alternatives]:::geon-accent
+    B --> C[Decision]:::geon-accent
+    C --> D[ADR documented]:::geon-primary
+    D --> G{Approved?}:::geon-outline
+    G -->|No| B
+    G -->|Yes| I[Implement and monitor]:::geon-highlight
+    I --> K{Works?}:::geon-outline
+    K -->|No| M[New ADR]:::geon-pattern
+    K -->|Yes| L[Continued use]:::geon-accent
+    M --> A

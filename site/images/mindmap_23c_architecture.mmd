@@ -1,0 +1,22 @@
+flowchart TB
+    subgraph G0["Central Hub"]
+        direction LR
+        N00["Traceability to<br/>Compliance"]:::geon-highlight
+        N01["Real-time<br/>Documentation"]:::geon-highlight
+        N02["Automated<br/>Quality Gates"]:::geon-highlight
+    end
+    subgraph G1["Model Approaches"]
+        direction LR
+        N10["Structurizr DSL"]:::geon-highlight
+        N11["C4 Models"]:::geon-highlight
+        N12["Terraform<br/>Patterns"]:::geon-highlight
+    end
+    subgraph G2["Connecting Layers"]
+        direction LR
+        N20["Technical<br/>Implementation"]:::geon-highlight
+        N21["Policy<br/>Integration"]:::geon-highlight
+        N22["Documentation<br/>Sync"]:::geon-highlight
+    end
+
+    N01 ~~~ N11
+    N11 ~~~ N21

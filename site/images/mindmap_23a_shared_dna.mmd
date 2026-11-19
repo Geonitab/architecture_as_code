@@ -1,0 +1,23 @@
+flowchart LR
+    ROOT(["Shared DNA of 'as Code'"]):::geon-primary
+    subgraph SR["Structured Representation"]
+        direction TB
+        SR1["Machine-readable formats<br/>YAML, JSON, Markdown"]:::geon-highlight
+        SR2["Domain-specific languages"]:::geon-highlight
+        SR1 ~~~ SR2
+    end
+    subgraph VC["Version Control"]
+        direction TB
+        VC1["Git workflows<br/>Pull request reviews"]:::geon-highlight
+        VC2["History and traceability"]:::geon-highlight
+        VC1 ~~~ VC2
+    end
+    subgraph AUTO["Automatability"]
+        direction TB
+        AUTO1["Report generation<br/>Dashboard updates"]:::geon-highlight
+        AUTO2["Compliance verification"]:::geon-highlight
+        AUTO1 ~~~ AUTO2
+    end
+    ROOT --> SR
+    ROOT --> VC
+    ROOT --> AUTO

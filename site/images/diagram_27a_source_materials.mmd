@@ -1,0 +1,18 @@
+flowchart TB
+    subgraph SRC["Source materials"]
+        MD["Markdown chapters<br/>docs/"]:::geon-highlight
+        MMD["Mermaid diagrams<br/>images/*.mmd"]:::geon-highlight
+        PY["Python scripts<br/>generate_book.py"]:::geon-highlight
+        YAML["Configuration<br/>pandoc.yaml"]:::geon-highlight
+        MD ~~~ PY
+        MMD ~~~ YAML
+    end
+    subgraph GH["GitHub repository"]
+        REPO["Git repository<br/>version control"]:::geon-outline
+        GHA["GitHub Actions<br/>CI/CD workflows"]:::geon-outline
+    end
+    MD --> REPO
+    MMD --> REPO
+    PY --> REPO
+    YAML --> REPO
+    REPO --> GHA

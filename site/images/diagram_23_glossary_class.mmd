@@ -1,0 +1,32 @@
+classDiagram
+    class ArchitectureAsCode {
+        +String versionedArtefacts
+        +guardrails()
+    }
+
+    class VersionControlSystem {
+        +store()
+        +review()
+    }
+
+    class DeliveryPipeline {
+        +integrate()
+        +deploy()
+    }
+
+    class SecurityPolicy {
+        +defineControls()
+        +enforceAccess()
+    }
+
+    class PlatformTeam {
+        +curateModules()
+        +enableTeams()
+    }
+
+    ArchitectureAsCode --> VersionControlSystem
+    ArchitectureAsCode --> DeliveryPipeline
+    ArchitectureAsCode --> SecurityPolicy
+    PlatformTeam --> ArchitectureAsCode
+    DeliveryPipeline --> SecurityPolicy
+

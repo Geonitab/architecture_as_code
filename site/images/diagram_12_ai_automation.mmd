@@ -1,0 +1,17 @@
+%% Diagram: AI-Augmented Compliance Automation
+flowchart TD
+    subgraph Data_Sources[Operational Inputs]
+        A1[Cloud Telemetry]:::geon-muted
+        A2[Policy Violations]:::geon-muted
+        A3[Business Context]:::geon-muted
+    end
+    Data_Sources --> B[AI Compliance Engine]:::geon-primary
+    B --> C[Risk Scoring]:::geon-highlight
+    C --> D{Decision Gateway}:::geon-outline
+    D -->|Compliant| E[Evidence Vault\n& Reporting]:::geon-accent
+    D -->|At Risk| F[Remediation\nWorkflow]:::geon-pattern
+    F --> G[Infrastructure as Code\nUpdate]:::geon-accent
+    G --> H[Automated\nDeployment]:::geon-primary
+    H --> Data_Sources
+    F --> I[Human Review\n& Approval]:::geon-elevated
+    I --> G

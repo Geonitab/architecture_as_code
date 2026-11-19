@@ -1,0 +1,17 @@
+graph TD
+    A[Requirements as Code]:::geon-primary --> B[Compliance as Code]:::geon-highlight
+    B --> C[Documentation as Code]:::geon-highlight
+    C --> D[Design as Code]:::geon-accent
+    D --> E[Coding]:::geon-accent
+    E --> F[CI/CD]:::geon-accent
+    F --> G[Infrastructure as Code]:::geon-primary
+
+    D -.-> H[Design Tokens]:::geon-pattern
+    H -.-> E
+
+    G -.-> A
+    F -.-> B
+    
+    M[Management as Code]:::geon-highlight -.-> A
+    M -.-> B
+    G -.-> M

@@ -1,0 +1,13 @@
+%% Diagram: Management as Code governance cycle — Leadership Vision flows through policy, automation and delivery back to continuous feedback
+flowchart TD
+    Vision[Leadership Vision]:::geon-primary
+    Guardrails[Policy & Guardrail Definitions]:::geon-accent
+    Automation[Automated Workflows]:::geon-accent
+    Teams[Delivery Teams]:::geon-highlight
+    Feedback[Operational Feedback]:::geon-highlight
+
+    Vision -->|defines| Guardrails
+    Guardrails -->|enforced via| Automation
+    Automation -->|enables| Teams
+    Teams -->|generate| Feedback
+    Feedback -->|informs| Vision

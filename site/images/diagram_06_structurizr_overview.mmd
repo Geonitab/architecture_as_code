@@ -1,0 +1,27 @@
+%% Diagram: Structurizr Overview
+%% Shows the Structurizr DSL workflow from version-controlled source through
+%% CI/CD pipeline to a published documentation site.
+flowchart TD
+    DSL["Structurizr DSL
+    workspace.dsl"]:::geon-primary
+
+    subgraph arch["Architecture Pipeline"]
+        direction LR
+        Model["Architecture Model"]:::geon-accent
+        Views["Generated Views"]:::geon-accent
+        Diagrams["Diagram Outputs"]:::geon-highlight
+        Model -->|Generate| Views -->|Export| Diagrams
+    end
+
+    subgraph deploy["Deployment Pipeline"]
+        direction LR
+        VCS["Version Control
+        Git"]:::geon-muted
+        CI["CI/CD Pipeline"]:::geon-accent
+        Docs["Documentation Site"]:::geon-highlight
+        VCS -->|Trigger| CI -->|Build & Deploy| Docs
+    end
+
+    DSL -->|Parse| Model
+    DSL -->|Commit| VCS
+    Diagrams -->|Embed| Docs

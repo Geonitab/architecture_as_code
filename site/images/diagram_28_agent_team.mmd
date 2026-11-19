@@ -1,0 +1,25 @@
+%% Team collaboration flow for AI agents supporting Architecture as Code initiatives
+flowchart TD
+    PO[Project Owner]:::geon-highlight
+    PM[Project Manager]:::geon-primary
+    
+    subgraph "Design Team"
+        ARCH[Architect]:::geon-accent
+        DES[Designer]:::geon-accent
+    end
+    
+    subgraph "Development Team"
+        DEV[Developer]:::geon-accent
+        QC[Quality Control]:::geon-highlight
+    end
+    
+    subgraph "Content Team"
+        ED[Editor]:::geon-muted
+    end
+
+    PO --> PM
+    PM --> ARCH
+    PM --> DEV
+    PM --> ED
+    ARCH --> DES
+    DEV --> QC

@@ -1,0 +1,15 @@
+%% Governance repository automation flow
+graph TB
+    Repo["Governance<br/>repository"]:::geon-primary
+    Checks["Automated<br/>policy checks"]:::geon-highlight
+    Workflow["Incident<br/>workflow"]:::geon-accent
+    IAM["Access<br/>control"]:::geon-accent
+    PR["Pull<br/>requests"]:::geon-primary
+    Response["Executive<br/>response team"]:::geon-muted
+
+    Repo --> Checks
+    Repo --> Workflow
+    Repo --> IAM
+    Checks --> PR
+    IAM --> PR
+    Workflow --> Response

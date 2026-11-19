@@ -1,0 +1,5 @@
+graph TB
+    E2E["End-to-end tests<br/>Few, slow, costly"]:::geon-highlight
+    INT["Integration tests<br/>Multi-component"]:::geon-accent
+    UNIT["Unit tests<br/>Many, fast, cheap"]:::geon-primary
+    UNIT --> INT --> E2E

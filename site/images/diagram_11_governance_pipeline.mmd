@@ -1,0 +1,17 @@
+%% Governance as Code approval flow across stakeholders
+graph TD
+    Start[Policy Author:<br/>Draft governance update]:::geon-primary
+    Start --> Branch[Branch & Commit<br/>to Repository]:::geon-highlight
+    Branch --> CI[CI/CD:<br/>Automated tests]:::geon-accent
+    CI --> PR[Open pull request]:::geon-accent
+    PR --> Review[Governance Review]:::geon-primary
+    Review --> Comments{Approved?}:::geon-decision
+    Comments -->|No| Changes[Apply changes<br/>& revalidate]:::geon-highlight
+    Changes --> Review
+    Comments -->|Yes| Merge[Merge to main]:::geon-primary
+    Merge --> Deploy[Deploy to<br/>production]:::geon-accent
+    Deploy --> Audit[Audit trail<br/>published]:::geon-primary
+    Audit --> End[Complete]:::geon-accent
+    
+    classDef geon-decision fill:#1E3A8A,stroke:#0F172A,color:#F8FAFC,stroke-width:3px
+    class Comments geon-decision

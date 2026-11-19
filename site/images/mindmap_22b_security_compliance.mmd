@@ -1,0 +1,23 @@
+flowchart LR
+    ROOT(["Security & Compliance"]):::geon-primary
+    subgraph SD["Security-first Design"]
+        direction TB
+        SD1["Defence-in-depth<br/>Least privilege"]:::geon-highlight
+        SD2["Zero-trust architecture"]:::geon-highlight
+        SD1 ~~~ SD2
+    end
+    subgraph RR["Regional Regulatory"]
+        direction TB
+        RR1["GDPR compliance<br/>Data residency"]:::geon-highlight
+        RR2["Encryption<br/>Audit logging"]:::geon-highlight
+        RR1 ~~~ RR2
+    end
+    subgraph SM["Secret Management"]
+        direction TB
+        SM1["Automated rotation<br/>Audit trails"]:::geon-highlight
+        SM2["Lifecycle management"]:::geon-highlight
+        SM1 ~~~ SM2
+    end
+    ROOT --> SD
+    ROOT --> RR
+    ROOT --> SM

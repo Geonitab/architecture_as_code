@@ -1,0 +1,15 @@
+%% Diagram: Architecture as Code – Technical Structure
+%% Shows the layered relationship between declarative definitions,
+%% automation pipelines, and governance controls.
+flowchart TB
+    Defs["Layer 1: Definitions<br/>Models, code, diagrams"]:::geon-muted
+    VCS["Version control<br/>Single source of truth"]:::geon-primary
+    Pipe["Layer 2: Pipelines<br/>Build, test, deploy"]:::geon-accent
+    Gov["Layer 3: Governance<br/>Policy, audit, reports"]:::geon-highlight
+    Artifacts["Published artefacts"]:::geon-pattern
+
+    Defs --> VCS
+    VCS --> Pipe
+    Pipe --> Gov
+    Pipe --> Artifacts
+    Gov -. "Enforce" .-> Pipe

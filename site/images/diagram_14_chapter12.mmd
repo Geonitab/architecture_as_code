@@ -1,0 +1,10 @@
+%% Diagram: Compliance and regulatory adherence as code — from regulatory requirements through automated policy controls to continuous audit evidence and remediation
+flowchart TB
+    A["Regulatory\nRequirements"]:::geon-primary --> B["Control\nMapping"]:::geon-highlight
+    B --> C["Policy as Code\nOPA / Rego"]:::geon-accent
+    C --> D["Automated\nControl Tests"]:::geon-highlight
+    D --> E["Audit\nEvidence Logs"]:::geon-accent
+    E --> F["Compliance\nDashboard"]:::geon-primary
+    F -->|"gaps trigger"| B
+    D -->|"failures alert"| G["Remediation\nWorkflow"]:::geon-muted
+    G --> C

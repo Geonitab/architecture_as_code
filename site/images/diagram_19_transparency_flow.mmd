@@ -1,0 +1,13 @@
+%% Transparency workflow showing how issues and discussions enable transparent decision-making
+graph TB
+    Problem[Problem identified]:::geon-primary
+    Discussion[Discussion and context]:::geon-highlight
+    Issue[Structured issue]:::geon-accent
+    Review[Collaborative review]:::geon-accent
+    Decision["Decision record<br/>ADR or code link"]:::geon-pattern
+    PR[Pull request]:::geon-accent
+    Deployment[Deployment]:::geon-primary
+    Archive[Searchable archive]:::geon-muted
+
+    Problem --> Discussion --> Issue --> Review --> Decision --> PR --> Deployment --> Archive
+    Decision -.-> Archive

@@ -1,0 +1,23 @@
+flowchart LR
+    ROOT(["Performance & Scaling"]):::geon-primary
+    subgraph OPT["Optimisation"]
+        direction TB
+        OPT1["Cost efficiency<br/>Resource utilisation"]:::geon-highlight
+        OPT2["Response time"]:::geon-highlight
+        OPT1 ~~~ OPT2
+    end
+    subgraph MR["Multi-region"]
+        direction TB
+        MR1["Global scalability<br/>Data sovereignty"]:::geon-highlight
+        MR2["Latency optimisation<br/>Disaster recovery"]:::geon-highlight
+        MR1 ~~~ MR2
+    end
+    subgraph OBS["Observability"]
+        direction TB
+        OBS1["System visibility<br/>Real-time insights"]:::geon-highlight
+        OBS2["Performance metrics"]:::geon-highlight
+        OBS1 ~~~ OBS2
+    end
+    ROOT --> OPT
+    ROOT --> MR
+    ROOT --> OBS

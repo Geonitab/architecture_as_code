@@ -1,0 +1,20 @@
+flowchart TB
+    subgraph ROOT["Technical Foundation"]
+        direction TB
+        B0["Cloud Migration"]:::geon-accent
+        L0_0["Multi-cloud Strategy<br/>Hybrid Architectures"]:::geon-highlight
+        B0 --> L0_0
+        L0_1["Serverless Computing"]:::geon-highlight
+        L0_0 ~~~ L0_1
+        B1["Infrastructure Automation"]:::geon-accent
+        L1_0["Declarative Configuration<br/>Version Control"]:::geon-highlight
+        B1 --> L1_0
+        L1_1["Automated Testing<br/>Continuous Deployment"]:::geon-highlight
+        L1_0 ~~~ L1_1
+        B2["Modern Architectures"]:::geon-accent
+        L2_0["Microservices<br/>API-first Design"]:::geon-highlight
+        B2 --> L2_0
+        L2_1["Event-driven Systems"]:::geon-highlight
+        L2_0 ~~~ L2_1
+        L0_1 ~~~ B2
+    end

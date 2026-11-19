@@ -1,0 +1,16 @@
+flowchart TB
+    subgraph LOW["Levels 0 to 2"]
+        L0(["Level 0<br/>Initial, ad hoc"]):::geon-muted
+        L1(["Level 1<br/>Repeatable, version-controlled"]):::geon-highlight
+        L2(["Level 2<br/>Defined, automated"]):::geon-accent
+        L0 -->|"Codify diagrams"| L1
+        L1 -->|"Automate pipelines"| L2
+    end
+    subgraph HIGH["Levels 3 to 5"]
+        L3(["Level 3<br/>Managed, integrated"]):::geon-accent
+        L4(["Level 4<br/>Optimised, AI-assisted"]):::geon-primary
+        L5(["Level 5<br/>Innovative, next-generation"]):::geon-primary
+        L3 -->|"Feed back telemetry"| L4
+        L4 -->|"Intent-driven"| L5
+    end
+    L2 -->|"Link governance"| L3

@@ -1,0 +1,11 @@
+%% Diagram: Microservices Architecture as Code — service decomposition, inter-service communication via service mesh, and operational observability
+flowchart TB
+    A["API\nGateway"]:::geon-primary --> B["Service Mesh\nIstio / Linkerd"]:::geon-highlight
+    B --> C["User\nService"]:::geon-accent
+    B --> D["Order\nService"]:::geon-accent
+    B --> E["Payment\nService"]:::geon-accent
+    C --> F["Service\nRegistry"]:::geon-muted
+    D --> F
+    E --> F
+    F --> G["Observability\nPlatform"]:::geon-primary
+    G -->|"traces & metrics"| B

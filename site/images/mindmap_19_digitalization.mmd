@@ -1,0 +1,18 @@
+flowchart TB
+    subgraph ROOT["Digitalisation through IaC"]
+        direction TB
+        B0["Challenges"]:::geon-accent
+        L0_0["Regulatory & Organisational<br/>Operational Costs"]:::geon-highlight
+        B0 --> L0_0
+        B1["Cloud-first Strategy"]:::geon-accent
+        L1_0["Automated Infrastructure<br/>Data Residency"]:::geon-highlight
+        B1 --> L1_0
+        B2["Success Examples"]:::geon-accent
+        L2_0["Spotify & Klarna<br/>Volvo Cars"]:::geon-highlight
+        B2 --> L2_0
+        B3["IaC Benefits"]:::geon-accent
+        L3_0["Cost Efficiency<br/>Security & Sovereignty"]:::geon-highlight
+        B3 --> L3_0
+        L0_0 ~~~ B2
+        L1_0 ~~~ B3
+    end

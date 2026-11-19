@@ -1,0 +1,23 @@
+flowchart LR
+    ROOT(["Compliance as Code"]):::geon-primary
+    subgraph QE["Quality Engine"]
+        direction TB
+        QE1["Rule reuse<br/>Continuous validation"]:::geon-highlight
+        QE2["Transparency"]:::geon-highlight
+        QE1 ~~~ QE2
+    end
+    subgraph CC["Codified Controls"]
+        direction TB
+        CC1["Open Policy Agent<br/>HashiCorp Sentinel"]:::geon-highlight
+        CC2["Custom frameworks"]:::geon-highlight
+        CC1 ~~~ CC2
+    end
+    subgraph IB["Integration Benefits"]
+        direction TB
+        IB1["Automated verification<br/>Validation chain"]:::geon-highlight
+        IB2["Shared policy files"]:::geon-highlight
+        IB1 ~~~ IB2
+    end
+    ROOT --> QE
+    ROOT --> CC
+    ROOT --> IB

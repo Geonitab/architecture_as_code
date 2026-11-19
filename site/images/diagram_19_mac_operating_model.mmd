@@ -1,0 +1,16 @@
+%% Diagram: Management as Code operating model
+flowchart TB
+    Intent[Leadership intent as code]:::geon-primary
+    Guardrails[Codified guardrails]:::geon-accent
+    Automation[Automated governance]:::geon-accent
+    Teams[Empowered teams]:::geon-highlight
+    Feedback[Feedback signals]:::geon-highlight
+    Culture[Codified culture]:::geon-pattern
+
+    Intent --> Guardrails
+    Guardrails --> Automation
+    Automation --> Teams
+    Teams --> Feedback
+    Feedback --> Intent
+    Intent --> Culture
+    Culture --> Teams

@@ -1,0 +1,22 @@
+flowchart TB
+    subgraph G0["Cross-pollination"]
+        direction LR
+        N00["Shared Tools<br/>and Processes"]:::geon-highlight
+        N01["Pull Request<br/>Collaboration"]:::geon-highlight
+        N02["Unified Validation"]:::geon-highlight
+    end
+    subgraph G1["Collaborative Effects"]
+        direction LR
+        N10["Cross-functional<br/>Teams"]:::geon-highlight
+        N11["Shared Ownership"]:::geon-highlight
+        N12["Technical<br/>Transparency"]:::geon-highlight
+    end
+    subgraph G2["Implementation Strategy"]
+        direction LR
+        N20["Shared Principles"]:::geon-highlight
+        N21["Compatible<br/>Tooling"]:::geon-highlight
+        N22["Cross-functional<br/>Training"]:::geon-highlight
+    end
+
+    N01 ~~~ N11
+    N11 ~~~ N21

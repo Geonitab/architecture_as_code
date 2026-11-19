@@ -1,0 +1,22 @@
+flowchart TB
+    subgraph G0["Knowledge as Code"]
+        direction LR
+        N00["Formalised<br/>Knowledge Bases"]:::geon-highlight
+        N01["Lessons Learned"]:::geon-highlight
+        N02["Semi-structured<br/>Formats"]:::geon-highlight
+    end
+    subgraph G1["Culture as Code"]
+        direction LR
+        N10["Values Expression"]:::geon-highlight
+        N11["Decision-making<br/>Practices"]:::geon-highlight
+        N12["Working Norms"]:::geon-highlight
+    end
+    subgraph G2["Organisational Benefits"]
+        direction LR
+        N20["Structured<br/>Onboarding"]:::geon-highlight
+        N21["Adherence<br/>Tracking"]:::geon-highlight
+        N22["Experience<br/>Preservation"]:::geon-highlight
+    end
+
+    N01 ~~~ N11
+    N11 ~~~ N21

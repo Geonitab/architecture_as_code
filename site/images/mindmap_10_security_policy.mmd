@@ -1,0 +1,14 @@
+flowchart LR
+    ROOT(["Policy<br/>as Code"]):::geon-primary
+    AG["Automated<br/>governance"]:::geon-accent
+    CA["Compliance<br/>automation"]:::geon-accent
+    AG1["OPA/Rego,<br/>HashiCorp Sentinel"]:::geon-highlight
+    AG2["Cloud-native policies,<br/>real-time enforcement"]:::geon-highlight
+    CA1["GDPR Article 32,<br/>PCI-DSS"]:::geon-highlight
+    CA2["ISO 27001,<br/>Swedish regulations"]:::geon-highlight
+    ROOT --> AG
+    ROOT --> CA
+    AG --> AG1
+    AG --> AG2
+    CA --> CA1
+    CA --> CA2
