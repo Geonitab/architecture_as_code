@@ -1,15 +1,20 @@
-graph TD
-    ROOT(["Organisational Change"]):::geon-primary
-    ROOT --> TS["Team Structures"]:::geon-accent
-    ROOT --> GV["Governance"]:::geon-accent
-    ROOT --> CM["Change Management"]:::geon-accent
-    TS --> TS1["Cross-functional Teams"]:::geon-highlight
-    TS --> TS2["DevOps Culture"]:::geon-highlight
-    TS --> TS3["Platform Teams"]:::geon-highlight
-    GV --> GV1["Policy as Code"]:::geon-highlight
-    GV --> GV2["Compliance Automation"]:::geon-highlight
-    GV --> GV3["Audit Trails"]:::geon-highlight
-    GV --> GV4["Access Controls"]:::geon-highlight
-    CM --> CM1["Training Programmes"]:::geon-highlight
-    CM --> CM2["Knowledge Sharing"]:::geon-highlight
-    CM --> CM3["Community of Practice"]:::geon-highlight
+flowchart TB
+    subgraph ROOT["Organisational Change"]
+        direction TB
+        B0["Team Structures"]:::geon-accent
+        L0_0["Cross-functional Teams<br/>DevOps Culture"]:::geon-highlight
+        B0 --> L0_0
+        L0_1["Platform Teams"]:::geon-highlight
+        L0_0 ~~~ L0_1
+        B1["Governance"]:::geon-accent
+        L1_0["Policy as Code<br/>Compliance Automation"]:::geon-highlight
+        B1 --> L1_0
+        L1_1["Audit Trails<br/>Access Controls"]:::geon-highlight
+        L1_0 ~~~ L1_1
+        B2["Change Management"]:::geon-accent
+        L2_0["Training Programmes<br/>Knowledge Sharing"]:::geon-highlight
+        B2 --> L2_0
+        L2_1["Community of Practice"]:::geon-highlight
+        L2_0 ~~~ L2_1
+        L0_1 ~~~ B2
+    end

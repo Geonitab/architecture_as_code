@@ -1,6 +1,6 @@
 # Team Structure and Competency Development for IaC {#team-structure}
 
-![Team collaboration ecosystem showing leadership, platform enablement, shared services, and feedback loops](images/diagram_18_team_collaboration.png)
+![Team collaboration ecosystem showing platform governance, platform enablement, shared services, product teams, feedback and communities of practice](images/diagram_18_team_collaboration.png)
 
 Successful Architecture as Code adoption demands far more than tools; it requires an intentionally designed operating model where leadership, enablement teams, and delivery squads share accountability. The collaboration ecosystem illustrated above shows how platform governance, shared services, and communities of practice reinforce one another to create reliable delivery loops.
 

@@ -51,7 +51,7 @@ Automated compliance tests run alongside software unit tests. For instance, a pu
 
 ![Governance pipeline showing repositories feeding automated checks, workflows, and access control](images/diagram_19_governance_pipeline.png)
 
-*Figure: Governance pipeline where management repositories feed automated checks, workflows, and access control enforcement.*
+*Figure: Governance pipeline where the governance repository (policies, guardrails, playbooks and approval matrices) feeds automated checks, workflows, and access control enforcement.*
 
 This governance diagram emphasises how management repositories integrate with CI pipelines, incident workflows, and identity platforms. By codifying playbooks and roles, leadership actions become auditable and repeatable. Every update to these artefacts follows the same review process as software code, enabling cross-functional transparency.
 

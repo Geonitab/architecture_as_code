@@ -1,12 +1,14 @@
-graph TD
-    ROOT(["Risk Assessment"]):::geon-primary
-    ROOT --> CE["Continuous Evaluation"]:::geon-accent
-    ROOT --> RC["Regulatory Compliance"]:::geon-accent
-    CE --> CE1["Blast Radius Calculation"]:::geon-highlight
-    CE --> CE2["Impact Assessment"]:::geon-highlight
-    CE --> CE3["Dependency Analysis"]:::geon-highlight
-    CE --> CE4["Dynamic Risk Scoring"]:::geon-highlight
-    RC --> RC1["Data Protection by Design"]:::geon-highlight
-    RC --> RC2["Automated Audit Trails"]:::geon-highlight
-    RC --> RC3["Compliance-as-code"]:::geon-highlight
-    RC --> RC4["Regulatory Requirements"]:::geon-highlight
+flowchart LR
+    ROOT(["Risk<br/>assessment"]):::geon-primary
+    CE["Continuous<br/>evaluation"]:::geon-accent
+    RC["Regulatory<br/>compliance"]:::geon-accent
+    CE1["Blast radius,<br/>impact assessment"]:::geon-highlight
+    CE2["Dependency analysis,<br/>dynamic risk scoring"]:::geon-highlight
+    RC1["Data protection<br/>by design, audit trails"]:::geon-highlight
+    RC2["Compliance as code,<br/>requirements"]:::geon-highlight
+    ROOT --> CE
+    ROOT --> RC
+    CE --> CE1
+    CE --> CE2
+    RC --> RC1
+    RC --> RC2

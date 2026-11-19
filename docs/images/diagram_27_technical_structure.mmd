@@ -2,42 +2,14 @@
 %% Shows the layered relationship between declarative definitions,
 %% automation pipelines, and governance controls.
 flowchart TB
-    subgraph defs["Layer 1 — Declarative Definitions"]
-        direction LR
-        DSL["Architecture DSL
-        Structurizr"]:::geon-muted
-        IaC["Infrastructure Code
-        Terraform / HCL"]:::geon-muted
-        Diag["Diagram Sources
-        Mermaid"]:::geon-muted
-        Docs["Documentation
-        Markdown"]:::geon-muted
-    end
+    Defs["Layer 1: Definitions<br/>Models, code, diagrams"]:::geon-muted
+    VCS["Version control<br/>Single source of truth"]:::geon-primary
+    Pipe["Layer 2: Pipelines<br/>Build, test, deploy"]:::geon-accent
+    Gov["Layer 3: Governance<br/>Policy, audit, reports"]:::geon-highlight
+    Artifacts["Published artefacts"]:::geon-pattern
 
-    VCS["Version Control
-    Git — Single Source of Truth"]:::geon-primary
-
-    subgraph pipelines["Layer 2 — Automation Pipelines"]
-        direction LR
-        Build["Build & Validate"]:::geon-accent
-        Test["Automated Testing"]:::geon-accent
-        Deploy["Publish & Deploy"]:::geon-accent
-        Build --> Test --> Deploy
-    end
-
-    subgraph governance["Layer 3 — Governance Controls"]
-        direction LR
-        Policy["Policy as Code
-        OPA / Sentinel"]:::geon-highlight
-        Audit["Audit Trails"]:::geon-highlight
-        Reports["Compliance Reports"]:::geon-highlight
-    end
-
-    Artifacts["Published Artefacts
-    PDF · EPUB · Website · Diagrams"]:::geon-pattern
-
-    defs --> VCS
-    VCS --> Build
-    Deploy --> Artifacts
-    Deploy --> governance
-    governance -. "Enforce policies" .-> pipelines
+    Defs --> VCS
+    VCS --> Pipe
+    Pipe --> Gov
+    Pipe --> Artifacts
+    Gov -. "Enforce" .-> Pipe

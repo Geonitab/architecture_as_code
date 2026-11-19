@@ -1,14 +1,16 @@
-graph TD
-    ROOT(["Threat Modelling"]):::geon-primary
-    ROOT --> TL["Threat Landscape"]:::geon-accent
-    ROOT --> SM["STRIDE Methodology"]:::geon-accent
-    TL --> TL1["Supply Chain Attacks"]:::geon-highlight
-    TL --> TL2["Code Injection"]:::geon-highlight
-    TL --> TL3["Insider Threats"]:::geon-highlight
-    TL --> TL4["Infrastructure Exploits"]:::geon-highlight
-    SM --> SM1["Spoofing"]:::geon-highlight
-    SM --> SM2["Tampering"]:::geon-highlight
-    SM --> SM3["Repudiation"]:::geon-highlight
-    SM --> SM4["Information Disclosure"]:::geon-highlight
-    SM --> SM5["Denial of Service"]:::geon-highlight
-    SM --> SM6["Elevation of Privilege"]:::geon-highlight
+flowchart LR
+    ROOT(["Threat<br/>modelling"]):::geon-primary
+    TL["Threat<br/>landscape"]:::geon-accent
+    SM["STRIDE<br/>methodology"]:::geon-accent
+    TL1["Supply chain attacks,<br/>code injection"]:::geon-highlight
+    TL2["Insider threats,<br/>infrastructure exploits"]:::geon-highlight
+    SM1["Spoofing, tampering,<br/>repudiation"]:::geon-highlight
+    SM2["Information<br/>disclosure"]:::geon-highlight
+    SM3["Denial of service,<br/>elevation of privilege"]:::geon-highlight
+    ROOT --> TL
+    ROOT --> SM
+    TL --> TL1
+    TL --> TL2
+    SM --> SM1
+    SM --> SM2
+    SM --> SM3

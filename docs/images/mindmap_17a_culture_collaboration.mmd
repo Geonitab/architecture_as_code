@@ -1,15 +1,20 @@
-graph TD
-    ROOT(["Culture & Collaboration"]):::geon-primary
-    ROOT --> CF["Cultural Foundations"]:::geon-accent
-    ROOT --> CT["Cross-functional Teams"]:::geon-accent
-    ROOT --> DP["Decision Principles"]:::geon-accent
-    CF --> CF1["Psychological Safety"]:::geon-highlight
-    CF --> CF2["Shared Ownership"]:::geon-highlight
-    CF --> CF3["Transparent Communication"]:::geon-highlight
-    CF --> CF4["Blameless Learning"]:::geon-highlight
-    CT --> CT1["Software Engineering"]:::geon-highlight
-    CT --> CT2["Platform Operations"]:::geon-highlight
-    CT --> CT3["Security & Product"]:::geon-highlight
-    DP --> DP1["Delegated Authority"]:::geon-highlight
-    DP --> DP2["Lightweight Governance"]:::geon-highlight
-    DP --> DP3["Service Objectives"]:::geon-highlight
+flowchart TB
+    subgraph ROOT["Culture & Collaboration"]
+        direction TB
+        B0["Cultural Foundations"]:::geon-accent
+        L0_0["Psychological Safety<br/>Shared Ownership"]:::geon-highlight
+        B0 --> L0_0
+        L0_1["Transparent Communication<br/>Blameless Learning"]:::geon-highlight
+        L0_0 ~~~ L0_1
+        B1["Cross-functional Teams"]:::geon-accent
+        L1_0["Software Engineering<br/>Platform Operations"]:::geon-highlight
+        B1 --> L1_0
+        L1_1["Security & Product"]:::geon-highlight
+        L1_0 ~~~ L1_1
+        B2["Decision Principles"]:::geon-accent
+        L2_0["Delegated Authority<br/>Lightweight Governance"]:::geon-highlight
+        B2 --> L2_0
+        L2_1["Service Objectives"]:::geon-highlight
+        L2_0 ~~~ L2_1
+        L0_1 ~~~ B2
+    end

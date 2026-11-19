@@ -8,7 +8,7 @@ Documentation as Code focuses on capturing and communicating knowledge about sys
 
 ![Documentation vs Architecture as Code](images/diagram_22_doc_vs_arch.png)
 
-*Figure 22.1 illustrates the fundamental differences between Documentation as Code and Architecture as Code, showing how each discipline serves distinct purposes in the software development ecosystem.*
+*Figure 22.1 illustrates the fundamental differences between Documentation as Code and Architecture as Code, showing how each discipline serves distinct purposes in the software development ecosystem. Documentation as Code communicates with humans through Mermaid or PlantUML, producing sites and guides; Architecture as Code defines structure and constraints for humans and machines through CALM or Structurizr, producing validation and infrastructure code.*
 
 ## Purpose and Scope
 
@@ -133,7 +133,7 @@ Example Mermaid diagram:
 
 ![Mermaid example highlighting the flow between a customer, payment API, database, and queue](images/diagram_22_mermaid_example.png)
 
-*Figure 22.2 shows a simple customer-to-payment flow using the Mermaid syntax. Both the rendered PNG and the Mermaid source file are kept under version control in this repository.*
+*Figure 22.2 shows a simple customer-to-payment flow using the Mermaid syntax. The customer initiates a payment; the API validates and stores it in the database and publishes an event to the queue. Both the rendered PNG and the Mermaid source file are kept under version control in this repository.*
 
 Mermaid excels at quickly creating visual explanations within documentation. Its lightweight syntax makes it accessible to non-technical contributors, and its widespread integration means diagrams can be embedded directly in Markdown files without external tools.
 

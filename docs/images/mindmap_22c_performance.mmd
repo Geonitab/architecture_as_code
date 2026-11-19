@@ -1,15 +1,23 @@
-graph TD
+flowchart LR
     ROOT(["Performance & Scaling"]):::geon-primary
-    ROOT --> OPT["Optimisation"]:::geon-accent
-    ROOT --> MR["Multi-region"]:::geon-accent
-    ROOT --> OBS["Observability"]:::geon-accent
-    OPT --> OPT1["Cost Efficiency"]:::geon-highlight
-    OPT --> OPT2["Resource Utilisation"]:::geon-highlight
-    OPT --> OPT3["Response Time"]:::geon-highlight
-    MR --> MR1["Global Scalability"]:::geon-highlight
-    MR --> MR2["Data Sovereignty"]:::geon-highlight
-    MR --> MR3["Latency Optimisation"]:::geon-highlight
-    MR --> MR4["Disaster Recovery"]:::geon-highlight
-    OBS --> OBS1["System Visibility"]:::geon-highlight
-    OBS --> OBS2["Real-time Insights"]:::geon-highlight
-    OBS --> OBS3["Performance Metrics"]:::geon-highlight
+    subgraph OPT["Optimisation"]
+        direction TB
+        OPT1["Cost efficiency<br/>Resource utilisation"]:::geon-highlight
+        OPT2["Response time"]:::geon-highlight
+        OPT1 ~~~ OPT2
+    end
+    subgraph MR["Multi-region"]
+        direction TB
+        MR1["Global scalability<br/>Data sovereignty"]:::geon-highlight
+        MR2["Latency optimisation<br/>Disaster recovery"]:::geon-highlight
+        MR1 ~~~ MR2
+    end
+    subgraph OBS["Observability"]
+        direction TB
+        OBS1["System visibility<br/>Real-time insights"]:::geon-highlight
+        OBS2["Performance metrics"]:::geon-highlight
+        OBS1 ~~~ OBS2
+    end
+    ROOT --> OPT
+    ROOT --> MR
+    ROOT --> OBS

@@ -1,14 +1,22 @@
-graph TD
-    ROOT(["Architecture as Code"]):::geon-primary
-    ROOT --> CH["Central Hub"]:::geon-accent
-    ROOT --> MA["Model Approaches"]:::geon-accent
-    ROOT --> CL["Connecting Layers"]:::geon-accent
-    CH --> CH1["Traceability to Compliance"]:::geon-highlight
-    CH --> CH2["Real-time Documentation"]:::geon-highlight
-    CH --> CH3["Automated Quality Gates"]:::geon-highlight
-    MA --> MA1["Structurizr DSL"]:::geon-highlight
-    MA --> MA2["C4 Models"]:::geon-highlight
-    MA --> MA3["Terraform Patterns"]:::geon-highlight
-    CL --> CL1["Technical Implementation"]:::geon-highlight
-    CL --> CL2["Policy Integration"]:::geon-highlight
-    CL --> CL3["Documentation Sync"]:::geon-highlight
+flowchart TB
+    subgraph G0["Central Hub"]
+        direction LR
+        N00["Traceability to<br/>Compliance"]:::geon-highlight
+        N01["Real-time<br/>Documentation"]:::geon-highlight
+        N02["Automated<br/>Quality Gates"]:::geon-highlight
+    end
+    subgraph G1["Model Approaches"]
+        direction LR
+        N10["Structurizr DSL"]:::geon-highlight
+        N11["C4 Models"]:::geon-highlight
+        N12["Terraform<br/>Patterns"]:::geon-highlight
+    end
+    subgraph G2["Connecting Layers"]
+        direction LR
+        N20["Technical<br/>Implementation"]:::geon-highlight
+        N21["Policy<br/>Integration"]:::geon-highlight
+        N22["Documentation<br/>Sync"]:::geon-highlight
+    end
+
+    N01 ~~~ N11
+    N11 ~~~ N21

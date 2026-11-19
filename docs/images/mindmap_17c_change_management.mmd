@@ -1,14 +1,20 @@
-graph TD
-    ROOT(["Change Management"]):::geon-primary
-    ROOT --> CD["Co-design Approach"]:::geon-accent
-    ROOT --> CS["Communication Strategy"]:::geon-accent
-    ROOT --> EI["Evidence-based Iteration"]:::geon-accent
-    CD --> CD1["Stakeholder Engagement"]:::geon-highlight
-    CD --> CD2["Collaborative Planning"]:::geon-highlight
-    CD --> CD3["Inclusive Decision-making"]:::geon-highlight
-    CS --> CS1["Narrative-led Approach"]:::geon-highlight
-    CS --> CS2["Clear Messaging"]:::geon-highlight
-    CS --> CS3["Regular Updates"]:::geon-highlight
-    EI --> EI1["Metrics & KPIs"]:::geon-highlight
-    EI --> EI2["Feedback Loops"]:::geon-highlight
-    EI --> EI3["Continuous Improvement"]:::geon-highlight
+flowchart TB
+    subgraph ROOT["Change Management"]
+        direction TB
+        B0["Co-design Approach"]:::geon-accent
+        L0_0["Stakeholder Engagement<br/>Collaborative Planning"]:::geon-highlight
+        B0 --> L0_0
+        L0_1["Inclusive Decision-making"]:::geon-highlight
+        L0_0 ~~~ L0_1
+        B1["Communication Strategy"]:::geon-accent
+        L1_0["Narrative-led Approach<br/>Clear Messaging"]:::geon-highlight
+        B1 --> L1_0
+        L1_1["Regular Updates"]:::geon-highlight
+        L1_0 ~~~ L1_1
+        B2["Evidence-based Iteration"]:::geon-accent
+        L2_0["Metrics & KPIs<br/>Feedback Loops"]:::geon-highlight
+        B2 --> L2_0
+        L2_1["Continuous Improvement"]:::geon-highlight
+        L2_0 ~~~ L2_1
+        L0_1 ~~~ B2
+    end

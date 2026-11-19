@@ -22,3 +22,5 @@ overview:
     The book covers everything from fundamental principles and tools to advanced implementation strategies,
     security aspects, and organisational changes required for successful IaC adoption.
   target_audience: IT architects, DevOps teams, developers, and decision-makers within organisations
+checks:
+  - bookengine run validate_diagram_readability

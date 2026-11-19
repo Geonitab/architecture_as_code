@@ -1,43 +1,20 @@
-graph TB
-    %% Build Pipeline
-    subgraph "Build Environment"
-        PYTHON[Python 3.12]
-        PANDOC[Pandoc 3.1.9]
-        LATEX[XeLaTeX + TeXLive]
-        CHROME[Chrome + Mermaid CLI]
+flowchart TB
+    subgraph ENV["Build environment"]
+        PYTHON["Python 3.12"]:::geon-accent
+        PANDOC["Pandoc 3.1.9<br/>XeLaTeX + TeXLive"]:::geon-accent
+        CHROME["Chrome<br/>Mermaid CLI"]:::geon-accent
     end
-    
-    subgraph "Build Process"
-        GEN[Content Generation]
-        CONV[Diagram Conversion]
-        BUILD[PDF Build]
-        VAL[Validation]
-    end
-
-    %% Output Formats
-    subgraph "Published Outputs"
-        PDF[PDF Book]
-        EPUB[EPUB Format]
-        HTML[HTML Pages]
-        PPTX[Presentations]
-    end
-
-    %% Build Flow
+    GEN["Content generation"]:::geon-highlight
+    CONV["Diagram conversion"]:::geon-highlight
+    BUILD["PDF build"]:::geon-highlight
+    VAL["Validation"]:::geon-highlight
+    PDF["Output:<br/>PDF and EPUB books"]:::geon-primary
+    HTML["Output:<br/>HTML, presentations"]:::geon-primary
     PYTHON --> GEN
     CHROME --> CONV
     PANDOC --> BUILD
-    LATEX --> BUILD
-    
     GEN --> VAL
     CONV --> BUILD
     BUILD --> VAL
-    
     VAL --> PDF
-    VAL --> EPUB
     VAL --> HTML
-    VAL --> PPTX
-    
-    %% Styling
-    class PYTHON,PANDOC,LATEX,CHROME geon-accent
-    class GEN,CONV,BUILD,VAL geon-highlight
-    class PDF,EPUB,HTML,PPTX geon-primary

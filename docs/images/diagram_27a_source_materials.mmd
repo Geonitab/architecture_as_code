@@ -1,26 +1,18 @@
-graph TB
-    %% Source Code Management
-    subgraph "Source Materials"
-        MD[Markdown Files<br/>27 chapters in docs/]
-        MMD[Mermaid Diagrams<br/>images/*.mmd]
-        PY[Python Scripts<br/>generate_book.py]
-        YAML[Configuration<br/>pandoc.yaml]
+flowchart TB
+    subgraph SRC["Source materials"]
+        MD["Markdown chapters<br/>docs/"]:::geon-highlight
+        MMD["Mermaid diagrams<br/>images/*.mmd"]:::geon-highlight
+        PY["Python scripts<br/>generate_book.py"]:::geon-highlight
+        YAML["Configuration<br/>pandoc.yaml"]:::geon-highlight
+        MD ~~~ PY
+        MMD ~~~ YAML
     end
-
-    %% GitHub Repository
-    subgraph "GitHub Repository"
-        REPO[Git Repository<br/>Version Control]
-        GHA[GitHub Actions<br/>CI/CD Workflows]
+    subgraph GH["GitHub repository"]
+        REPO["Git repository<br/>version control"]:::geon-outline
+        GHA["GitHub Actions<br/>CI/CD workflows"]:::geon-outline
     end
-
-    %% Data Flow
     MD --> REPO
     MMD --> REPO
     PY --> REPO
     YAML --> REPO
-    
     REPO --> GHA
-    
-    %% Styling
-    class MD,MMD,PY,YAML geon-highlight
-    class REPO,GHA geon-outline

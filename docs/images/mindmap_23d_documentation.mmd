@@ -1,14 +1,22 @@
-graph TD
-    ROOT(["Documentation as Code"]):::geon-primary
-    ROOT --> CL["Communication Layer"]:::geon-accent
-    ROOT --> TI["Toolchain Integration"]:::geon-accent
-    ROOT --> FL["Feedback Loops"]:::geon-accent
-    CL --> CL1["Narratives Around Rules"]:::geon-highlight
-    CL --> CL2["Why & How Explanations"]:::geon-highlight
-    CL --> CL3["Relationship Mapping"]:::geon-highlight
-    TI --> TI1["Markdown Files"]:::geon-highlight
-    TI --> TI2["Static Site Generators"]:::geon-highlight
-    TI --> TI3["CI/CD Publishing"]:::geon-highlight
-    FL --> FL1["Pull Request Reviews"]:::geon-highlight
-    FL --> FL2["Collective Ownership"]:::geon-highlight
-    FL --> FL3["Structured Discussion"]:::geon-highlight
+flowchart TB
+    subgraph G0["Communication Layer"]
+        direction LR
+        N00["Narratives<br/>Around Rules"]:::geon-highlight
+        N01["Why and How<br/>Explanations"]:::geon-highlight
+        N02["Relationship<br/>Mapping"]:::geon-highlight
+    end
+    subgraph G1["Toolchain Integration"]
+        direction LR
+        N10["Markdown Files"]:::geon-highlight
+        N11["Static Site<br/>Generators"]:::geon-highlight
+        N12["CI/CD Publishing"]:::geon-highlight
+    end
+    subgraph G2["Feedback Loops"]
+        direction LR
+        N20["Pull Request<br/>Reviews"]:::geon-highlight
+        N21["Collective<br/>Ownership"]:::geon-highlight
+        N22["Structured<br/>Discussion"]:::geon-highlight
+    end
+
+    N01 ~~~ N11
+    N11 ~~~ N21

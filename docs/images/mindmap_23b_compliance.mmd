@@ -1,14 +1,23 @@
-graph TD
+flowchart LR
     ROOT(["Compliance as Code"]):::geon-primary
-    ROOT --> QE["Quality Engine"]:::geon-accent
-    ROOT --> CC["Codified Controls"]:::geon-accent
-    ROOT --> IB["Integration Benefits"]:::geon-accent
-    QE --> QE1["Rule Reuse"]:::geon-highlight
-    QE --> QE2["Continuous Validation"]:::geon-highlight
-    QE --> QE3["Transparency"]:::geon-highlight
-    CC --> CC1["Open Policy Agent"]:::geon-highlight
-    CC --> CC2["HashiCorp Sentinel"]:::geon-highlight
-    CC --> CC3["Custom Frameworks"]:::geon-highlight
-    IB --> IB1["Automated Verification"]:::geon-highlight
-    IB --> IB2["Validation Chain"]:::geon-highlight
-    IB --> IB3["Shared Policy Files"]:::geon-highlight
+    subgraph QE["Quality Engine"]
+        direction TB
+        QE1["Rule reuse<br/>Continuous validation"]:::geon-highlight
+        QE2["Transparency"]:::geon-highlight
+        QE1 ~~~ QE2
+    end
+    subgraph CC["Codified Controls"]
+        direction TB
+        CC1["Open Policy Agent<br/>HashiCorp Sentinel"]:::geon-highlight
+        CC2["Custom frameworks"]:::geon-highlight
+        CC1 ~~~ CC2
+    end
+    subgraph IB["Integration Benefits"]
+        direction TB
+        IB1["Automated verification<br/>Validation chain"]:::geon-highlight
+        IB2["Shared policy files"]:::geon-highlight
+        IB1 ~~~ IB2
+    end
+    ROOT --> QE
+    ROOT --> CC
+    ROOT --> IB

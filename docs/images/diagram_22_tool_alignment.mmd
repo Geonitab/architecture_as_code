@@ -1,8 +1,8 @@
 %% Documentation and architecture alignment feedback loop
 %% Maintains the textual source for Figure 22.3.
 
-flowchart LR
-    Docs["Documentation as Code<br/>Markdown, review, publication"]:::geon-highlight
-    Models["Architecture as Code<br/>models, policy checks, provisioning"]:::geon-primary
-    Docs -. "feedback, guidance" .-> Models
-    Models -. "evidence" .-> Docs
+flowchart TB
+    Docs["Documentation as Code<br/>Markdown, review"]:::geon-highlight
+    Models["Architecture as Code<br/>models, policy checks"]:::geon-primary
+    Docs -. "Guidance" .-> Models
+    Models -. "Evidence" .-> Docs

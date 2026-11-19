@@ -1,17 +1,12 @@
-graph TD
+flowchart LR
     ROOT(["Best Practices Overview"]):::geon-primary
-    ROOT --> CO["Code Organisation"]:::geon-accent
-    ROOT --> SC["Security & Compliance"]:::geon-accent
-    ROOT --> PS["Performance & Scaling"]:::geon-accent
-    ROOT --> GP["Governance & Policy"]:::geon-accent
-    ROOT --> TC["Tooling & Community"]:::geon-accent
-    CO --> CO1["Repository Structure"]:::geon-highlight
-    CO --> CO2["Versioning"]:::geon-highlight
-    SC --> SC1["Security-first Design"]:::geon-highlight
-    SC --> SC2["Secret Management"]:::geon-highlight
-    PS --> PS1["Optimisation"]:::geon-highlight
-    PS --> PS2["Multi-region"]:::geon-highlight
-    GP --> GP1["Policy-as-code"]:::geon-highlight
-    GP --> GP2["Frameworks"]:::geon-highlight
-    TC --> TC1["Open Source Practices"]:::geon-highlight
-    TC --> TC2["Ecosystem Integration"]:::geon-highlight
+    CO["Code Organisation<br/>Structure, versioning"]:::geon-accent
+    SC["Security & Compliance<br/>Design, secrets"]:::geon-accent
+    PS["Performance & Scaling<br/>Optimisation, regions"]:::geon-accent
+    GP["Governance & Policy<br/>Policies, frameworks"]:::geon-accent
+    TC["Tooling & Community<br/>Open source, ecosystem"]:::geon-accent
+    ROOT --> CO
+    ROOT --> SC
+    ROOT --> PS
+    ROOT --> GP
+    ROOT --> TC

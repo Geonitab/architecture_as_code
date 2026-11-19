@@ -1,14 +1,22 @@
-graph TD
-    ROOT(["Synergies & Implementation"]):::geon-primary
-    ROOT --> CP["Cross-pollination"]:::geon-accent
-    ROOT --> CE["Collaborative Effects"]:::geon-accent
-    ROOT --> IS["Implementation Strategy"]:::geon-accent
-    CP --> CP1["Shared Tools & Processes"]:::geon-highlight
-    CP --> CP2["Pull Request Collaboration"]:::geon-highlight
-    CP --> CP3["Unified Validation"]:::geon-highlight
-    CE --> CE1["Cross-functional Teams"]:::geon-highlight
-    CE --> CE2["Shared Ownership"]:::geon-highlight
-    CE --> CE3["Technical Transparency"]:::geon-highlight
-    IS --> IS1["Shared Principles"]:::geon-highlight
-    IS --> IS2["Compatible Tooling"]:::geon-highlight
-    IS --> IS3["Cross-functional Training"]:::geon-highlight
+flowchart TB
+    subgraph G0["Cross-pollination"]
+        direction LR
+        N00["Shared Tools<br/>and Processes"]:::geon-highlight
+        N01["Pull Request<br/>Collaboration"]:::geon-highlight
+        N02["Unified Validation"]:::geon-highlight
+    end
+    subgraph G1["Collaborative Effects"]
+        direction LR
+        N10["Cross-functional<br/>Teams"]:::geon-highlight
+        N11["Shared Ownership"]:::geon-highlight
+        N12["Technical<br/>Transparency"]:::geon-highlight
+    end
+    subgraph G2["Implementation Strategy"]
+        direction LR
+        N20["Shared Principles"]:::geon-highlight
+        N21["Compatible<br/>Tooling"]:::geon-highlight
+        N22["Cross-functional<br/>Training"]:::geon-highlight
+    end
+
+    N01 ~~~ N11
+    N11 ~~~ N21
